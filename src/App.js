@@ -1,7 +1,7 @@
 import React from 'react';
-import Login from './Login';
-import Register from './Register';
-import Navbar from './Navbar';
+import Login from './Components/Login';
+import Register from './Components/Register';
+import Navbar from './Components/Navbar';
 
 function App() {
   return (
