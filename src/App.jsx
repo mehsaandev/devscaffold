@@ -5,7 +5,7 @@ import './App.css'
 function App() {
 
   return (
-    <div className=''>
+    <div className='dark'>
       <div className='bg-gradient-to-br from-dimWhite to-slate-200 dark:bg-gradient-to-br dark:to-primary dark:from-gray-800 h-screen'>
       <Navbar/>
       <Sidebar/>

@@ -19,8 +19,8 @@ export default {
       yellow: colors.amber,
       pink: colors.fuchsia,
 
-        primaryDark:'bg-slate-900',
-        secondaryDark: 'bg-gray-800',
+      "dark-purple": "#081A51",
+        "light-white": "rgba(255,255,255,0.17)",
 
         primary: "#00040f",
         secondary: "#00f6ff",
