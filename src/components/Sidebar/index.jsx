@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import {MdExpandCircleDown,MdHomeFilled} from 'react-icons/md'
 import {ImBooks} from 'react-icons/im'
-import {BiSolidComponent} from 'react-icons/bi'
+import {BiSolidComponent,BiSearchAlt} from 'react-icons/bi'
 import {FaTrash} from 'react-icons/fa'
 const Sidebar = () => {
   const [open, setOpen] = useState(true);
@@ -48,9 +48,9 @@ const Sidebar = () => {
               className={`flex  rounded-md p-2 cursor-pointer hover:bg-slate-200 hover:dark:bg-light-white  text-sm items-center gap-x-4 
                ${Menu.gap ? "mt-9" : "mt-2"} ${
                 index === 0 && "bg-slate-200 dark:bg-light-white"
-              } ${Menu.type === "explore" && " flex justify-center font-bold bg-blue-800 "}`}
+              } ${Menu.type === "explore" && " flex justify-center font-bold text-slate-200 bg-blue-800 "}`}
             >
-                {Menu.src}
+                {Menu.type =="explore" ? !open ?  <BiSearchAlt size={18}/> : Menu.src : Menu.src  }
                 {Menu.type != 'explore' && (
               <span className={`${!open && "hidden"} origin-left duration-200`}>
                 {Menu.title}
