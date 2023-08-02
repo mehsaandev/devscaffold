@@ -2,17 +2,30 @@ import React, { useState } from 'react'
 import Card from '../common/Cards/Card'
 import Header from '../common/Header/ProjectDashboardHeader'
 import AddModal from '../common/Modals/AddModal'
+import { useDispatch } from 'react-redux'
+import { createProject } from '../../actions/project'
 
 
 const ProjectDashboard = () => {
   const [openAddModal, setOpenAddModal] = useState(true)
+  const [addProjectForm, setAddProjectForm] = useState({})
+
+  const dispatch = useDispatch()
+
+
+  const createProjectHandler = (e) =>{
+      e.preventDefault()
+      dispatch(createProject(addProjectForm))
+  }
+
+
 
   return (
     <>
-    {openAddModal && (
+      {openAddModal && (
 
-      <AddModal open={openAddModal} setOpen={setOpenAddModal}/>
-    )}
+        <AddModal open={openAddModal} setOpen={setOpenAddModal} projectForm={addProjectForm} setProjectForm={setAddProjectForm} createProjectHandler={createProjectHandler} />
+      )}
       <div className='bg-inherit dark:inherit dark:text-slate-200 dark:bg-gray-700 w-screen rounded-lg m-5 p-2 text-xl font-sans font-semibold '>
 
 
@@ -23,13 +36,13 @@ const ProjectDashboard = () => {
 
         </div>
         Projects
-      <div className='bg-inherit dark:inherit dark:bg-gray-700 w-100 rounded-lg mt-2 p-2 h-18  '>
-        <Card />
-      </div>
-      Components
-      <div className='bg-inherit dark:inherit dark:bg-gray-700 w-100 rounded-lg mt-2 p-2 h-18  '>
-        <Card />
-      </div>
+        <div className='bg-inherit dark:inherit dark:bg-gray-700 w-100 rounded-lg mt-2 p-2 h-18  '>
+          <Card />
+        </div>
+        Components
+        <div className='bg-inherit dark:inherit dark:bg-gray-700 w-100 rounded-lg mt-2 p-2 h-18  '>
+          <Card />
+        </div>
       </div>
     </>
 

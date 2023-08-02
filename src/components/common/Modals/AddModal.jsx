@@ -1,6 +1,6 @@
 import React from 'react'
 import { AiFillCloseCircle } from 'react-icons/ai'
-const AddModal = ({ open, setOpen }) => {
+const AddModal = ({ open, setOpen,projectForm,setProjectForm ,createProjectHandler}) => {
     return (
         <div className={`${!open && 'hidden'} absolute h-screen w-screen top-0 bottom-0 z-30 grid place-items-center`}>
 
@@ -13,7 +13,7 @@ const AddModal = ({ open, setOpen }) => {
                     </button>
                 </div>
                 <div className='p-4 mt-2'>
-                    <form className='flex flex-col'>
+                    <form className='flex flex-col' onSubmit={createProjectHandler}>
 
 
                         <div class="md:flex-col md:flex md:items-start mb-6 gap-2">
@@ -23,7 +23,7 @@ const AddModal = ({ open, setOpen }) => {
                                 </label>
                             </div>
                             <div class="w-full">
-                                <input class="font-light dark:bg-gray-700 bg-gray-100 appearance-none border-2 dark:border-gray-700 dark:text-white border-gray-100 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="text" placeholder='Project Name...' />
+                                <input onChange={(e)=>setProjectForm({...projectForm,projectName:e.target.value})} class="font-light dark:bg-gray-700 bg-gray-100 appearance-none border-2 dark:border-gray-700 dark:text-white border-gray-100 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="text" placeholder='Project Name...' />
                             </div>
                         </div>
                         <div class="md:flex-col md:flex md:items-start mb-6 gap-2">
@@ -33,11 +33,11 @@ const AddModal = ({ open, setOpen }) => {
                                 </label>
                             </div>
                             <div class="w-full ">
-                                <textarea rows={5} class="resize-none font-light dark:bg-gray-700 bg-gray-100 appearance-none border-2 dark:border-gray-700 border-gray-100 rounded w-full py-2 px-4 text-gray-700 dark:text-white leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="text" placeholder='Project Description...' />
+                                <textarea onChange={(e)=>setProjectForm({...projectForm,projectDescription:e.target.value})} rows={5} class="resize-none font-light dark:bg-gray-700 bg-gray-100 appearance-none border-2 dark:border-gray-700 border-gray-100 rounded w-full py-2 px-4 text-gray-700 dark:text-white leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="text" placeholder='Project Description...' />
                             </div>
                         </div>
                         <div className='text-right'>
-                            <button className='text-slate-200 bg-blue-800 hover:bg-blue-900  rounded-lg p-2 text-sm '>Create Project</button>
+                            <button type='submit' className='text-slate-200 bg-blue-800 hover:bg-blue-900  rounded-lg p-2 text-sm '>Create Project</button>
                         </div>
 
                     </form>

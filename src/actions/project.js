@@ -31,11 +31,11 @@ export const getAllProjects = () => async (dispatch) => {
 };
 
 
-export const addProject = (formData) => async (dispatch) => {
+export const createProject = (formData) => async (dispatch) => {
     setLoading(true)
     try {
 
-        const { data } = await api.getAllProjectsAPI();
+        const { data } = await api.createProjectAPI(formData);
         // if (data?.message) {
             // setSnackbar(true);
             // setLoading(false)
