@@ -1,33 +1,33 @@
 import React from 'react'
-
+import projectimg from './Project.jpg'
 const projects = [
   {
     id: 1,
     name: 'Landing Page',
     href: '#',
     update: 'Updated 1 month ago',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-03.jpg',
+    imageSrc: projectimg,
   },
   {
     id: 2,
     name: 'Landing Page',
     href: '#',
     update: 'Updated 1 month ago',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-03.jpg',
+    imageSrc: projectimg,
   },
   {
     id: 3,
     name: 'Landing Page',
     href: '#',
     update: 'Updated 2 years ago',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-03.jpg',
+    imageSrc: projectimg,
   },
   {
     id: 4,
     name: 'E-Commerce App',
     href: '#',
     update: 'Updated 1 sec ago',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-03.jpg',
+    imageSrc: projectimg,
   },
   
   // More Projects...

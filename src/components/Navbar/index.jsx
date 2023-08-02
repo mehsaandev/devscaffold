@@ -3,7 +3,7 @@ import {RiSettings3Fill} from 'react-icons/ri'
 import logo from '../../assets/logo.png'
 const Navbar = () => {
   return (
-    <nav className='flex flex-row justify-between p-3 bg-inherit dark:bg-transparent dark:text-slate-200 shadow-lg'>
+    <nav className='flex sticky top-0 z-20 flex-row justify-between p-3  bg-inherit dark:bg-transparent backdrop-blur dark:text-slate-200 shadow-lg'>
      <div className='ml-2'>
       <button className='hover:scale-110 duration-200 h-10'>
       <img width={170} src={logo}/>

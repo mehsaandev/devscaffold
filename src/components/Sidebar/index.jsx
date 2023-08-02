@@ -14,11 +14,12 @@ const Sidebar = () => {
     { title: "Explore Projects", src: 'Explore Projects', gap:true, type:"explore"}
   ];
 
+
   return (
       <div
         className={` ${
           open ? "w-60" : "w-20 "
-        } bg-transparent shadow-lg h-full  pl-5 pr-5 pt-8 relative duration-300 dark:text-gray-300 `}
+        } bg-transparent shadow-lg pl-5 pr-5 pt-8  duration-300 dark:text-gray-300 flex flex-col h-screen sticky top-10 z-20`}
       >
         <MdExpandCircleDown
         size={30}
