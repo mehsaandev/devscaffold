@@ -24,7 +24,7 @@ const ProjectDashboard = () => {
     
     dispatch(getAllProjects())
   
-  }, [createProjectHandler])
+  }, [openAddModal])
   
 
 
