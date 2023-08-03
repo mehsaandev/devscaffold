@@ -1,10 +1,13 @@
 import { useState } from "react";
 
+import logoOnly from '../../assets/logoOnly.png'
+
 import {MdExpandCircleDown,MdHomeFilled} from 'react-icons/md'
 import {ImBooks} from 'react-icons/im'
 import {BiSolidComponent,BiSearchAlt} from 'react-icons/bi'
 import {FaTrash} from 'react-icons/fa'
 const Sidebar = () => {
+
   const [open, setOpen] = useState(true);
   const Menus = [
     { title: "Home", src: <MdHomeFilled size={20}/> },
@@ -29,7 +32,7 @@ const Sidebar = () => {
         <div className="flex gap-x-4 items-center">
           <img
           width={20}
-            src="./src/assets/logoOnly.png"
+            src={logoOnly}
             className={`cursor-pointer duration-500 ${
               open && "rotate-[360deg]"
             }`}
