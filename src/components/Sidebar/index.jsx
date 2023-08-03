@@ -20,7 +20,7 @@ const Sidebar = () => {
 
   return (
       <div
-        className={` ${
+        className={`absolute ${
           open ? "w-60" : "w-20 "
         } bg-transparent shadow-lg pl-5 pr-5 pt-8  duration-300 dark:text-gray-300 flex flex-col h-screen sticky top-10 z-20`}
       >
