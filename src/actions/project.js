@@ -1,7 +1,7 @@
 import * as api from "../api";
 
 export const getAllProjects = () => async (dispatch) => {
-    setLoading(true)
+    // setLoading(true)
     try {
 
         const { data } = await api.getAllProjectsAPI();
@@ -15,8 +15,8 @@ export const getAllProjects = () => async (dispatch) => {
             // setLoading(false)
             // setSnackbarSeverity("success");
             // setAlertText(data?.response);
-            console.log(data)
-            // dispatch({ type: "AUTH", data });
+            // console.log(data)
+            dispatch({ type: "FETCH_ALL", payload: data });
             // setTimeout(function () {
             //   history("/home");
             // }, 500);
@@ -31,8 +31,8 @@ export const getAllProjects = () => async (dispatch) => {
 };
 
 
-export const createProject = (formData) => async (dispatch) => {
-    setLoading(true)
+export const createProject = (formData,setOpenAddModal) => async (dispatch) => {
+    // setLoading(true)
     try {
 
         const { data } = await api.createProjectAPI(formData);
@@ -51,6 +51,7 @@ export const createProject = (formData) => async (dispatch) => {
             // setTimeout(function () {
             //   history("/home");
             // }, 500);
+            setOpenAddModal(false)
         // }
     } catch (error) {
         //   setSnackbar(true);

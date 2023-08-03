@@ -4,7 +4,6 @@ export default (state = [], action) =>{
             console.log(action.payload)
             return {...state, projects: [...state.projects,  action.payload ]}
         case "FETCH_ALL":
-            console.log(action.payload)
             return {...state, projects:  action.payload} 
         case "FETCH_ONE":
             console.log(action.payload)

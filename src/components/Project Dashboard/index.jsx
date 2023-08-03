@@ -1,48 +1,48 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Card from '../common/Cards/Card'
 import Header from '../common/Header/ProjectDashboardHeader'
 import AddModal from '../common/Modals/AddModal'
-import { useDispatch } from 'react-redux'
-import { createProject } from '../../actions/project'
+import { useDispatch, useSelector } from 'react-redux'
+import { createProject, getAllProjects } from '../../actions/project'
+import ProjectListing from './ProjectListing'
 
 
 const ProjectDashboard = () => {
-  const [openAddModal, setOpenAddModal] = useState(true)
+  const [openAddModal, setOpenAddModal] = useState(false)
   const [addProjectForm, setAddProjectForm] = useState({})
 
   const dispatch = useDispatch()
+  const projectsList = useSelector(data=>data.projects?.projects)
 
 
   const createProjectHandler = (e) =>{
       e.preventDefault()
-      dispatch(createProject(addProjectForm))
+      dispatch(createProject(addProjectForm,setOpenAddModal))
   }
+
+  useEffect(() => {
+    
+    dispatch(getAllProjects())
+  
+  }, [createProjectHandler])
+  
 
 
 
   return (
     <>
       {openAddModal && (
-
         <AddModal open={openAddModal} setOpen={setOpenAddModal} projectForm={addProjectForm} setProjectForm={setAddProjectForm} createProjectHandler={createProjectHandler} />
       )}
+
       <div className='bg-inherit dark:inherit dark:text-slate-200 dark:bg-gray-700 w-screen rounded-lg m-5 p-2 text-xl font-sans font-semibold '>
-
-
         <Header setOpen={setOpenAddModal} />
-        <div className='bg-inherit dark:inherit dark:bg-gray-700 w-100 rounded-lg mt-2 mb-4 p-2 h-18  '>
-          <Card />
+        {projectsList ? (
+          <ProjectListing projectsList= {projectsList}/>
 
-
-        </div>
-        Projects
-        <div className='bg-inherit dark:inherit dark:bg-gray-700 w-100 rounded-lg mt-2 p-2 h-18  '>
-          <Card />
-        </div>
-        Components
-        <div className='bg-inherit dark:inherit dark:bg-gray-700 w-100 rounded-lg mt-2 p-2 h-18  '>
-          <Card />
-        </div>
+        ) : (
+          <p>Loading...</p>
+        )}
       </div>
     </>
 
