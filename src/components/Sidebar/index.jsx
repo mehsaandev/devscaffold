@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import logoOnly from '../../assets/logoOnly.png'
+import logoOnly from '../../assets/LogoOnly.png'
 
 import {MdExpandCircleDown,MdHomeFilled} from 'react-icons/md'
 import {ImBooks} from 'react-icons/im'
