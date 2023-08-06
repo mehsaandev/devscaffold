@@ -1,24 +1,25 @@
 import { useState } from 'react'
-import {Navbar,ProjectDashboard,Sidebar} from './components'
+import { Routes,Route } from 'react-router-dom'
+import LandingPage from './components/Landing Page'
+import Home from './components/Home'
 import './App.css'
 
+
 function App() {
+
   const [theme, setTheme] = useState('')
 
-  const toggleTheme = () =>{
-    setTheme(theme == "dark" ? "" : "dark")
-  }
+    const toggleTheme = () =>{
+      setTheme(theme == "dark" ? "" : "dark")
+    }
 
   return (
     <div className= {`${theme}`}>
-      <div className='bg-gradient-to-br from-dimWhite to-slate-200 dark:bg-gradient-to-br dark:to-primary dark:from-gray-800 h-screen overflow-y-scroll'>
-      <Navbar toggleTheme = {toggleTheme} theme={theme}/>
-      <div className='flex flex-row'>
-      <Sidebar/>
-      <ProjectDashboard />
+      <Routes>
+        <Route path='/' element={<LandingPage  />} />
+        <Route path='/home' element={<Home toggleTheme={toggleTheme} theme={theme} />} />
+      </Routes>
 
-      </div>
-      </div>
     </div>
   )
 }

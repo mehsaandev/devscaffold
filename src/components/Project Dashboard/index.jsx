@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import Card from '../common/Cards/Card'
 import Header from '../common/Header/ProjectDashboardHeader'
 import AddModal from '../common/Modals/AddModal'
 import { useDispatch, useSelector } from 'react-redux'
