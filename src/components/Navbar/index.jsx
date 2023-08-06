@@ -14,6 +14,7 @@ const Navbar = ({toggleTheme,theme}) => {
      </div>
      <div className='flex flex-row gap-2 '>
       {/* <button className='bg-gray-200 hover:bg-gray-300 dark:bg-slate-600 p-1 rounded-md w-14  '>Login</button> */}
+      <button className='text-slate-200 bg-orange-600 hover:bg-orange-700  rounded-lg p-2 text-sm '>Logout</button>
       <button className='bg-gray-400 hover:bg-gray-300 dark:bg-slate-60 w-11 rounded-full'>ME</button>
       <button className='bg-inherit  hover:bg-gray-200 dark:hover:bg-slate-600  w-8 text-center flex justify-center items-center rounded-md group'><RiSettings3Fill className='text-slate-900 dark:text-slate-200 group-hover:rotate-180 duration-200' size={25}/></button>
       <button className='bg-inherit  hover:bg-gray-200 dark:hover:bg-slate-600  w-8 text-center flex justify-center items-center rounded-md group' onClick={toggleTheme}>
