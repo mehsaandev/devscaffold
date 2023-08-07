@@ -8,7 +8,7 @@ import {FaTrash} from 'react-icons/fa'
 import { useNavigate } from "react-router-dom";
 
 const Menus = [
-  { title: "Home", src: <MdHomeFilled size={20}/>, path:'/home' },
+  { title: "Home", src: <MdHomeFilled size={20}/>, path:'home' },
   { title: "Projects", src:  <ImBooks size={20}/> , path:'projects'},
   { title: "Components", src: <BiSolidComponent size={20} />, path:'components'  },
   { title: "Trash ", src: <FaTrash size={18}/>, path:'trash'},

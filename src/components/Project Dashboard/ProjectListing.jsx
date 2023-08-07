@@ -1,13 +1,45 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Card from '../common/Cards/Card'
+import AddModal from '../common/Modals/AddModal'
+import { useDispatch, useSelector } from 'react-redux'
+import { createProject, getAllProjects } from '../../actions/project'
+import Header from '../common/Header/ProjectDashboardHeader'
 
-const ProjectListing = ({ projectsList }) => {
+const ProjectListing = ({openAddModal,setOpenAddModal,type}) => {
+
+  
+
+    const dispatch = useDispatch()
+    const projectsList = useSelector(data => data.projects?.projects)
+
+
+
+
+    useEffect(() => {
+
+        dispatch(getAllProjects())
+
+    }, [openAddModal])
+
+
+
     return (
-        <div className='bg-inherit dark:inherit dark:bg-gray-700 p-4 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-3  '>
-            {projectsList.map(project => (
-                <Card project={project}/>
-            ))}
-        </div>
+        <>
+           
+
+            <Header setOpen={setOpenAddModal} type={type} />
+
+            {projectsList ? (
+
+                <div className='bg-inherit dark:inherit dark:bg-gray-700 p-4 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-3  '>
+                    {projectsList.map(project => (
+                        <Card project={project} />
+                    ))}
+                </div>
+            ) : (
+                <p>Loaading...</p>
+            )}
+        </>
     )
 }
 
