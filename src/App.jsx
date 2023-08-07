@@ -3,6 +3,7 @@ import { Routes,Route } from 'react-router-dom'
 import LandingPage from './components/Landing Page'
 import Home from './components/Home'
 import './App.css'
+import LandingPage from './components/Landing Page'
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
       </Routes>
 
     </div>
+
   )
 }
 

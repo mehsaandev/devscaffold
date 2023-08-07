@@ -7,9 +7,11 @@ import logo from '../../assets/logo.png'
 const Navbar = ({toggleTheme,theme}) => {
   return (
     <nav className='flex sticky top-0 z-20 flex-row justify-between p-3  bg-inherit dark:bg-transparent backdrop-blur dark:text-slate-200 shadow-lg'>
+
      <div className='ml-2'>
       <button className='hover:scale-110 duration-200 h-10'>
       <img width={170} src={logo}/>
+        onClick={()=>setOpen(true)}
       </button>
      </div>
      <div className='flex flex-row gap-2 '>
