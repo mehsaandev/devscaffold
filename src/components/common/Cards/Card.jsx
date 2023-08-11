@@ -1,6 +1,7 @@
 import React from 'react'
 import projectimg from './Project.jpg'
 import { CiMenuKebab } from 'react-icons/ci'
+import { useNavigate } from 'react-router-dom'
 const projects = [
   {
     id: 1,
@@ -34,7 +35,14 @@ const projects = [
   // More Projects...
 ]
 
+
 function Card({ project }) {
+
+  const navigate = useNavigate()
+
+  const openProjectViewHandler = () =>{
+    navigate(`/dashboard/project/${project?._id}`)
+  }
   return (
 
     //   <div className="grid">
@@ -50,10 +58,10 @@ function Card({ project }) {
     //         <p className="text-sm font-normal text-gray-400">{project?.description}</p>
     //       </a>
     // </div>
-    <div class="max-w-sm rounded overflow-hidden shadow-lg dark:bg-gray-900  ">
-      <img class="w-full" src={projectimg} alt="Sunset in the mountains" />
+    <div class="max-w-sm rounded overflow-hidden shadow-lg dark:bg-gray-900">
+      <img class="w-full hover:cursor-pointer" src={projectimg} alt="Sunset in the mountains" onClick={openProjectViewHandler} />
       <div class="px-6 py-4">
-        <div class="font-bold text-xl mb-2">{project?.title}</div>
+        <p class="font-bold text-xl mb-2 hover:cursor-pointer hover:text-blue-600" style={{width:'max-content'}} onClick={openProjectViewHandler}>{project?.title}</p>
         <p class="dark:text-slate-200 font-light text-gray-700 text-base">
           {project?.description}
         </p>

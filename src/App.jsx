@@ -18,7 +18,7 @@ function App() {
     <div className= {`${theme}`}>
       <Routes>
         <Route path='/' element={<LandingPage  />} />
-        <Route path='/home/*' element={<Home toggleTheme={toggleTheme} theme={theme} />} />
+        <Route path='/dashboard/*' element={<Home toggleTheme={toggleTheme} theme={theme} />} />
       </Routes>
 
     </div>
