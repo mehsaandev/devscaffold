@@ -4,10 +4,12 @@ const bodyParser =  require('body-parser')
 const cors =  require('cors')
 
 const projectRoutes =  require('./routes/projects.js')
+const navbarRoutes =  require('./routes/navbar.js')
 const app = express()
 
 const PORT = 8080
 // // Middlewares
+
 app.use(express.json());
 app.use(bodyParser.json({ limit: "50mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "100mb", extended: true, parameterLimit: 50000 }))
@@ -21,6 +23,7 @@ app.use(function (req, res, next) {
     next();
 });
 app.use('/projects', projectRoutes)
+app.use('/navbar', navbarRoutes)
 
 
 app.get('/',(req,res)=>res.send("Server is running"))
@@ -37,3 +40,5 @@ mongoose
     app.listen(PORT || process.env.PORT, () => console.log(`Server Running on Port: ${PORT}`))
   )
     .catch((error) => console.log(error.message));
+    
+

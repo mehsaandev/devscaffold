@@ -20,10 +20,11 @@ const getProject = async (req, res) => {
 }
 
 const createProject = async (req, res) => {
-    const project = req.body
-    console.log(project)
-    const newProject = new Project(project)
+
     try {
+        const project = req.body
+        console.log(project)
+        const newProject = new Project(project)
         await newProject.save()
         res.status(201).json(newProject)
     } catch (error) {
@@ -34,7 +35,7 @@ const createProject = async (req, res) => {
 const updateProject = async (req, res) => {
     const { id } = req.params
     const project = req.body
-    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No project with id: ${id}`)   
+    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No project with id: ${id}`)
 }
 
 const deleteProject = async (req, res) => {
@@ -44,4 +45,4 @@ const deleteProject = async (req, res) => {
     res.json({ message: "Project deleted successfully." })
 }
 
-module.exports = {createProject, getAllProjects, getProject, updateProject, deleteProject}
+module.exports = { createProject, getAllProjects, getProject, updateProject, deleteProject }
