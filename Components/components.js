@@ -1,21 +1,27 @@
 
 
- const navbar= (data) =>{
+const navbar = (data) => {
   return (
-  `<div>
-   ${data.nav_links.map(item=>{
-    return `<li>
+    `<>
+    <nav style="background-color": "${data.properties.color}">
+    <div>
+    <a href="${data.logo.href}"><img src="${data.logo.source}" alt="${data.logo.alt}"/></a>
+  </div>
+  <div>
+   ${data.nav_links.links.map(item => {
+      return `<li>
        <a href="${item.url}/">${item.label}</a>
      </li>`
-   }).join('')}
+    }).join('')}
    <div>
-   ${data.actions.map(item=>{
-    return ` <button >${item.label}</button>`
-   }).join('')}
-  
+   ${data.actions.map(item => {
+      return ` <button >${item.label}</button>`
+    }).join('')}
    </div>
-  </div>`
+  </div>
+  </nav>
+  <>`
   );
 }
 
-module.exports = {navbar}
+module.exports = { navbar }
