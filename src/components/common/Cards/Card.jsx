@@ -43,6 +43,9 @@ function Card({ project }) {
   const openProjectViewHandler = () =>{
     navigate(`/dashboard/project/${project?._id}`)
   }
+  const openProjectSingleView = () =>{
+    navigate(`project/${project?._id}`)
+  }
   return (
 
     //   <div className="grid">
@@ -59,9 +62,9 @@ function Card({ project }) {
     //       </a>
     // </div>
     <div class="max-w-sm rounded overflow-hidden shadow-lg dark:bg-gray-900">
-      <img class="w-full hover:cursor-pointer" src={projectimg} alt="Sunset in the mountains" onClick={openProjectViewHandler} />
+      <img class="w-full hover:cursor-pointer" src={projectimg} alt="Sunset in the mountains" onClick={openProjectSingleView} />
       <div class="px-6 py-4">
-        <p class="font-bold text-xl mb-2 hover:cursor-pointer hover:text-blue-600" style={{width:'max-content'}} onClick={openProjectViewHandler}>{project?.title}</p>
+        <p class="font-bold text-xl mb-2 hover:cursor-pointer hover:text-blue-600" style={{width:'max-content'}} >{project?.title}</p>
         <p class="dark:text-slate-200 font-light text-gray-700 text-base">
           {project?.description}
         </p>
@@ -72,7 +75,7 @@ function Card({ project }) {
         <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">2 miniutes ago</span>
 
         <div className='flex justify-between gap-2'>
-          <button className='dark:text-slate-200 border-blue-800 border-2 bg-transparent hover:border-blue-900  rounded-lg p-2 text-sm '>Continue</button>
+          <button className='dark:text-slate-200 border-blue-800 border-2 bg-transparent hover:border-blue-900  rounded-lg p-2 text-sm ' onClick={openProjectViewHandler} >Continue</button>
           <button className='rounded-full bg-slate-300 dark:bg-gray-800 dark:hover:bg-gray-700 hover:bg-slate-400'><CiMenuKebab /></button>
         </div>
       </div>
