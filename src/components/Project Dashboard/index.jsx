@@ -37,8 +37,7 @@ const ProjectDashboard = () => {
 
         <Routes>
 
-          <Route path='/' element={<Navigate to={'home'} />} />
-          <Route path='/home' element={<ProjectListing openAddModal={openAddModal} setOpenAddModal={setOpenAddModal} type={"Recent"} />} />
+          <Route path='/' element={<ProjectListing openAddModal={openAddModal} setOpenAddModal={setOpenAddModal} type={"Recent"} />} />
           <Route path='/projects' element={<ProjectListing openAddModal={openAddModal} setOpenAddModal={setOpenAddModal} type={"My Projects"} />} />
           <Route path='/components' element={<ProjectListing openAddModal={openAddModal} setOpenAddModal={setOpenAddModal} type={"My Components"} />} />
           <Route exact path='/project/:id' element={<div className='transition-height duration-500 ease-in-out'><SingleProject /></div>} />

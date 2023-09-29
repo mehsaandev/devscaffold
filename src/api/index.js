@@ -8,3 +8,6 @@ export const createProjectAPI = (formData) =>API.post('/projects/create',formDat
 export const updateProjectAPI = (updatedProjectData,projectId) =>API.put(`/projects/update/${projectId}`,updatedProjectData)
 export const deleteProjectAPI = (projectId) =>API.delete(`/projects/delete/${projectId}`)
 
+
+export const exportComponentsAPI = (components) =>API.post('/navbar/create',components)
+

@@ -20,7 +20,7 @@ export default {
 
       "dark-purple": "#081A51",
         "light-white": "rgba(255,255,255,0.17)",
-
+ 
         primary: "#00040f",
         secondary: "#00f6ff",
         dimWhite: "rgba(255, 255, 255, 0.7)",
