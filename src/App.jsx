@@ -3,7 +3,7 @@ import { Routes,Route } from 'react-router-dom'
 import LandingPage from './components/Landing Page'
 import Home from './components/Home'
 import './App.css'
-import LandingPage from './components/Landing Page'
+import Hello from './components/Hello'
 
 
 function App() {
@@ -19,6 +19,7 @@ function App() {
       <Routes>
         <Route path='/' element={<LandingPage  />} />
         <Route path='/dashboard/*' element={<Home toggleTheme={toggleTheme} theme={theme} />} />
+        <Route path='/hello/' element={<Hello  />} />
       </Routes>
 
     </div>
