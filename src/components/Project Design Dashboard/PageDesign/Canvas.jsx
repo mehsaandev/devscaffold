@@ -6,6 +6,34 @@ import PropertiesModal from "../Modals/PropertiesModal";
 
 import { useDispatch } from "react-redux";
 import { exportComponents } from "../../../actions/project";
+import { compileTree } from "../../../utilities/componentCompiler";
+
+
+const elementsTree = [{
+  name: "div",
+  chilldren: [
+    {
+      name: "div",
+      chilldren: [
+        {
+          name: "button",
+          properties: {
+            text: "Login",
+          },
+          classes: "bg-red-600 w-96 text-white p-2 rounded-lg hover:bg-red-700",
+        }
+      ],
+      classes: "p-10",
+
+    },
+  ],
+  classes: "m-10 w-full",
+
+}]
+
+
+
+
 
 
 function App() {
@@ -28,6 +56,11 @@ function App() {
   }
 
 
+
+  console.log(compileTree(elementsTree) + "")
+
+
+
   const exportComponent = () => {
     dispatch(exportComponents(propertiesList))
   }
@@ -36,11 +69,14 @@ function App() {
 
   const AddBar = () => {
     return (
-      <button className="h-16 border border-dashed flex justify-center items-center  border-black  dark:border-white w-full rounded-lg"
-        onClick={() => setModel(true)}
-      >
-        <p className="text-2xl  text-gray-500">+</p>
-      </button>
+      // <button className="h-16 border border-dashed flex justify-center items-center  border-black  dark:border-white w-full rounded-lg"
+      //   onClick={() => setModel(true)}
+      // >
+      //   <p className="text-2xl  text-gray-500">+</p>
+      // </button>
+      <div dangerouslySetInnerHTML={{ __html: compileTree(elementsTree) }}>
+
+      </div>
     )
   }
 
