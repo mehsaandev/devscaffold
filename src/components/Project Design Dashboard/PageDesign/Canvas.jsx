@@ -3,10 +3,9 @@ import React, { useState } from "react";
 import { v4 as uuid } from 'uuid';
 import AddModal from "../Modals/AddModal";
 import PropertiesModal from "../Modals/PropertiesModal";
-
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { exportComponents } from "../../../actions/project";
-
+import {changeColor} from "../../../../redux/colors/colorsSlice"
 
 function App() {
   // const [columns, setColumns] = useState(columnsFromBackend);
@@ -35,9 +34,12 @@ function App() {
 
 
   const AddBar = () => {
+    const color = useSelector((state) => state.colors.value);
+
     return (
-      <button className="h-16 border border-dashed flex justify-center items-center  border-black  dark:border-white w-full rounded-lg"
-        onClick={() => setModel(true)}
+      <button className={`${color} h-16 border border-dashed flex justify-center items-center  border-black  dark:border-white w-full rounded-lg`}
+        // onClick={() => setModel(true)}
+        // onClick={()=>dispatch(changeColor())}
       >
         <p className="text-2xl  text-gray-500">+</p>
       </button>
