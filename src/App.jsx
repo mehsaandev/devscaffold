@@ -6,6 +6,7 @@ import Dashboard from './components/Project Design Dashboard/index'
 import './App.css'
 
 
+
 function App() {
 
   const [theme, setTheme] = useState('')
@@ -18,6 +19,9 @@ function App() {
     <div className= {`${theme}`}>
       <Routes>
         <Route path='/' element={<LandingPage  />} />
+
+        {/* <Route path='/dashboard/*' element={<Home toggleTheme={toggleTheme} theme={theme} />} /> */}
+        {/* <Route path='/hello/' element={<Hello  />} /> */}
         <Route path='/home/*' element={<Home toggleTheme={toggleTheme} theme={theme} />} />
         <Route path='/dashboard/*' element={<Dashboard toggleTheme={toggleTheme} theme={theme} />} />
       </Routes>
