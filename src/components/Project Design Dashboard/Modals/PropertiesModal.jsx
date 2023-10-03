@@ -10,7 +10,6 @@ const AddModal = ({ open,setOpen, propertiesList, setpropertiesList ,newAddedPro
     const [link, setlink] = useState("")
     const [action, setAction] = useState("")
 
-console.log(newAddedPropertyIndex)
     const addLinkHandler = (e) => {
         e.preventDefault()
         setpropertiesList(previousState=>{

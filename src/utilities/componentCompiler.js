@@ -15,7 +15,7 @@ const elementsTree = [{
 
 
 function generateHTML(element) {
-    let html = `<${element.name} ${element.classes ? `class="${element.classes}"` : ''}>`;
+    let html = `<${element.name} ${element.id ? `id="${element.id}"` : ''}  ${element.classes ? `class="${element.classes}"` : ''}>`;
 
     if (element.chilldren) {
         element.chilldren.forEach(child => {
@@ -45,3 +45,28 @@ export const compileTree = (elementsTree) => {
     return combinedElement;
 }
 
+
+
+function searchAndUpdateClass(element, id, newClasses) {
+    if (element.id === id) {
+        console.log("found")
+        element.classes = newClasses;
+        return element;
+    }
+    if (element.chilldren)
+    {
+        console.log("moving to child")
+        updateElementClasses(element.chilldren, id, newClasses);
+    }
+
+    return element;
+}
+
+
+
+export const updateElementClasses = (elementsTree, elementId, updatedClasses) => {
+    const response = elementsTree.map(element => {
+        return searchAndUpdateClass(element, elementId, updatedClasses);
+    });
+    return response;
+}
