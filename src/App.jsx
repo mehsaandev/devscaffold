@@ -4,8 +4,8 @@ import LandingPage from './components/Landing Page'
 import Home from './components/Home'
 import Dashboard from './components/Project Design Dashboard/index'
 import './App.css'
-
-
+import Signup from "./auth/components/signup"
+import Login from "./auth/components/login"
 
 function App() {
 
@@ -21,9 +21,10 @@ function App() {
         <Route path='/' element={<LandingPage  />} />
 
         {/* <Route path='/dashboard/*' element={<Home toggleTheme={toggleTheme} theme={theme} />} /> */}
-        {/* <Route path='/hello/' element={<Hello  />} /> */}
         <Route path='/home/*' element={<Home toggleTheme={toggleTheme} theme={theme} />} />
         <Route path='/dashboard/*' element={<Dashboard toggleTheme={toggleTheme} theme={theme} />} />
+        <Route path='/signup/*' element={<Signup toggleTheme={toggleTheme} theme={theme} />} />
+        <Route path='/login/*' element={<Login toggleTheme={toggleTheme} theme={theme} />} />
       </Routes>
 
     </div>
