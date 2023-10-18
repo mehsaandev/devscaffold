@@ -5,6 +5,7 @@ const cors =  require('cors')
 
 const projectRoutes =  require('./routes/projects.js')
 const navbarRoutes =  require('./routes/navbar.js')
+const userRoutes =  require('./routes/user.js')
 const app = express()
 
 const PORT = 8080
@@ -24,6 +25,7 @@ app.use(function (req, res, next) {
 });
 app.use('/projects', projectRoutes)
 app.use('/navbar', navbarRoutes)
+app.use('/user', userRoutes)
 
 
 app.get('/',(req,res)=>res.send("Server is running"))
