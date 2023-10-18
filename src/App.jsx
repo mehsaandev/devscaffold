@@ -4,6 +4,7 @@ import LandingPage from './components/Landing Page'
 import Home from './components/Home'
 import Dashboard from './components/Project Design Dashboard/index'
 import './App.css'
+import DragAndDrop from './Dnd/Dnd'
 
 
 
@@ -24,6 +25,7 @@ function App() {
         {/* <Route path='/hello/' element={<Hello  />} /> */}
         <Route path='/home/*' element={<Home toggleTheme={toggleTheme} theme={theme} />} />
         <Route path='/dashboard/*' element={<Dashboard toggleTheme={toggleTheme} theme={theme} />} />
+        <Route path='/dnd' element={<DragAndDrop/>} />
       </Routes>
 
     </div>

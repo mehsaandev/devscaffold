@@ -8,7 +8,8 @@ import { exportComponents } from "../../../actions/project";
 import { compileTree } from "../../../utilities/componentCompiler";
 import {changeColor} from "../../../../redux/colors/colorsSlice"
 
-const elementsTree = [{
+const elementsTree = [
+  {
   id: uuid(),
   name: "div",
   chilldren: [
@@ -78,6 +79,8 @@ function App({activeClassHandler}) {
     dispatch(exportComponents(propertiesList))
   }
 
+  console.log(compileTree(pageObj))
+
 
 
   const AddBar = () => {
@@ -90,7 +93,7 @@ function App({activeClassHandler}) {
       //   <p className="text-2xl  text-gray-500">+</p>
       // </button>
       <>
-      <div dangerouslySetInnerHTML={{ __html: compileTree(pageObj) }}>
+      <div className="canvasSection" dangerouslySetInnerHTML={{ __html: compileTree(pageObj) }}>
 
       </div>
       {/* <button className={`${color} h-16 border border-dashed flex justify-center items-center  border-black  dark:border-white w-full rounded-lg `}
