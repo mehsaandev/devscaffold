@@ -3,7 +3,8 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import {updatePage} from '../../actions/pages'
 import { useSelector } from 'react-redux'
-import { updateElementClasses } from '../../utilities/componentCompiler'
+import { updateElementClasses,generateHTML, compileTree } from '../../utilities/componentCompiler'
+import {createComponent} from '../../utilities/attatchmentUtility'
 
 const ToolboxSection = ({activeElement}) => {
   const [elementClass, setElementClass] = useState(activeElement.className)
@@ -18,7 +19,27 @@ const ToolboxSection = ({activeElement}) => {
   setElementClass(activeElement.className)
   }, [activeElement])
   
-
+  /////
+  function createFile(){
+    //create or obtain the file's content
+    var temp = compileTree(pageObj)
+    console.log(temp)
+    var content = createComponent("Button",temp);
+  
+    //create a file and put the content, name and type
+    var file = new File(["\ufeff"+content], 'Button.jsx', {type: "text/plain:charset=UTF-8"});
+  
+    //create a ObjectURL in order to download the created file
+    var url = window.URL.createObjectURL(file);
+  
+    //create a hidden link and set the href and click it
+    var a = document.createElement("a");
+    a.style = "display: none";
+    a.href = url;
+    a.download = file.name;
+    a.click();
+    window.URL.revokeObjectURL(url);
+  } 
 
   const updateClassHandler = () => {
 
@@ -54,6 +75,7 @@ const ToolboxSection = ({activeElement}) => {
         />
     
         <Button variant="contained" onClick={updateClassHandler}>Update Class</Button>
+        <Button variant="contained" onClick={createFile}>Export Component</Button>
     </div>
   )
 }
