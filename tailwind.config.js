@@ -4,6 +4,9 @@ export default {
   content: ["./index.html", "./src/**/*.{html,js,jsx}"],
   mode: "jit",
   darkMode:  'class',
+  optimizeDeps: {
+    exclude: ['@dnd-kit_core']
+  },
   theme: {
   
     extend: {

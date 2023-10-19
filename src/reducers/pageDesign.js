@@ -30,10 +30,18 @@ const elementsTree = [{
             properties: {
               text: "Register",
             },
+            classes: "bg-yellow-600 w-96 text-white p-2 rounded-lg hover:bg-yellow-700 focus:border-4 focus:border-yellow-600 animate-spin",
+          },
+          {
+            id: uuid(),
+            name: "button",
+            properties: {
+              text: "Register",
+            },
             classes: "bg-yellow-600 w-96 text-white p-2 rounded-lg hover:bg-yellow-700 focus:border-4 focus:border-yellow-600",
           }
         ],
-        classes: "p-10",
+        classes: "p-10 flex flex-col gap-5",
   
       },
     ],

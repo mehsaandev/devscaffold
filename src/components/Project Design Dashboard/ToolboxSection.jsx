@@ -1,22 +1,22 @@
-import { TextField ,Button } from '@mui/material'
+import { TextField, Button, ButtonGroup } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import {updatePage} from '../../actions/pages'
+import { updatePage } from '../../actions/pages'
 import { useSelector } from 'react-redux'
 import { updateElementClasses,generateHTML, compileTree } from '../../utilities/componentCompiler'
 import {createComponent} from '../../utilities/attatchmentUtility'
 
-const ToolboxSection = ({activeElement}) => {
+const ToolboxSection = ({ activeElement }) => {
   const [elementClass, setElementClass] = useState(activeElement.className)
-  const dispatch  = useDispatch()
+  const dispatch = useDispatch()
 
-  const pageObj =  useSelector(state => state.pageDesign.page)
+  const pageObj = useSelector(state => state.pageDesign.page)
   console.log(activeElement)
   console.log(elementClass)
 
   useEffect(() => {
-    
-  setElementClass(activeElement.className)
+
+    setElementClass(activeElement.className)
   }, [activeElement])
   
   /////
@@ -41,27 +41,27 @@ const ToolboxSection = ({activeElement}) => {
     window.URL.revokeObjectURL(url);
   } 
 
+
   const updateClassHandler = () => {
 
-    const updatedJson = updateElementClasses(pageObj,activeElement?.id,elementClass)
+    const updatedJson = updateElementClasses(pageObj, activeElement?.id, elementClass)
     dispatch(updatePage(updatedJson))
 
-   
+
   }
 
   useEffect(() => {
     setElementClass(activeElement.className)
   }, [])
-  
 
-  
 
-  
+
+
+
 
 
   return (
     <div className='m-2 p-5 bg-white flex flex-col gap-5'>
-      
 
          <TextField
           id="outlined-multiline-static"
@@ -76,6 +76,26 @@ const ToolboxSection = ({activeElement}) => {
     
         <Button variant="contained" onClick={updateClassHandler}>Update Class</Button>
         <Button variant="contained" onClick={createFile}>Export Component</Button>
+
+      <ButtonGroup variant="outlined" aria-label="outlined button group">
+        <Button>Left</Button>
+        <Button>Center</Button>
+        <Button>Right</Button>
+      </ButtonGroup>
+
+
+      <TextField
+        id="outlined-multiline-static"
+        label="Classes"
+        fullWidth
+        multiline
+        rows={4}
+        defaultValue={"Classes"}
+        value={elementClass ? elementClass : activeElement.className}
+        onChange={(e) => setElementClass(e.target.value)}
+      />
+
+      <Button variant="contained" onClick={updateClassHandler}>Update Class</Button>
     </div>
   )
 }

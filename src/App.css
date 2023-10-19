@@ -1,0 +1,12 @@
+.canvasSection div:hover button:hover{
+    border: 10px solid lightblue;
+    margin-top: -10px;
+    margin-bottom: -10px;
+}
+
+.canvasSection div:hover button:active{
+    border: 10px solid rgb(4, 0, 255);
+    margin-top: -10px;
+    margin-bottom: -10px;
+}
+

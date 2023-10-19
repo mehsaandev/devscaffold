@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Sidebar from '../Sidebar'
-import PageDesign from './PageDesign/Canvas'
+import PageDesign from './PageDesign/PreviewSection'
 import Navbar from '../Navbar'
 import ComponentsSection from './ComponentsSection'
 import ToolboxSection from './ToolboxSection'
@@ -28,6 +28,7 @@ const ProjectDesignDashboard = ({ toggleTheme, theme }) => {
         {/* <ComponentsSection /> */}
         <div className='grid grid-4 grid-flow-col w-full'>
           <div className='col-span-3'>
+            <button>sdsad</button>
             <PageDesign activeClassHandler={activeClassHandler} />
           </div>
           <div className='col-span-1'>
