@@ -1,3 +1,5 @@
+
+
 const elementsTree = [{
     name: "h1",
     chilldren: [
@@ -14,7 +16,7 @@ const elementsTree = [{
 
 
 
-function generateHTML(element) {
+export function generateHTML(element) {
     let html = `<${element.name} ${element.id ? `id="${element.id}"` : ''}  ${element.classes ? `class="${element.classes}"` : ''}>`;
 
     if (element.chilldren) {

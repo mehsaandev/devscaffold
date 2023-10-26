@@ -5,9 +5,8 @@ import { useNavigate } from 'react-router-dom'
 const Navbar = () => {
   const navigate  = useNavigate()
 
-  const loginHandler = () =>{
-
-  }
+ 
+  
   return (
     <>
     <nav className='fixed z-50 flex flex-row w-screen justify-between pt-3 pb-3 pl-14 pr-14 bg-slate-100 dark:bg-slate-700 dark:text-slate-200 shadow-lg '>
