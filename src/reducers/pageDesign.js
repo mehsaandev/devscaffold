@@ -1,6 +1,8 @@
 import { v4 as uuid } from 'uuid';
 
-const elementsTree = [{
+const elementsTree = 
+[
+  {
     id: uuid(),
     name: "div",
     chilldren: [

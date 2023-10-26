@@ -1,20 +1,29 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link, Navigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
+
 import logo from '../../assets/LogoOnly.png'
+import { signIn } from "../../actions/users";
 // import { selectError } from "../authSlice";
 export default function Login() {
   const dispatch = useDispatch();
+  const [formData, setFormData] = useState({email:'',password:''})
 //   const error = useSelector(selectError);
 //   const user = useSelector(selectloggedInUserToken);
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  // const {
+  //   register,
+  //   handleSubmit,
+  //   formState: { errors },
+  // } = useForm();
 
 //   console.log(errors);
+
+const signInHandler = (e) =>{
+  e.preventDefault()
+  console.log(formData)
+  dispatch(signIn(formData))
+
+}
 
   return (
     <>
@@ -35,13 +44,14 @@ export default function Login() {
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
           <form
             className="space-y-6"
-            noValidate
-            onSubmit={handleSubmit((data) => {
-              dispatch(
-                loginUserAsync({ email: data.email, password: data.password })
-              );
-              console.log(data);
-            })}
+            
+            // onSubmit={handleSubmit((data) => {
+            //   dispatch(
+            //     loginUserAsync({ email: data.email, password: data.password })
+            //   );
+            //   console.log(data);
+            // })}
+            onSubmit={signInHandler}
           >
             <div>
               <label
@@ -54,19 +64,20 @@ export default function Login() {
                 <input
                   id="email"
                   name="email"
-                  {...register("email", {
-                    required: "email is required",
-                    pattern: {
-                      value: /\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/gi,
-                      message: "email not valid",
-                    },
-                  })}
+                  onChange={(e)=>setFormData({...formData,email:e.target.value})}
+                  // {...register("email", {
+                  //   required: "email is required",
+                  //   pattern: {
+                  //     value: /\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/gi,
+                  //     message: "email not valid",
+                  //   },
+                  // })}
                   type="email"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
-                {errors.email && (
+                {/* {errors.email && (
                   <p className="text-red-500">{errors.email.message}</p>
-                )}
+                )} */}
               </div>
             </div>
             <div>
@@ -89,15 +100,16 @@ export default function Login() {
               <div className="mt-2">
                 <input
                   id="password"
-                  {...register("password", {
-                    required: "password is required",
-                  })}
+                  // {...register("password", {
+                  //   required: "password is required",
+                  // })}
+                  onChange={(e)=>setFormData({...formData,password:e.target.value})}
                   type="password"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
-                 {errors.password && (
+                 {/* {errors.password && (
                   <p className="text-red-500">{errors.password.message}</p>
-                )}
+                )} */}
               </div>
               {/* {error && <p className="text-red-500">{error || error.message}</p>} */}
             </div>
@@ -115,7 +127,7 @@ export default function Login() {
           <p className="mt-10 text-center text-sm text-gray-500">
             Not a member?{" "}
             <Link
-              to="/signup"
+              to="/register"
               className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
             >
               Create an account

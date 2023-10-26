@@ -8,6 +8,10 @@ export const createProjectAPI = (formData) =>API.post('/projects/create',formDat
 export const updateProjectAPI = (updatedProjectData,projectId) =>API.put(`/projects/update/${projectId}`,updatedProjectData)
 export const deleteProjectAPI = (projectId) =>API.delete(`/projects/delete/${projectId}`)
 
+// Authentication API's
+export const signInAPI = (formData) =>API.post('/user/login',formData)
+export const signUpAPI = (formData) =>API.post('/user/create',formData)
+
 
 export const exportComponentsAPI = (components) =>API.post('/navbar/create',components)
 
