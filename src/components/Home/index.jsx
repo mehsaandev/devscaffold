@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Navbar, ProjectDashboard, Sidebar } from '../../components'
 
 const Home = ({ toggleTheme, theme }) => {
-
     
 
 
