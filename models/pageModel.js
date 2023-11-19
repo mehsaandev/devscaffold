@@ -1,7 +1,18 @@
 const mongoose  =  require("mongoose")
 
+const compObjSchema = new mongoose.Schema({
+  compId: {
+    type: String,
+    required: true,
+  },
+  compId: {
+    type: String,
+    required: true,
+  },
+})
+
 const pageSchema = mongoose.Schema({
-  title: {
+  name: {
     type: String,
     required: true,
   },
@@ -12,10 +23,14 @@ const pageSchema = mongoose.Schema({
   content: {
     type: Object,
     required: true,
-  }
-  
-
+  },
+  componentArray: {
+    type: [compObjSchema],
+    required: true,
+  },
 });
+
+
 
 
 const model = mongoose.model('pages', pageSchema)

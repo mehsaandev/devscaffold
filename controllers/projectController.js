@@ -33,16 +33,121 @@ const createProject = async (req, res) => {
 }
 
 const updateProject = async (req, res) => {
-    const { id } = req.params
-    const project = req.body
-    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No project with id: ${id}`)
+    try {
+        const { id } = req.params // Project ID
+        const project = req.body
+
+        if (!mongoose.Types.ObjectId.isValid(id)) return res.status(400).send({ message: 'Invalid Project ID' })
+        const existingProjectObj = await Project.findById(id)
+        if (!existingProjectObj) return res.status(404).json({ message: 'Project not found' })
+
+
+        const updatedProject = await Project.findByIdAndUpdate(id, project, {
+            new: true,
+        });
+
+        console.log(updatedProject)
+
+        res.status(201).json({ response: 'Project Updated Successfully' })
+    } catch (error) {
+        res.status(409).json({ message: error.message })
+    }
+}
+const publishProject = async (req, res) => {
+    try {
+        const { id } = req.params // Project ID
+        const project = req.body
+
+        if (!mongoose.Types.ObjectId.isValid(id)) return res.status(400).send({ message: 'Invalid Project ID' })
+        const existingProjectObj = await Project.findById(id)
+        if (!existingProjectObj) return res.status(404).json({ message: 'Project not found' })
+
+
+        const updatedProject = await Project.findByIdAndUpdate(id, {isPublished: true}, {
+            new: true,
+        });
+
+        console.log(updatedProject)
+
+        res.status(201).json({ response: 'Project Published Successfully' })
+    } catch (error) {
+        res.status(409).json({ message: error.message })
+    }
+}
+const unpublishProject = async (req, res) => {
+    try {
+        const { id } = req.params // Project ID
+        const project = req.body
+
+        if (!mongoose.Types.ObjectId.isValid(id)) return res.status(400).send({ message: 'Invalid Project ID' })
+        const existingProjectObj = await Project.findById(id)
+        if (!existingProjectObj) return res.status(404).json({ message: 'Project not found' })
+
+
+        const updatedProject = await Project.findByIdAndUpdate(id, {isPublished: false}, {
+            new: true,
+        });
+
+        console.log(updatedProject)
+
+        res.status(201).json({ response: 'Project Published Successfully' })
+    } catch (error) {
+        res.status(409).json({ message: error.message })
+    }
 }
 
-const deleteProject = async (req, res) => {
-    const { id } = req.params
-    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No project with id: ${id}`)
-    await Project.findByIdAndRemove(id)
-    res.json({ message: "Project deleted successfully." })
+const moveToTrash = async (req, res) => {
+    try {
+        const { id } = req.params
+
+        if (!mongoose.Types.ObjectId.isValid(id)) return res.status(400).send({ message: 'Invalid Project ID' })
+        const pageObj = await Project.findById(id)
+        if (!pageObj) return res.status(404).json({ message: 'Project not found' })
+
+
+        await Page.findByIdAndUpdate(id, { isDeleted: true });
+
+
+        res.status(201).json({ response: 'Page Moved to Trash' })
+    } catch (error) {
+        res.status(409).json({ message: error.message })
+    }
 }
 
-module.exports = { createProject, getAllProjects, getProject, updateProject, deleteProject }
+const restoreFromTrash = async (req, res) => {
+    try {
+        const { id } = req.params
+
+        if (!mongoose.Types.ObjectId.isValid(id)) return res.status(400).send({ message: 'Invalid Project ID' })
+        const pageObj = await Project.findById(id)
+        if (!pageObj) return res.status(404).json({ message: 'Project not found' })
+
+
+        await Page.findByIdAndUpdate(id, { isDeleted: false });
+
+
+        res.status(201).json({ response: 'Page Moved to Trash' })
+    } catch (error) {
+        res.status(409).json({ message: error.message })
+    }
+}
+
+const deleteProjectPermanently = async (req, res) => {
+    try {
+        const { id } = req.params
+
+        if (!mongoose.Types.ObjectId.isValid(id)) return res.status(400).send({ message: 'Invalid Project ID' })
+        const pageObj = await Project.findById(id)
+        if (!pageObj) return res.status(404).json({ message: 'Project not found' })
+
+
+        await Project.findOneAndRemove({ _id: id });
+
+
+        res.status(201).json({ response: 'Project Deleted Successfully' })
+    } catch (error) {
+        res.status(409).json({ message: error.message })
+    }
+}
+
+module.exports = { createProject, getAllProjects, getProject, updateProject,publishProject,unpublishProject, moveToTrash,restoreFromTrash, deleteProjectPermanently }
