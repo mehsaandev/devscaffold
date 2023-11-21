@@ -29,7 +29,15 @@ export const renamePageAPI = (updatedPageData,pageID) =>API.put(`/page/rename/${
 export const deletePageAPI = (pageID) =>API.delete(`/page/delete/${pageID}`)
 
 // component API's
-
+export const getAllComponentsAPI = () =>API.get('/component/all')
+export const getSingleComponentAPI = (compId) =>API.get(`/component/${compId}`)
+export const createComponentAPI = (formData) =>API.post('/component/create',formData)
+export const updateComponentAPI = (updatedCompData,compId) =>API.put(`/component/update/${compId}`,updatedCompData)
+export const deleteComponentAPI = (compId) =>API.delete(`/component/delete/${compId}`)
+export const publishComponentAPI = (compId) =>API.put(`/component/publish/${compId}`)
+export const unPublishComponentAPI = (compId) =>API.put(`/component/unpublish/${compId}`)
+export const trashComponentAPI = (compId) =>API.put(`/component/trash/${compId}`)
+export const restoreComponentAPI = (compId) =>API.put(`/component/restore/${compId}`)
 
 
 export const exportComponentsAPI = (components) =>API.post('/navbar/create',components)
