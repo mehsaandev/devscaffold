@@ -9,12 +9,9 @@ import { createProject } from '../../actions/project'
 
 
 const ProjectDashboard = () => {
-
   const [openAddModal, setOpenAddModal] = useState(false)
   const [addProjectForm, setAddProjectForm] = useState({})
-
   const dispatch = useDispatch()
-
 
 
   const createProjectHandler = (e) => {

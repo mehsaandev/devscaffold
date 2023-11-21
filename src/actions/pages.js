@@ -1,31 +1,68 @@
-export const updatePage = (pageJson) => async (dispatch) => {
+import * as api from "../api";
+
+
+export const updatePage = (formData,pageId) => async (dispatch) => {
     // setLoading(true)
     try {
 
-        // const { data } = await api.getAllProjectsAPI();
-        // if (data?.message) {
-            // setSnackbar(true);
-            // setLoading(false)
-            // setSnackbarSeverity("error");
-            // setAlertText(data?.message);
-        // } else {
-            // setSnackbar(true);
-            // setLoading(false)
-            // setSnackbarSeverity("success");
-            // setAlertText(data?.response);
-            // console.log(data)
-            console.log(pageJson)
-            
-            dispatch({ type: "UPDATE_PAGE", payload: pageJson });
-            // setTimeout(function () {
-            //   history("/home");
-            // }, 500);
-        // }
+        const {data} = await api.updatePageAPI(pageId,formData);
+            console.log(data)
     } catch (error) {
-        //   setSnackbar(true);
-        //   setLoading(false)
-        //   setSnackbarSeverity("error");
-        //   setAlertText("Something went wrong");
+        console.log(error.message);
+    }
+};
+
+export const createPage = (formData) => async (dispatch) => {
+    // setLoading(true)
+    try {
+
+        const {data} = await api.createPageAPI(formData);
+            console.log(data)
+    } catch (error) {
+        console.log(error.message);
+    }
+};
+
+export const renamePage = (formData,pageId) => async (dispatch) => {
+    // setLoading(true)
+    try {
+
+        const {data} = await api.renamePageAPI(pageId,formData);
+            console.log(data)
+    } catch (error) {
+        console.log(error.message);
+    }
+};
+
+export const deletePage = (pageId) => async (dispatch) => {
+    // setLoading(true)
+    try {
+
+        await api.deletePageAPI(pageId);
+            console.log("Deleted Permanently")
+    } catch (error) {
+        console.log(error.message);
+    }
+};
+
+export const getPage = (pageId) => async (dispatch) => {
+    // setLoading(true)
+    try {
+
+        const {data} = await api.getPageAPI(pageId);
+            console.log(data)
+    } catch (error) {
+        console.log(error.message);
+    }
+};
+
+export const getPagesOfProject = (projectId) => async (dispatch) => {
+    // setLoading(true)
+    try {
+
+        const {data} = await api.getPagesOfProjectAPI(projectId);
+            console.log(data)
+    } catch (error) {
         console.log(error.message);
     }
 };
