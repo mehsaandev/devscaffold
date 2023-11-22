@@ -28,9 +28,9 @@ const ProjectDashboard = () => {
   return (
     <>
 
-      {openAddModal && (
+      {/* {openAddModal && (
         <AddModal open={openAddModal} setOpen={setOpenAddModal} projectForm={addProjectForm} setProjectForm={setAddProjectForm} createProjectHandler={createProjectHandler} />
-      )}
+      )} */}
 
 
       <div className='bg-slate-100 dark:text-slate-200 dark:bg-gray-700 w-screen rounded-lg m-5 p-4 text-xl font-sans font-semibold shadow-md '>

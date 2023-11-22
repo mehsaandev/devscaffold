@@ -83,57 +83,12 @@ function App({activeClassHandler}) {
 
 
 
-  const AddBar = () => {
-    // const color = useSelector((state) => state.colors.value);
-
-    return (
-      // <button className="h-16 border border-dashed flex justify-center items-center  border-black  dark:border-white w-full rounded-lg"
-      //   onClick={() => setModel(true)}
-      // >
-      //   <p className="text-2xl  text-gray-500">+</p>
-      // </button>
-      <>
-      <div className="canvasSection" dangerouslySetInnerHTML={{ __html: compileTree(pageObj) }}>
-
-      </div>
-      {/* <button className={`${color} h-16 border border-dashed flex justify-center items-center  border-black  dark:border-white w-full rounded-lg `}
-        // onClick={() => setModel(true)}
-        // onClick={()=>dispatch(changeColor())}
-      >
-        <p className="text-2xl  text-gray-500">+</p>
-      </button> */}
-      </>
-    )
-  }
+ 
 
   return (
-    <>
-      <AddModal open={model} setOpen={setModel} handleModelClose={handleModelClose} setpropertiesList={setpropertiesList} />
-      <PropertiesModal open={propertiesModal} newAddedPropertyIndex={newAddedPropertyIndex} setOpen={setPropertiesModal} propertiesList={propertiesList} setpropertiesList={setpropertiesList} />
-      <div className="w-full h-screen p-10 flex flex-col justify-between"  onClick={activeClassHandler} >
-        <div className="flex flex-col items-center  gap-5">
-          {propertiesList.length === 0 ?
-            (
-              <AddBar />
-            )
-            : (
-              <>
-                {propertiesList?.map(component => (
-                  <>
-                    <button className="h-16 border flex justify-center items-center  border-black w-full rounded-lg">
-                      <p className="text-2xl  text-gray-500">{component?.name}</p>
-                    </button>
-                  </>
-                ))}
-                <AddBar />
-              </>
-            )}
-        </div>
-        <button className="h-16 bg-blue-600 flex justify-center items-center w-full rounded-lg" onClick={exportComponent}>
-          <p className="text-white">Export</p>
-        </button>
-      </div>
-    </>
+    <div className="h-screen">
+      <p>Dsign sction</p>
+    </div>
   );
 }
 

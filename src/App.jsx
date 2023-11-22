@@ -4,8 +4,8 @@ import LandingPage from './components/Landing Page'
 import Home from './components/Home'
 import Dashboard from './components/Project Design Dashboard/index'
 import './App.css'
-import Signup from './auth/components/signup'
-import Login from './auth/components/Login'
+import Signup from './components/Authentication/Signup'
+import Login from './components/Authentication/Login'
 
 
 

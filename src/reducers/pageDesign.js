@@ -16,7 +16,7 @@ const elementsTree =
             properties: {
               text: "Login",
             },
-            classes: "bg-green-600 w-96 text-white p-2 rounded-lg hover:bg-green-700 focus:border-4 focus:border-yellow-600",
+            classes: "bg-green-600 w-96 text-white p-2 rounded-lg hover:bg-green-700 focus:border-4 focus:border-red-600",
           }
         ],
         classes: "p-10",
@@ -32,7 +32,7 @@ const elementsTree =
             properties: {
               text: "Register",
             },
-            classes: "bg-yellow-600 w-96 text-white p-2 rounded-lg hover:bg-yellow-700 focus:border-4 focus:border-yellow-600 animate-spin",
+            classes: "bg-yellow-600 w-96 text-white p-2 rounded-lg hover:bg-yellow-700 focus:border-4 focus:border-red-600",
           },
           {
             id: uuid(),
@@ -40,7 +40,7 @@ const elementsTree =
             properties: {
               text: "Register",
             },
-            classes: "bg-yellow-600 w-96 text-white p-2 rounded-lg hover:bg-yellow-700 focus:border-4 focus:border-yellow-600",
+            classes: "bg-yellow-600 w-96 text-white p-2 rounded-lg hover:bg-yellow-700 focus:border-4 focus:border-red-600",
           }
         ],
         classes: "p-10 flex flex-col gap-5",

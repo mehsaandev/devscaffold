@@ -1,10 +1,10 @@
 import * as api from "../api";
 
-export const getAllProjects = () => async (dispatch) => {
+export const getAllProjects = async() => {
     // setLoading(true)
     try {
 
-        const { data } = await api.getAllProjectsAPI();
+        const  {data}  = await api.getAllProjectsAPI();
         // if (data?.message) {
             // setSnackbar(true);
             // setLoading(false)
@@ -48,6 +48,39 @@ export const getSingleProject = (id,setProjectObj) => async (dispatch) => {
             // setAlertText(data?.response);
             // console.log(data)
             setProjectObj(data)
+            // dispatch({ type: "FETCH_ONE", payload: data });
+            // setTimeout(function () {
+            //   history("/home");
+            // }, 500);
+        // }
+    } catch (error) {
+        //   setSnackbar(true);
+        //   setLoading(false)
+        //   setSnackbarSeverity("error");
+        //   setAlertText("Something went wrong");
+        console.log(error.message);
+    }
+};
+
+export const publishProject = (id) => async (dispatch) => {
+    // setLoading(true)
+    try {
+
+        const { data } = await api.publishProjectAPI(id);
+        console.log(data)
+
+        // if (data?.message) {
+            // setSnackbar(true);
+            // setLoading(false)
+            // setSnackbarSeverity("error");
+            // setAlertText(data?.message);
+        // } else {
+            // setSnackbar(true);
+            // setLoading(false)
+            // setSnackbarSeverity("success");
+            // setAlertText(data?.response);
+            // console.log(data)
+            // setProjectObj(data)
             // dispatch({ type: "FETCH_ONE", payload: data });
             // setTimeout(function () {
             //   history("/home");

@@ -6,57 +6,58 @@ import PropertiesModal from "../Modals/PropertiesModal";
 import { useDispatch, useSelector } from "react-redux";
 import { exportComponents } from "../../../actions/project";
 import { compileTree } from "../../../utilities/componentCompiler";
-import {changeColor} from "../../../../redux/colors/colorsSlice"
+import { changeColor } from "../../../../redux/colors/colorsSlice"
+import SwitchSection from "./SwitchSection";
 
 const elementsTree = [
   {
-  id: uuid(),
-  name: "div",
-  chilldren: [
-    {
-      id: uuid(),
-      name: "div",
-      chilldren: [
-        {
-          id: uuid(),
-          name: "button",
-          properties: {
-            text: "Login",
-          },
-          classes: "bg-green-600 w-96 text-white p-2 rounded-lg hover:bg-green-700 focus:border-4 focus:border-yellow-600",
-        }
-      ],
-      classes: "p-10",
+    id: uuid(),
+    name: "div",
+    chilldren: [
+      {
+        id: uuid(),
+        name: "div",
+        chilldren: [
+          {
+            id: uuid(),
+            name: "button",
+            properties: {
+              text: "Login",
+            },
+            classes: "bg-green-600 w-96 text-white p-2 rounded-lg hover:bg-green-700 focus:border-4 focus:border-yellow-600",
+          }
+        ],
+        classes: "p-10",
 
-    },
-    {
-      id: uuid(),
-      name: "div",
-      chilldren: [
-        {
-          id: uuid(),
-          name: "button",
-          properties: {
-            text: "Login",
-          },
-          classes: "bg-yellow-600 w-96 text-white p-2 rounded-lg hover:bg-yellow-700 focus:border-4 focus:border-yellow-600",
-        }
-      ],
-      classes: "p-10",
+      },
+      {
+        id: uuid(),
+        name: "div",
+        chilldren: [
+          {
+            id: uuid(),
+            name: "button",
+            properties: {
+              text: "Login",
+            },
+            classes: "bg-yellow-600 w-96 text-white p-2 rounded-lg hover:bg-yellow-700 focus:border-4 focus:border-yellow-600",
+          }
+        ],
+        classes: "p-10",
 
-    },
-  ],
-  classes: "m-10 w-full",
+      },
+    ],
+    classes: "m-10 w-full",
 
-}]
-
-
+  }]
 
 
 
-function App({activeClassHandler}) {
+
+
+function App({ activeClassHandler }) {
   // const [columns, setColumns] = useState(columnsFromBackend);
-  const pageObj =  useSelector(state => state.pageDesign.page)
+  const pageObj = useSelector(state => state.pageDesign.page)
 
   const dispatch = useDispatch()
   const [componentsArray, setComponentsArray] = useState([])
@@ -93,10 +94,10 @@ function App({activeClassHandler}) {
       //   <p className="text-2xl  text-gray-500">+</p>
       // </button>
       <>
-      <div className="canvasSection" dangerouslySetInnerHTML={{ __html: compileTree(pageObj) }}>
+        <div className="canvasSection" dangerouslySetInnerHTML={{ __html: compileTree(pageObj) }}>
 
-      </div>
-      {/* <button className={`${color} h-16 border border-dashed flex justify-center items-center  border-black  dark:border-white w-full rounded-lg `}
+        </div>
+        {/* <button className={`${color} h-16 border border-dashed flex justify-center items-center  border-black  dark:border-white w-full rounded-lg `}
         // onClick={() => setModel(true)}
         // onClick={()=>dispatch(changeColor())}
       >
@@ -107,14 +108,15 @@ function App({activeClassHandler}) {
   }
 
   return (
-    <>
-      <AddModal open={model} setOpen={setModel} handleModelClose={handleModelClose} setpropertiesList={setpropertiesList} />
-      <PropertiesModal open={propertiesModal} newAddedPropertyIndex={newAddedPropertyIndex} setOpen={setPropertiesModal} propertiesList={propertiesList} setpropertiesList={setpropertiesList} />
-      <div className="w-full h-screen p-10 flex flex-col justify-between"  onClick={activeClassHandler} >
+  
+
+      <div className="w-full h-screen px-10 pb-10 pt-0 flex flex-col justify-between" onClick={activeClassHandler} >
         <div className="flex flex-col items-center  gap-5">
           {propertiesList.length === 0 ?
             (
+              <>
               <AddBar />
+              </>
             )
             : (
               <>
@@ -133,7 +135,7 @@ function App({activeClassHandler}) {
           <p className="text-white">Export</p>
         </button>
       </div>
-    </>
+    
   );
 }
 
