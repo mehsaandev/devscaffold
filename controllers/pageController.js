@@ -26,16 +26,15 @@ const getAllPagesOfProject = async (req, res) => {
 const createPage = async (req, res) => {
 
     try {
-
-        console.log("asdas")
         const page = req.body
-        // console.log(page)
         var projectIdValidity = mongoose.Types.ObjectId.isValid(page.project_id);
 
         if (!projectIdValidity) return res.status(400).json({ message: 'Invalid Project Id' })
         const projectObj = await Project.findById(page.project_id)
+
         if (!projectObj) return res.status(400).json({ message: 'Project not found' })
         const pageObj = await Page.findOne({ name: page.name, project_id: page.project_id })
+    
         if (pageObj) return res.status(400).json({ message: 'Page with same name already exists' })
 
         const newPage = new Page(page)

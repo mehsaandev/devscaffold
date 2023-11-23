@@ -1,4 +1,15 @@
+const { default: mongoose } = require('mongoose')
 const Component = require('../models/componentModel.js')
+
+
+const getAllComponents = async (req, res) => {
+    try {
+        const components = await Component.find()
+        res.status(200).json(components)
+    } catch (error) {
+        res.status(404).json({ message: error.message })
+    }
+}
 
 
 const getComponent = async (req, res) => {
@@ -11,12 +22,17 @@ const getComponent = async (req, res) => {
     }
 }
 
+
 const createComponent = async (req, res) => {
 
     try {
         const component = req.body
         console.log(component)
+        const compObj = await Component.findOne({ name: component.name, component_id: component.component_id })
+    
+        if (compObj) return res.status(400).json({ message: 'Component with same name already exists' })
         const newComponent = new Component(component)
+
         await newComponent.save()
         res.status(201).json(newComponent)
     } catch (error) {
@@ -24,17 +40,44 @@ const createComponent = async (req, res) => {
     }
 }
 
+
 const updateComponent = async (req, res) => {
-    const { id } = req.params
-    const component = req.body
-    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No component with id: ${id}`)
+    try {
+        const { id } = req.params
+        const component = req.body
+
+        if (!mongoose.Types.ObjectId.isValid(id)) return res.status(400).send({ message: 'Invalid Component ID' })
+        const compObj = await Component.findById(id)
+        if (!compObj) return res.status(404).json({ message: 'Component not found' })
+
+
+        const updatedComp = await Page.findByIdAndUpdate(id, {content: component.content}, {
+            new: true,
+        });
+
+        console.log(updatedComp)
+
+        res.status(201).json({ response: 'Component Updated Successfully' })
+    } catch (error) {
+        res.status(409).json({ message: error.message })
+    }
 }
+
 
 const deleteComponent = async (req, res) => {
-    const { id } = req.params
-    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No component with id: ${id}`)
-    await Component.findByIdAndRemove(id)
-    res.json({ message: "Component deleted successfully." })
+    try {
+        const { id } = req.params
+
+        if (!mongoose.Types.ObjectId.isValid(id)) return res.status(400).send({ message: 'Invalid Component ID' })
+        const compObj = await Component.findById(id)
+        if (!compObj) return res.status(404).json({ message: 'Component not found' })
+
+        await Component.findOneAndRemove({ _id: id });
+
+        res.status(201).json({ response: 'Component Deleted Successfully' })
+    } catch (error) {
+        res.status(409).json({ message: error.message })
+    }
 }
 
-module.exports = { createComponent, deleteComponent, updateComponent, getComponent }
+module.exports = { createComponent, deleteComponent, updateComponent, getComponent, getAllComponents }
