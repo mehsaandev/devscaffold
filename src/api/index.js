@@ -42,6 +42,13 @@ export const unPublishComponentAPI = (compId) =>API.put(`/component/unpublish/${
 export const trashComponentAPI = (compId) =>API.put(`/component/trash/${compId}`)
 export const restoreComponentAPI = (compId) =>API.put(`/component/restore/${compId}`)
 
+// route API's
+export const getAllRoutesAPI = () =>API.get('/routes/all')
+export const getSingleRouteAPI = (routeId) =>API.get(`/routes/${routeId}`)
+export const createRouteAPI = (formData) =>API.post('/routes/create',formData)
+export const updateRouteAPI = (updatedRouteData,routeId) =>API.put(`/routes/update/${routeId}`,updatedRouteData)
+export const deleteRouteAPI = (routeId) =>API.delete(`/routes/delete/${routeId}`)
+
 
 
 export const exportComponentsAPI = (components) =>API.post('/navbar/create',components)

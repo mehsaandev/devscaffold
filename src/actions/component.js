@@ -12,6 +12,7 @@ export const getAllComponents = () => async (dispatch) => {
     }
 };
 
+
 export const getSingleComponent = (id,setCompObj) => async (dispatch) => {
     // setLoading(true)
     try {
