@@ -1,10 +1,21 @@
 import * as api from "../api";
 
-export const getAllProjects = () => async (dispatch) => {
+export const getAllProjects = async() => {
     // setLoading(true)
     try {
 
-        const { data } = await api.getAllProjectsAPI();
+        const  {data}  = await api.getAllProjectsAPI();
+        // if (data?.message) {
+            // setSnackbar(true);
+            // setLoading(false)
+            // setSnackbarSeverity("error");
+            // setAlertText(data?.message);
+        // } else {
+            // setSnackbar(true);
+            // setLoading(false)
+            // setSnackbarSeverity("success");
+            // setAlertText(data?.response);
+            // console.log(data)
             dispatch({ type: "FETCH_ALL", payload: data });
     } catch (error) {
         console.log(error.message);

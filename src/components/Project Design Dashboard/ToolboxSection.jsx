@@ -1,7 +1,7 @@
 import { TextField, Button, ButtonGroup } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { updatePage } from '../../actions/pages'
+// import { updatePage } from '../../actions/pages'
 import { useSelector } from 'react-redux'
 import { updateElementClasses,generateHTML, compileTree } from '../../utilities/componentCompiler'
 import {createComponent} from '../../utilities/attatchmentUtility'
@@ -78,7 +78,7 @@ function createZipFile() {
   const updateClassHandler = () => {
 
     const updatedJson = updateElementClasses(pageObj, activeElement?.id, elementClass)
-    dispatch(updatePage(updatedJson))
+    // dispatch(updatePage(updatedJson))
 
 
   }
@@ -106,8 +106,8 @@ function createZipFile() {
           value={ elementClass ? elementClass : activeElement.className}
           onChange={(e) => setElementClass(e.target.value)}
         />
-    
-        <Button variant="contained" onClick={updateClassHandler}>Update Class</Button>
+    {/*  */}
+        <Button variant="contained" >Update Class</Button>
         <Button variant="contained" onClick={createZipFile}>Export Component</Button>
 
       <ButtonGroup variant="outlined" aria-label="outlined button group">

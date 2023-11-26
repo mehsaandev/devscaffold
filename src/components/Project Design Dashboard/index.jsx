@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
-import Sidebar from '../Sidebar'
-import PageDesign from './PageDesign/PreviewSection'
+import Sidebar from './Sidebar/index'
+import PageDesign from './PageDesign/Indx'
 import Navbar from '../Navbar'
 import ComponentsSection from './ComponentsSection'
 import ToolboxSection from './ToolboxSection'
+import PagesSection from './Sidebar/PageSection/Index'
+import AddModal from './Modals/AddModal'
 
 const ProjectDesignDashboard = ({ toggleTheme, theme }) => {
 
@@ -21,25 +23,24 @@ const ProjectDesignDashboard = ({ toggleTheme, theme }) => {
   console.log(activeElement)
 
   return (
-    <div className=' bg-gradient-to-br from-dimWhite to-slate-200 dark:bg-gradient-to-br dark:to-primary dark:from-gray-800 h-screen'>
+    // bg-gradient-to-br from-dimWhite to-slate-200
+    <>
+    {/* <AddModal open={true} /> */}
+    <div className='  dark:bg-gradient-to-br dark:to-primary dark:from-gray-800 h-screen'>
       <Navbar toggleTheme={toggleTheme} theme={theme} />
       <div className='flex flex-row'>
         <Sidebar />
-        {/* <ComponentsSection /> */}
-        <div className='grid grid-4 grid-flow-col w-full'>
-          <div className='col-span-3'>
-            <button>sdsad</button>
+        <div className='grid grid-cols-12 grid-flow-col w-full'>
+          <div className='col-span-9'>
             <PageDesign activeClassHandler={activeClassHandler} />
           </div>
-          <div className='col-span-1'>
+          <div className='col-span-3'>
           <ToolboxSection activeElement={activeElement} />
           </div>
         </div>
-
-
-
       </div>
     </div>
+    </>
   )
 }
 

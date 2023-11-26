@@ -5,9 +5,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import { createProject, getAllProjects } from '../../actions/project'
 import Header from '../common/Header/ProjectDashboardHeader'
 
-const ProjectListing = ({openAddModal,setOpenAddModal,type}) => {
+const ProjectListing = ({  type }) => {
 
-  
+    const [openAddModal, setOpenAddModal] = useState(false)
+  const [addProjectForm, setAddProjectForm] = useState({})
+
 
     const dispatch = useDispatch()
     const projectsList = useSelector(data => data.projects?.projects)
@@ -15,9 +17,19 @@ const ProjectListing = ({openAddModal,setOpenAddModal,type}) => {
 
 
 
+
+
+  const createProjectHandler = (e) => {
+    e.preventDefault()
+    dispatch(createProject(addProjectForm, setOpenAddModal))
+  }
+
+
+
     useEffect(() => {
 
         dispatch(getAllProjects())
+        // getAllProjects()
 
     }, [openAddModal])
 
@@ -25,7 +37,10 @@ const ProjectListing = ({openAddModal,setOpenAddModal,type}) => {
 
     return (
         <>
-           
+            {
+            openAddModal && (
+                <AddModal open={openAddModal} setOpen={setOpenAddModal} projectForm={addProjectForm} setProjectForm={setAddProjectForm} createProjectHandler={createProjectHandler} />
+            )}
 
             <Header setOpen={setOpenAddModal} type={type} />
 
