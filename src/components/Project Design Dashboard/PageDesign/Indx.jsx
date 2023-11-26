@@ -92,7 +92,7 @@ function App({ activeClassHandler }) {
     }
 
 
-    console.log(compileTree(pageObj))
+    // console.log(compileTree(pageObj))
 
 
 

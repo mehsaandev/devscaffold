@@ -20,7 +20,7 @@ const ProjectDesignDashboard = ({ toggleTheme, theme }) => {
   }
 
 
-  console.log(activeElement)
+  // console.log(activeElement)
 
   return (
     // bg-gradient-to-br from-dimWhite to-slate-200

@@ -5,8 +5,9 @@ export const updatePage = (formData,pageId) => async (dispatch) => {
     // setLoading(true)
     try {
 
-        const {data} = await api.updatePageAPI(pageId,formData);
-            console.log(data)
+        // const {data} = await api.updatePageAPI(pageId,formData);
+        dispatch({type:"UPDATE_PAGE",payload:formData})
+            // console.log(data)
     } catch (error) {
         console.log(error.message);
     }

@@ -1,18 +1,55 @@
 import { v4 as uuid } from 'uuid';
 
 const elementsTree = 
+// [
+//   {
+//     id: "card1",
+//     name: "div",
+//     children: [
+//       {
+//         id: "cardTitle",
+//         name: "h2",
+//         properties: {
+//           text: "Card Title"
+//         },
+//         classes: "text-lg font-bold mb-2"
+//       },
+//       {
+//         id: "cardContent",
+//         name: "p",
+//         properties: {
+//           text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+//         },
+//         classes: "text-gray-700"
+//       },
+//       {
+//         id: "cardButton",
+//         name: "button",
+//         properties: {
+//           text: "Learn More",
+//           onClick: "handleLearnMoreClick"
+//         },
+//         classes: "bg-blue-500 text-white px-4 py-2 rounded-md mt-4 hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300"
+//       }
+//     ],
+//     classes: "bg-white p-6 rounded-md shadow-md"
+//   }
+// ]
+
+
 [
   {
     id: uuid(),
     name: "div",
-    chilldren: [
+    children: [
       {
         id: uuid(),
         name: "div",
-        chilldren: [
+        children: [
           {
             id: uuid(),
             name: "button",
+            children: [],
             properties: {
               text: "Login",
             },
@@ -25,10 +62,11 @@ const elementsTree =
       {
         id: uuid(),
         name: "div",
-        chilldren: [
+        children: [
           {
             id: uuid(),
             name: "button",
+            children: [],
             properties: {
               text: "Register",
             },
@@ -37,6 +75,7 @@ const elementsTree =
           {
             id: uuid(),
             name: "button",
+            children: [],
             properties: {
               text: "Register",
             },

@@ -80,7 +80,7 @@ function App({ activeClassHandler }) {
     dispatch(exportComponents(propertiesList))
   }
 
-  console.log(compileTree(pageObj))
+  console.log((pageObj))
 
 
 

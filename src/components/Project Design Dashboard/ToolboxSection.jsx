@@ -12,8 +12,8 @@ const ToolboxSection = ({ activeElement }) => {
   const dispatch = useDispatch()
 
   const pageObj = useSelector(state => state.pageDesign.page)
-  console.log(activeElement)
-  console.log(elementClass)
+  // console.log(activeElement)
+  // console.log(elementClass)
 
   useEffect(() => {
 
