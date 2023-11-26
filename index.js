@@ -4,10 +4,10 @@ const bodyParser =  require('body-parser')
 const cors =  require('cors')
 
 const projectRoutes =  require('./routes/projects.js')
-const navbarRoutes =  require('./routes/navbar.js')
 const userRoutes =  require('./routes/user.js')
 const componentRoutes =  require('./routes/component.js')
 const pageRoutes =  require('./routes/page.js')
+const routeRoutes =  require('./routes/route.js')
 const app = express()
 
 const PORT = 8080
@@ -26,10 +26,10 @@ app.use(function (req, res, next) {
     next();
 });
 app.use('/projects', projectRoutes)
-app.use('/navbar', navbarRoutes)
 app.use('/user', userRoutes)
 app.use('/comp', componentRoutes)
 app.use('/page', pageRoutes)
+app.use('/routes', routeRoutes )
 
 
 app.get('/',(req,res)=>res.send("Server is running"))

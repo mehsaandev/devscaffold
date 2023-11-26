@@ -1,4 +1,5 @@
 const Route = require('../models/routeModel.js')
+const { default: mongoose } = require('mongoose')
 
 const getAllRoutes = async (req, res) => {
     try {
