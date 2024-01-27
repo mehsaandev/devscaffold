@@ -9,6 +9,15 @@ const getAllProjects = async (req, res) => {
     }
 }
 
+const getAllPublishedProjects = async (req, res) => {
+    try {
+        const projects = await Project.find({isPublished: true})
+        res.status(200).json(projects)
+    } catch (error) {
+        res.status(404).json({ message: error.message })
+    }
+}
+
 const getProject = async (req, res) => {
     const { id } = req.params
     try {
@@ -150,4 +159,4 @@ const deleteProjectPermanently = async (req, res) => {
     }
 }
 
-module.exports = { createProject, getAllProjects, getProject, updateProject,publishProject,unpublishProject, moveToTrash,restoreFromTrash, deleteProjectPermanently }
+module.exports = { createProject, getAllProjects, getProject, updateProject,publishProject,unpublishProject, moveToTrash,restoreFromTrash, deleteProjectPermanently, getAllPublishedProjects }

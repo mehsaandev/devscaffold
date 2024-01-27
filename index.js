@@ -2,7 +2,7 @@ const express  = require('express')
 const mongoose = require('mongoose')
 const bodyParser =  require('body-parser')
 const cors =  require('cors')
-
+const path = require('path')
 const projectRoutes =  require('./routes/projects.js')
 const userRoutes =  require('./routes/user.js')
 const componentRoutes =  require('./routes/component.js')
@@ -12,7 +12,7 @@ const app = express()
 
 const PORT = 8080
 // // Middlewares
-
+app.use(express.static(path.resolve(__dirname,'dist')))
 app.use(express.json());
 app.use(bodyParser.json({ limit: "50mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "100mb", extended: true, parameterLimit: 50000 }))
@@ -33,7 +33,7 @@ app.use('/routes', routeRoutes )
 
 
 app.get('/',(req,res)=>res.send("Server is running"))
-
+app.get('*',(req,res)=>res.sendFile(path.resolve('dist','index.html')))
 const CONNECTION_URL = 'mongodb+srv://develop:QN0Tf9yHb1hutUlz@cluster0.d9wzla5.mongodb.net/devscaffoldDb?retryWrites=true&w=majority'
 
 mongoose
