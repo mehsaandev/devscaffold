@@ -16,7 +16,29 @@ export const getAllProjects = async() => {
             // setSnackbarSeverity("success");
             // setAlertText(data?.response);
             // console.log(data)
-            dispatch({ type: "FETCH_ALL", payload: data });
+            // dispatch({ type: "FETCH_ALL", payload: data });
+    } catch (error) {
+        console.log(error.message);
+    }
+};
+
+export const getAllPublishedProjects = async() => {
+    // setLoading(true)
+    try {
+
+        const  {data}  = await api.getPublishedProjectsAPI();
+        // if (data?.message) {
+            // setSnackbar(true);
+            // setLoading(false)
+            // setSnackbarSeverity("error");
+            // setAlertText(data?.message);
+        // } else {
+            // setSnackbar(true);
+            // setLoading(false)
+            // setSnackbarSeverity("success");
+            // setAlertText(data?.response);
+            // console.log(data)
+            // dispatch({ type: "FETCH_ALL", payload: data });
     } catch (error) {
         console.log(error.message);
     }
