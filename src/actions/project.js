@@ -1,6 +1,6 @@
 import * as api from "../api";
 
-export const getAllProjects = async() => {
+export const getAllProjects = async(dispatch) => {
     // setLoading(true)
     try {
 
@@ -15,8 +15,8 @@ export const getAllProjects = async() => {
             // setLoading(false)
             // setSnackbarSeverity("success");
             // setAlertText(data?.response);
-            // console.log(data)
-            // dispatch({ type: "FETCH_ALL", payload: data });
+            console.log(data)
+            dispatch({ type: "FETCH_ALL", payload: data });
     } catch (error) {
         console.log(error.message);
     }

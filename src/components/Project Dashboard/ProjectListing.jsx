@@ -28,8 +28,8 @@ const ProjectListing = ({  type }) => {
 
     useEffect(() => {
 
-        dispatch(getAllProjects())
-        // getAllProjects()
+        // dispatch(getAllProjects())
+        getAllProjects(dispatch)
 
     }, [openAddModal])
 
