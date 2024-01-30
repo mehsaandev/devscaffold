@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { createProject, getAllProjects } from '../../actions/project'
 import Header from '../common/Header/ProjectDashboardHeader'
 
+
 const ProjectListing = ({  type }) => {
 
     const [openAddModal, setOpenAddModal] = useState(false)
@@ -37,7 +38,7 @@ const ProjectListing = ({  type }) => {
 
     return (
         <>
-            {
+                    {
             openAddModal && (
                 <AddModal open={openAddModal} setOpen={setOpenAddModal} projectForm={addProjectForm} setProjectForm={setAddProjectForm} createProjectHandler={createProjectHandler} />
             )}
