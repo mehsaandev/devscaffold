@@ -1,6 +1,10 @@
 import * as api from "../api";
 
+<<<<<<< HEAD
 export const getAllProjects = () => async (dispatch) => {
+=======
+export const getAllProjects = async(dispatch) => {
+>>>>>>> ffd3967a8ae4171302d1b68bf0df7d707c903eb4
     // setLoading(true)
     try {
 
@@ -11,18 +15,53 @@ export const getAllProjects = () => async (dispatch) => {
         // setSnackbarSeverity("error");
         // setAlertText(data?.message);
         // } else {
+<<<<<<< HEAD
         // setSnackbar(true);
         // setLoading(false)
         // setSnackbarSeverity("success");
         // setAlertText(data?.response);
         // console.log(data)
         dispatch({ type: "FETCH_ALL", payload: data });
+=======
+            // setSnackbar(true);
+            // setLoading(false)
+            // setSnackbarSeverity("success");
+            // setAlertText(data?.response);
+            console.log(data)
+            dispatch({ type: "FETCH_ALL", payload: data });
+>>>>>>> ffd3967a8ae4171302d1b68bf0df7d707c903eb4
     } catch (error) {
         console.log(error.message);
     }
 };
 
+<<<<<<< HEAD
 export const getSingleProject = (id, setProjectObj) => async (dispatch) => {
+=======
+export const getAllPublishedProjects = async() => {
+    // setLoading(true)
+    try {
+
+        const  {data}  = await api.getPublishedProjectsAPI();
+        // if (data?.message) {
+            // setSnackbar(true);
+            // setLoading(false)
+            // setSnackbarSeverity("error");
+            // setAlertText(data?.message);
+        // } else {
+            // setSnackbar(true);
+            // setLoading(false)
+            // setSnackbarSeverity("success");
+            // setAlertText(data?.response);
+            // console.log(data)
+            // dispatch({ type: "FETCH_ALL", payload: data });
+    } catch (error) {
+        console.log(error.message);
+    }
+};
+
+export const getSingleProject = (id,setProjectObj) => async (dispatch) => {
+>>>>>>> ffd3967a8ae4171302d1b68bf0df7d707c903eb4
     // setLoading(true)
     try {
         const { data } = await api.getSingleProjectsAPI(id);

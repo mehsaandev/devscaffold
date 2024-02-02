@@ -5,6 +5,8 @@ import Home from './pages/Home'
 import Dashboard from './pages/Project Design Dashboard/index'
 import Rout from './pages/Project Design Dashboard/Routing Section/index'
 
+
+
 import './App.css'
 import Signup from './pages/Authentication/Signup'
 import Login from './pages/Authentication/Login'
@@ -22,15 +24,13 @@ function App() {
   return (
     <div className= {`${theme}`}>
       <Routes>
-
-        <Route path='/' element={<Rout  />} />
-        {/* <Route path='/' element={<LandingPage  />} /> */}
+        <Route path='/' element={<LandingPage  />} />
+        <Route path='/route/*' element={<Rout  />} />
         {/* <Route path='/dashboard/*' element={<Home toggleTheme={toggleTheme} theme={theme} />} /> */}
         <Route path='/home/*' element={<Home toggleTheme={toggleTheme} theme={theme} />} />
         <Route path='/dashboard/*' element={<Dashboard toggleTheme={toggleTheme} theme={theme} />} />
         <Route path='/login/*' element={<Login  />} />
         <Route path='/register/*' element={<Signup />} />
-        
       </Routes>
 
     </div>

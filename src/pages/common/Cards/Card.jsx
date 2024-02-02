@@ -2,6 +2,9 @@ import React from 'react'
 import projectimg from './Project.jpg'
 import { CiMenuKebab } from 'react-icons/ci'
 import { useNavigate } from 'react-router-dom'
+import  BasicMenu  from './Card_menu'
+
+
 const projects = [
   {
     id: 1,
@@ -76,7 +79,8 @@ function Card({ project }) {
 
         <div className='flex justify-between gap-2'>
           <button className='dark:text-slate-200 border-blue-800 border-2 bg-transparent hover:border-blue-900  rounded-lg p-2 text-sm ' onClick={openProjectViewHandler} >Continue</button>
-          <button className='rounded-full bg-slate-300 dark:bg-gray-800 dark:hover:bg-gray-700 hover:bg-slate-400'><CiMenuKebab /></button>
+          {/* <button className='rounded-full bg-slate-300 dark:bg-gray-800 dark:hover:bg-gray-700 hover:bg-slate-400'><CiMenuKebab /></button> */}
+          <BasicMenu project={project} />
         </div>
       </div>
     </div>

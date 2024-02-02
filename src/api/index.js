@@ -13,6 +13,7 @@ export const signUpAPI = (formData) =>API.post('/user/create',formData)
 
 // Project API's
 export const getAllProjectsAPI = () =>API.get('/projects/all')
+export const getPublishedProjectsAPI = () =>API.get('/projects/published')
 export const getSingleProjectsAPI = (projectId) =>API.get(`/projects/${projectId}`)
 export const createProjectAPI = (formData) =>API.post('/projects/create',formData)
 export const updateProjectAPI = (updatedProjectData,projectId) =>API.put(`/projects/update/${projectId}`,updatedProjectData)

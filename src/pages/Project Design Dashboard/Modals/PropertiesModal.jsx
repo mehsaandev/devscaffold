@@ -29,11 +29,9 @@ const AddModal = ({ open,setOpen, propertiesList, setpropertiesList ,newAddedPro
             })
         })
 
-
         // setpropertiesList({ ...propertiesList, actionList: propertiesList?.actionList ? [...propertiesList?.actionList, action] : [action] })
         setNewAction(false)
     }
-
 
     return (
         <div className={` absolute ${!open && 'hidden'} h-screen w-screen top-0 bottom-0 z-30 grid place-items-center`}>
