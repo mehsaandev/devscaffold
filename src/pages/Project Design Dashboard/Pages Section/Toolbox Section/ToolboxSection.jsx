@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 // import { updatePage } from '../../actions/pages'
 import { useSelector } from 'react-redux'
-import { updateElementClasses,generateHTML, compileTree } from '../../utilities/componentCompiler'
-import {createComponent} from '../../utilities/attatchmentUtility'
+import { updateElementClasses,generateHTML, compileTree } from '../../../../utilities/componentCompiler'
+import {createComponent} from '../../../../utilities/attatchmentUtility'
 import JSZip from 'jszip'
 
 const ToolboxSection = ({ activeElement }) => {
@@ -51,12 +51,12 @@ function createZipFile() {
   var zip = new JSZip();
 
   // Create and add the content of the first file to the zip archive
-  var content1 = createComponent("Button1", temp1);
-  zip.file("Button1.jsx", content1);
+  var content1 = createComponent("Componnt1", temp1);
+  zip.file("Componnt1.jsx", content1);
 
   // Create and add the content of the second file to the zip archive
-  var content2 = createComponent("Button2", temp2);
-  zip.file("Button2.jsx", content2);
+  // var content2 = createComponent("Button2", temp2);
+  // zip.file("Button2.jsx", content2);
 
   // Generate a blob containing the zip archive
   zip.generateAsync({ type: "blob" }).then(function (blob) {
@@ -64,7 +64,7 @@ function createZipFile() {
     var a = document.createElement("a");
     a.style.display = "none";
     a.href = URL.createObjectURL(blob);
-    a.download = "TwoButtons.zip";
+    a.download = "App.zip";
     
     // Trigger a click event to download the zip file
     a.click();
@@ -96,7 +96,7 @@ function createZipFile() {
   return (
     <div className='m-2 p-5 bg-white flex flex-col gap-5'>
 
-         <TextField
+         {/* <TextField
           id="outlined-multiline-static"
           label="Classes"
           fullWidth
@@ -105,12 +105,12 @@ function createZipFile() {
           defaultValue={"Classes"}
           value={ elementClass ? elementClass : activeElement.className}
           onChange={(e) => setElementClass(e.target.value)}
-        />
+        /> */}
     {/*  */}
-        <Button variant="contained" >Update Class</Button>
+        {/* <Button variant="contained" >Update Class</Button> */}
         <Button variant="contained" onClick={createZipFile}>Export Component</Button>
 
-      <ButtonGroup variant="outlined" aria-label="outlined button group">
+      {/* <ButtonGroup variant="outlined" aria-label="outlined button group">
         <Button>Left</Button>
         <Button>Center</Button>
         <Button>Right</Button>
@@ -128,7 +128,7 @@ function createZipFile() {
         onChange={(e) => setElementClass(e.target.value)}
       />
 
-      <Button variant="contained" onClick={updateClassHandler}>Update Class</Button>
+      <Button variant="contained" onClick={updateClassHandler}>Update Class</Button> */}
     </div>
   )
 }

@@ -52,6 +52,7 @@ const elementsTree =
             children: [],
             properties: {
               text: "Login",
+              name: 'loginBtn'
             },
             classes: "bg-green-600 w-96 text-white p-2 rounded-lg hover:bg-green-700 focus:border-4 focus:border-red-600",
           }
@@ -78,6 +79,7 @@ const elementsTree =
             children: [],
             properties: {
               text: "Register",
+              name: 'hahahahahahaha'
             },
             classes: "bg-yellow-600 w-96 text-white p-2 rounded-lg hover:bg-yellow-700 focus:border-4 focus:border-red-600",
           }

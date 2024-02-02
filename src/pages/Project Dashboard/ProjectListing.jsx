@@ -29,6 +29,8 @@ const ProjectListing = ({  type }) => {
     useEffect(() => {
 
         dispatch(getAllProjects())
+
+    
         // getAllProjects()
 
     }, [openAddModal])

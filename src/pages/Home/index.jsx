@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Navbar, ProjectDashboard, Sidebar } from '../../components'
+import { Navbar, ProjectDashboard, Sidebar } from '../index'
 
 const Home = ({ toggleTheme, theme }) => {
     

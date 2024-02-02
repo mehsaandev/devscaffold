@@ -423,149 +423,64 @@ export const tagsWithProperties = [
     {
         id: 9,
         tag: 'div',
-        // properties: [
-        //     {
-        //         name: "id",
-        //         type: "text",
-        //         value: ""
-        //     },
-        //     {
-        //         name: "class",
-        //         type: "text",
-        //         value: ""
-        //     },
-        // ]
+        properties: [
+           
+        ]
     },
     {
         id: 10,
         tag: 'h1',
-        // properties: [
-        //     {
-        //         name: "id",
-        //         type: "text",
-        //         value: ""
-        //     },
-        //     {
-        //         name: "class",
-        //         type: "text",
-        //         value: ""
-        //     },
-        // ]
+        properties: [
+        ]
     },
     {
         id: 11,
         tag: 'h2',
-        // properties: [
-        //     {
-        //         name: "id",
-        //         type: "text",
-        //         value: ""
-        //     },
-        //     {
-        //         name: "class",
-        //         type: "text",
-        //         value: ""
-        //     },
-        // ]
+        properties: [
+           
+        ]
     },
     {
         id: 12,
         tag: 'h3',
-        // properties: [
-        //     {
-        //         name: "id",
-        //         type: "text",
-        //         value: ""
-        //     },
-        //     {
-        //         name: "class",
-        //         type: "text",
-        //         value: ""
-        //     },
-        // ]
+        properties: [
+        ]
     },
     {
         id: 13,
         tag: 'h4',
-        // properties: [
-        //     {
-        //         name: "id",
-        //         type: "text",
-        //         value: ""
-        //     },
-        //     {
-        //         name: "class",
-        //         type: "text",
-        //         value: ""
-        //     },
-        // ]
+        properties: [
+           
+        ]
     },
     {
         id: 14,
         tag: 'h5',
-        // properties: [
-        //     {
-        //         name: "id",
-        //         type: "text",
-        //         value: ""
-        //     },
-        //     {
-        //         name: "class",
-        //         type: "text",
-        //         value: ""
-        //     },
-        // ]
+        properties: [
+           
+        ]
     },
     {
         id: 15,
         tag: 'h6',
-        // properties: [
-        //     {
-        //         name: "id",
-        //         type: "text",
-        //         value: ""
-        //     },
-        //     {
-        //         name: "class",
-        //         type: "text",
-        //         value: ""
-        //     },
-        // ]
+        properties: [
+           
+        ]
     },
 
     {
         id: 16,
         tag: 'p',
-        // properties: [
-        //     {
-        //         name: "id",
-        //         type: "text",
-        //         value: ""
-        //     },
-        //     {
-        //         name: "class",
-        //         type: "text",
-        //         value: ""
-        //     },
-
-        // ]
+        properties: [
+           
+        ]
     },
     {
         id: 17,
         tag: 'span',
-        // properties: [
-        //     {
-        //         name: "id",
-        //         type: "text",
-        //         value: ""
-        //     },
-        //     {
-        //         name: "class",
-        //         type: "text",
-        //         value: ""
-        //     },
-
-        // ]
+        properties: [
+           
+        ]
     },
     {
         id: 18,
@@ -596,19 +511,9 @@ export const tagsWithProperties = [
     {
         id: 19,
         tag: 'ul',
-        // properties: [
-        //     {
-        //         name: "id",
-        //         type: "text",
-        //         value: ""
-        //     },
-        //     {
-        //         name: "class",
-        //         type: "text",
-        //         value: ""
-        //     },
-
-        // ]
+        properties: [
+           
+        ]
     },
     {
         id: 20,
@@ -665,68 +570,44 @@ export const tagsWithProperties = [
     {
         id: 22,
         tag: 'nav',
-        // properties: [
-        //     {
-        //         name: "id",
-        //         type: "text",
-        //         value: ""
-        //     },
-        // ]
+        properties: [
+           
+        ]
     },
     {
         id: 23,
         tag: 'header',
-        // properties: [
-        //     {
-        //         name: "id",
-        //         type: "text",
-        //         value: ""
-        //     },
-        // ]
+        properties: [
+           
+        ]
     },
     {
         id: 24,
         tag: 'footer',
-        // properties: [
-        //     {
-        //         name: "id",
-        //         type: "text",
-        //         value: ""
-        //     },
-        // ]
+        properties: [
+           
+        ]
     },
     {
         id: 25,
         tag: 'main',
-        // properties: [
-        //     {
-        //         name: "id",
-        //         type: "text",
-        //         value: ""
-        //     },
-        // ]
+        properties: [
+           
+        ]
     },
     {
         id: 26,
         tag: 'aside',
-        // properties: [
-        //     {
-        //         name: "id",
-        //         type: "text",
-        //         value: ""
-        //     },
-        // ]
+        properties: [
+           
+        ]
     },
     {
         id: 27,
         tag: 'section',
-        // properties: [
-        //     {
-        //         name: "id",
-        //         type: "text",
-        //         value: ""
-        //     },
-        // ]
+        properties: [
+           
+        ]
     },
 
 ]

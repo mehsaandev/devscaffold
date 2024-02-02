@@ -50,6 +50,9 @@ export const compileTree = (elementsTree) => {
 
 
 
+
+
+
 function searchAndUpdateClass(element, id, newClasses) {
     if (element.id === id) {
         console.log("found")
@@ -146,5 +149,55 @@ export const addNewElement = (elementsTree, elementId, newElement) => {
     });
 
     console.log(response)
+    return response;
+}
+
+
+
+
+function searchAndDeleteElement(element, id) {
+    if (element.id === id) {
+        console.log(element.properties.text)
+        return;
+    }
+    if (element.children )
+    {
+        deleteElement(element.children, id);
+    }
+    
+    return element;
+}
+
+
+export const deleteElement = (elementsTree, elementId) => {
+    
+    const response = elementsTree.map(element => {
+        return searchAndDeleteElement(element, elementId);
+    });
+
+    console.log(response)
+    return response;
+}
+
+
+
+const htmlToJSON = (html) => {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+    const body = doc.body;
+    const children = body.children;
+    const response = [];
+    for (let i = 0; i < children.length; i++) {
+        const element = children[i];
+        const elementObject = {
+            name: element.tagName.toLowerCase(),
+            classes: element.className,
+            id: element.id,
+            properties: {
+                text: element.innerText,
+            },
+        };
+        response.push(elementObject);
+    }
     return response;
 }

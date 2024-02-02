@@ -1,55 +1,55 @@
 import * as api from "../api";
 
-export const getAllProjects = async() => {
+export const getAllProjects = () => async (dispatch) => {
     // setLoading(true)
     try {
 
-        const  {data}  = await api.getAllProjectsAPI();
+        const { data } = await api.getAllProjectsAPI();
         // if (data?.message) {
-            // setSnackbar(true);
-            // setLoading(false)
-            // setSnackbarSeverity("error");
-            // setAlertText(data?.message);
+        // setSnackbar(true);
+        // setLoading(false)
+        // setSnackbarSeverity("error");
+        // setAlertText(data?.message);
         // } else {
-            // setSnackbar(true);
-            // setLoading(false)
-            // setSnackbarSeverity("success");
-            // setAlertText(data?.response);
-            // console.log(data)
-            dispatch({ type: "FETCH_ALL", payload: data });
+        // setSnackbar(true);
+        // setLoading(false)
+        // setSnackbarSeverity("success");
+        // setAlertText(data?.response);
+        // console.log(data)
+        dispatch({ type: "FETCH_ALL", payload: data });
     } catch (error) {
         console.log(error.message);
     }
 };
 
-export const getSingleProject = (id,setProjectObj) => async (dispatch) => {
+export const getSingleProject = (id, setProjectObj) => async (dispatch) => {
     // setLoading(true)
     try {
         const { data } = await api.getSingleProjectsAPI(id);
-            setProjectObj(data)
+        setProjectObj(data)
     } catch (error) {
         console.log(error.message);
     }
 };
 
-export const createProject = (formData,setOpenAddModal) => async (dispatch) => {
+export const createProject = (formData, setOpenAddModal) => async (dispatch) => {
     // setLoading(true)
     try {
 
         const { data } = await api.createProjectAPI(formData);
-            console.log(data)
-            setOpenAddModal(false)
+        console.log(data)
+        setOpenAddModal(false)
     } catch (error) {
         console.log(error.message);
     }
 };
 
-export const updateProject = (formData,projectId) => async (dispatch) => {
+export const updateProject = (formData, projectId) => async (dispatch) => {
     // setLoading(true)
     try {
 
-        const {data} = await api.updateProjectAPI(projectId,formData);
-            console.log(data)
+        const { data } = await api.updateProjectAPI(projectId, formData);
+        console.log(data)
     } catch (error) {
         console.log(error.message);
     }
@@ -60,8 +60,8 @@ export const exportComponents = (components) => async (dispatch) => {
     try {
 
         const { data } = await api.exportComponentsAPI(components);
-            console.log(data)
-            setOpenAddModal(false)
+        console.log(data)
+        setOpenAddModal(false)
     } catch (error) {
         console.log(error.message);
     }
@@ -72,7 +72,7 @@ export const deleteProject = (projectId) => async (dispatch) => {
     try {
 
         await api.deleteProjectAPI(projectId);
-            console.log("Deleted Permanently")
+        console.log("Deleted Permanently")
     } catch (error) {
         console.log(error.message);
     }
@@ -83,7 +83,7 @@ export const trashProject = (projectId) => async (dispatch) => {
     try {
 
         await api.trashProjectAPI(projectId);
-            console.log("Trashed Successfully")
+        console.log("Trashed Successfully")
     } catch (error) {
         console.log(error.message);
     }
@@ -94,7 +94,7 @@ export const restoreProject = (projectId) => async (dispatch) => {
     try {
 
         await api.restoreProjectAPI(projectId);
-            console.log("Restored Successfully")
+        console.log("Restored Successfully")
     } catch (error) {
         console.log(error.message);
     }
@@ -105,7 +105,7 @@ export const publishProject = (projectId) => async (dispatch) => {
     try {
 
         await api.publishProjectAPI(projectId);
-            console.log("Published Successfully")
+        console.log("Published Successfully")
     } catch (error) {
         console.log(error.message);
     }
@@ -116,7 +116,7 @@ export const unpublishProject = (projectId) => async (dispatch) => {
     try {
 
         await api.unPublishProjectAPI(projectId);
-            console.log("Unpublished Successfully")
+        console.log("Unpublished Successfully")
     } catch (error) {
         console.log(error.message);
     }

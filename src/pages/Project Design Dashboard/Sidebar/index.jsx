@@ -78,10 +78,10 @@ const Sidebar = () => {
           ))}
         </ul>
       </div>
-      {sideBarItemsList.activeIndex === 0 && (
+      {/* {sideBarItemsList.activeIndex === 0 && (
 
         <PageSection />
-      )}
+      )} */}
     </>
 
   );

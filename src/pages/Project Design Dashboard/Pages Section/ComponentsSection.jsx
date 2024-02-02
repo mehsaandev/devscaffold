@@ -10,7 +10,7 @@ import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
 import { FormControl, InputLabel, Select } from '@mui/material';
 import { useDispatch, useSelector } from "react-redux";
-import { changeColor } from '../../../redux/colors/colorsSlice';
+import { changeColor } from '../../../../redux/colors/colorsSlice';
 const options = ['bg-black', 'mt-5', 'bg-white'];
 const ComponentsSection = () => {
     const dispatch=useDispatch();

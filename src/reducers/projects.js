@@ -8,7 +8,6 @@ export default (state = [], action) =>{
         case "FETCH_ONE":
             console.log(action.payload)
             return {...state, project: action.payload} 
-            
         default: 
         return state
     }
