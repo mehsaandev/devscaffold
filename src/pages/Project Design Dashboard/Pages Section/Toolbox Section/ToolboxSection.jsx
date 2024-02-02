@@ -8,7 +8,7 @@ import {createComponent} from '../../../../utilities/attatchmentUtility'
 import JSZip from 'jszip'
 
 const ToolboxSection = ({ activeElement }) => {
-  const [elementClass, setElementClass] = useState(activeElement.className)
+  // const [elementClass, setElementClass] = useState(activeElement.className)
   const dispatch = useDispatch()
 
   const pageObj = useSelector(state => state.pageDesign.page)
@@ -17,8 +17,8 @@ const ToolboxSection = ({ activeElement }) => {
 
   useEffect(() => {
 
-    setElementClass(activeElement.className)
-  }, [activeElement])
+    // setElementClass(activeElement.className)
+  }, [])
   
   /////
   // function createFile(){
@@ -77,14 +77,14 @@ function createZipFile() {
 
   const updateClassHandler = () => {
 
-    const updatedJson = updateElementClasses(pageObj, activeElement?.id, elementClass)
+    // const updatedJson = updateElementClasses(pageObj, activeElement?.id, elementClass)
     // dispatch(updatePage(updatedJson))
 
 
   }
 
   useEffect(() => {
-    setElementClass(activeElement.className)
+    // setElementClass(activeElement.className)
   }, [])
 
 
@@ -94,7 +94,7 @@ function createZipFile() {
 
 
   return (
-    <div className='m-2 p-5 bg-white flex flex-col gap-5'>
+    <div className='m-2 p-5 bg-white flex flex-col gap-5 h-full'>
 
          {/* <TextField
           id="outlined-multiline-static"

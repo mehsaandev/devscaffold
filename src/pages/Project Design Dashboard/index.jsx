@@ -9,6 +9,7 @@ import RoutingSection from './Routing Section/index'
 import ExportSection from './Export Section/Index'
 import AddModal from "./Modals/AddModal";
 import { Route, Routes } from "react-router-dom";
+import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
 
 
 const ProjectDesignDashboard = ({ toggleTheme, theme }) => {
@@ -25,37 +26,52 @@ const ProjectDesignDashboard = ({ toggleTheme, theme }) => {
     // bg-gradient-to-br from-dimWhite to-slate-200
     <>
       {/* <AddModal open={true} /> */}
-      <div className="  dark:bg-gradient-to-br dark:to-primary dark:from-gray-800 h-screen">
+      <div className="dark:bg-gradient-to-br dark:to-primary dark:from-gray-800 h-screen w-full">
         <Navbar toggleTheme={toggleTheme} theme={theme} />
-        <div className="flex flex-row">
-          <Sidebar />
-          <Routes>
-            <Route
-              path="/"
-              element={<PagesSection activeClassHandler={activeClassHandler} />}
-            />
+        <PanelGroup direction="horizontal" className="w-full">
+          <div className="flex flex-row w-full">
+            <Sidebar />
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <>
+                    <PagesSection activeClassHandler={activeClassHandler} />
 
-            <Route path="/page" element={
-              <PageDesign activeClassHandler={activeClassHandler} />
+                  </>
 
-            } />
-            <Route path="/routes" element={
+                }
+              />
+
+              {/* <Route path="/page" element={
+
+            } /> */}
+              <Route path="/page" element={
+                <>
+                  <PanelGroup   direction="horizontal" className="w-full overflow-auto">
+                    <Panel  collapsible={false} collapsedSize={6} minSize={15} maxSize={40} >
+                      <PagesSection activeClassHandler={activeClassHandler} />
+                    </Panel>
+                    <PanelResizeHandle />
+                    <Panel >
+                      <PageDesign />
+                    </Panel>
+                  </PanelGroup>
+                </>
+
+              } />
+
+              <Route path="/routes" element={
                 <RoutingSection />
-            } />
-            <Route path="/export" element={
+              } />
+              <Route path="/export" element={
                 <ExportSection />
-            } />
+              } />
+            </Routes>
 
-          </Routes>
-          <div className="grid grid-cols-12 grid-flow-col w-full">
-            <div className="col-span-12">
-              <PageDesign activeClassHandler={activeClassHandler} />
-            </div>
-            <div className="col-span-3">
-              <ToolboxSection activeElement={activeElement} />
-            </div>
           </div>
-        </div>
+        </PanelGroup>
+
       </div>
     </>
   );

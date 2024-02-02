@@ -131,9 +131,9 @@ function App({ activeClassHandler }) {
               </>
             )}
         </div>
-        <button className="h-16 bg-blue-600 flex justify-center items-center w-full rounded-lg" onClick={exportComponent}>
+        {/* <button className="h-16 bg-blue-600 flex justify-center items-center w-full rounded-lg" onClick={exportComponent}>
           <p className="text-white">Export</p>
-        </button>
+        </button> */}
       </div>
     
   );

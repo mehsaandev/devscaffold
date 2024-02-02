@@ -14,7 +14,6 @@ const ProjectDashboard = () => {
   const [addProjectForm, setAddProjectForm] = useState({})
 
 
-  const [deleteModalOpen, setDeleteModalOpen] = useState(false)
 
   const dispatch = useDispatch()
 
@@ -26,13 +25,7 @@ const ProjectDashboard = () => {
 
 
 
-  const setDeleteModalOpenHandler = () => {
-    setDeleteModalOpen(true)
-  }
-  const setDeleteModalCloseHandler = () => {
-    setDeleteModalOpen(false)
-  }
-
+  
 
   return (
     <>
@@ -44,8 +37,6 @@ const ProjectDashboard = () => {
 
       <div className='bg-slate-100 dark:text-slate-200 dark:bg-gray-700 w-screen rounded-lg m-5 p-4 text-xl font-sans font-semibold shadow-md '>
 
-        <button onClick={setDeleteModalOpenHandler}>Change me </button>
-        <DeleteModal open={deleteModalOpen} onClose={setDeleteModalCloseHandler}/>
         <Routes>
 
           <Route path='/' element={<ProjectListing openAddModal={openAddModal} setOpenAddModal={setOpenAddModal} type={"Recent"} />} />

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import projectimg from '../common/Cards/Project.jpg'
+import projectimg from './Project Card/Project.jpg'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getSingleProject } from '../../actions/project'

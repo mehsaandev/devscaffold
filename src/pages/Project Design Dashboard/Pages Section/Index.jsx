@@ -12,6 +12,7 @@ import PreviewSection from "./PreviewSection";
 import SwitchSection from "./SwitchSection";
 import DesignSection from "./DesignSection";
 import GrapesLayout from "./GrapesLayout";
+import ToolboxSection from "./Toolbox Section/ToolboxSection";
 
 const elementsTree = [
     {
@@ -100,20 +101,32 @@ function App({ activeClassHandler }) {
 
 
     return (
-        <div className="bg-[#E1E1E1] overflow">
+        <div className="bg-[#E1E1E1] overflow w-full">
+
             <AddModal open={model} setOpen={setModel} handleModelClose={handleModelClose} setpropertiesList={setpropertiesList} />
             <PropertiesModal open={propertiesModal} newAddedPropertyIndex={newAddedPropertyIndex} setOpen={setPropertiesModal} propertiesList={propertiesList} setpropertiesList={setpropertiesList} />
+            <div className="grid grid-cols-12 grid-flow-col w-full">
+                <div className="col-span-12">
 
-            <SwitchSection togglePreview={togglePreview} setActiveEdit={setActiveEdit} setActivePreview={setActivePreview} />
+                    <SwitchSection togglePreview={togglePreview} setActiveEdit={setActiveEdit} setActivePreview={setActivePreview} />
 
-            {togglePreview ? (
-                // <GrapesLayout />
-                <PreviewSection />
-                ) : (
-                    <DesignSection />
-            )}
+                    {togglePreview ? (
+                        // <GrapesLayout />
+                        <PreviewSection />
+                    ) : (
+                        <DesignSection />
+                    )}
 
-           
+                    {/* <PageDesign activeClassHandler={activeClassHandler} /> */}
+                </div>
+                <div className="col-span-3">
+                    <ToolboxSection />
+                </div>
+            </div>
+
+
+
+
         </div>
     );
 }
