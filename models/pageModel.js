@@ -1,7 +1,7 @@
 const mongoose  =  require("mongoose")
 
 const compObjSchema = new mongoose.Schema({
-  compId: {
+  elementId: {
     type: String,
     required: true,
   },
@@ -10,6 +10,21 @@ const compObjSchema = new mongoose.Schema({
     required: true,
   },
 })
+
+// const contentObjSchema = new mongoose.Schema({
+//   name: {
+//     type: String,
+//     required: true,
+//   },
+//   classes: {
+//     type: String,
+//     required: true,
+//   },
+//   children: {
+//     type: [compObjSchema],
+//     required: false,
+//   },
+// })
 
 const pageSchema = mongoose.Schema({
   name: {
@@ -26,7 +41,7 @@ const pageSchema = mongoose.Schema({
   },
   componentArray: {
     type: [compObjSchema],
-    required: true,
+    required: false,
   },
 });
 

@@ -1,5 +1,5 @@
 const express  = require('express')
-const {} = require('../controllers/routeController.js')
+const {getAllRoutes,createRoute,deleteRoute,getRoute,updateRoute} = require('../controllers/routeController.js')
 const router = express.Router()
 
 router.get('/all',getAllRoutes)
