@@ -1,8 +1,9 @@
 const express  = require('express')
-const { getAllProjects, getProject, createProject, updateProject,publishProject,unpublishProject, moveToTrash,restoreFromTrash,deleteProjectPermanently } = require('../controllers/projectController.js')
+const { getAllProjects, getProject, createProject, updateProject,publishProject,unpublishProject, moveToTrash,restoreFromTrash,deleteProjectPermanently, getAllPublishedProjects } = require('../controllers/projectController.js')
 const router = express.Router()
 
 router.get('/all',getAllProjects)
+router.get('/published',getAllPublishedProjects)
 router.get('/:id',getProject)
 router.post('/create',createProject)
 router.put('/update/:id',updateProject)
