@@ -8,7 +8,7 @@ import PagesSection from "./Sidebar/PageSection/Index";
 import RoutingSection from './Routing Section/index'
 import ExportSection from './Export Section/Index'
 import AddModal from "./Modals/AddModal";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
 
 
@@ -36,8 +36,8 @@ const ProjectDesignDashboard = ({ toggleTheme, theme }) => {
                 path="/"
                 element={
                   <>
-                    <PagesSection activeClassHandler={activeClassHandler} />
-
+                    {/* <PagesSection activeClassHandler={activeClassHandler} /> */}
+                    <Navigate to={'page'} />
                   </>
 
                 }
@@ -46,14 +46,14 @@ const ProjectDesignDashboard = ({ toggleTheme, theme }) => {
               {/* <Route path="/page" element={
 
             } /> */}
-              <Route path="/page" element={
+              <Route path="/page/*" element={
                 <>
                   <PanelGroup   direction="horizontal" className="w-full overflow-auto">
-                    <Panel  collapsible={false} collapsedSize={6} minSize={15} maxSize={40} >
+                    <Panel  collapsible={false} collapsedSize={6} minSize={13} defaultSize={20} maxSize={40} >
                       <PagesSection activeClassHandler={activeClassHandler} />
                     </Panel>
                     <PanelResizeHandle />
-                    <Panel >
+                    <Panel style={{overflow:'auto'}}>
                       <PageDesign />
                     </Panel>
                   </PanelGroup>

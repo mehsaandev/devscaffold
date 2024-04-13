@@ -181,7 +181,7 @@ export const deleteElement = (elementsTree, elementId) => {
 
 
 
-const htmlToJSON = (html) => {
+export const htmlToJSON = (html) => {
     const parser = new DOMParser();
     const doc = parser.parseFromString(html, 'text/html');
     const body = doc.body;
@@ -201,3 +201,46 @@ const htmlToJSON = (html) => {
     }
     return response;
 }
+
+
+export function parseHTML(htmlString) {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(htmlString, 'text/html');
+    const rootElement = doc.body.firstChild;
+    return parseElement(rootElement);
+}
+
+function parseElement(element) {
+    const parsedElement = {
+        name: element.tagName.toLowerCase(),
+    };
+
+    if (element.id) {
+        parsedElement.id = element.id;
+    }
+
+    if (element.className) {
+        parsedElement.classes = element.className;
+    }
+
+    if (element.childNodes.length > 0) {
+        parsedElement.children = [];
+        element.childNodes.forEach(child => {
+            if (child.nodeType === Node.TEXT_NODE) {
+                if (!parsedElement.properties) {
+                    parsedElement.properties = {};
+                }
+                parsedElement.properties.text = child.textContent;
+            } else if (child.nodeType === Node.ELEMENT_NODE) {
+                parsedElement.children.push(parseElement(child));
+            }
+        });
+    }
+
+    return parsedElement;
+}
+
+export const compileJSON = (htmlString) => {
+    const parsedElement = parseHTML(htmlString);
+    return JSON.stringify(parsedElement, null, 2);
+};

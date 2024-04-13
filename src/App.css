@@ -15,10 +15,25 @@
 #gjs {
     border: 3px solid #444;
   }
+#gjs:hover {
+    border: 4px solid #383abb;
+  }
   
+
   /* Reset some default styling */
   .gjs-cv-canvas {
     top: 0;
     width: 100%;
     height: 100%;
   }
+
+
+  .gjs-block {
+    width: auto;
+    height: auto;
+    min-height: auto;
+  }
+
+
+
+  

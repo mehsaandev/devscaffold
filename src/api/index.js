@@ -27,7 +27,7 @@ export const restoreProjectAPI = (projectId) =>API.put(`/projects/restore/${proj
 // page API's
 export const getPagesOfProjectAPI = (projectId) =>API.get(`/page/getPagesOfProject/${projectId}`)
 export const getPageAPI = (pageId) =>API.get(`/page/${pageId}`)
-export const createPageAPI = (formData) =>API.post(`/page/create/${formData}`)
+export const createPageAPI = (formData) =>API.post(`/page/create/`,formData)
 export const updatePageAPI = (updatedPageData,pageID) =>API.put(`/page/update/${pageID}`,updatedPageData)
 export const renamePageAPI = (updatedPageData,pageID) =>API.put(`/page/rename/${pageID}`,updatedPageData)
 export const deletePageAPI = (pageID) =>API.delete(`/page/delete/${pageID}`)

@@ -95,10 +95,10 @@ function DesignSection() {
 
 
   const renderTree = (nodes) => (
-    <TreeItem key={nodes.id} nodeId={nodes.id} label={(<div>
+    <TreeItem key={nodes?.id} nodeId={nodes?.id} label={(<div>
       <div className="flex justify-between items-center group">
         <div className="flex">
-          <p className=" font-bold ">{tagMapHandler(nodes.name)}</p>
+          <p className=" font-bold ">{tagMapHandler(nodes?.name)}</p>
         </div>
         <div className="  gap-2 items-center  ">
           <IconButton aria-label="Add" onClick={()=>elementAddHandler(nodes)}>
@@ -117,7 +117,7 @@ function DesignSection() {
           </div>
       </div>
     </div>)} >
-      {Array.isArray(nodes.children)
+      {Array.isArray(nodes?.children)
         ? nodes.children.map((node) => renderTree(node))
         : null}
     </TreeItem>

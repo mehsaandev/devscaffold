@@ -21,7 +21,7 @@ const style = {
 export default function BasicModal({ open, handleClose, elementData }) {
 
   const dispatch = useDispatch()
-  const pageObj = useSelector(state => state.pageDesign.page)
+  const pageObj = useSelector(state => state.page)
   const [selectedElement, setSelectedElement] = useState(null)
   const [newElement, setNewElement] = useState(null)
   const [scroll, setScroll] = useState('paper')

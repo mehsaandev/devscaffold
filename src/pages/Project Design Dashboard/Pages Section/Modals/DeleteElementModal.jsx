@@ -11,7 +11,7 @@ import { updatePage } from '../../../../actions/pages';
 
 export default function BasicModal({ open, handleClose, elementData }) {
 
-  const pageObj = useSelector(state => state.pageDesign.page)
+  const pageObj = useSelector(state => state.page)
   const dispatch = useDispatch()
 
   const handleDeleteElement = () => {

@@ -27,7 +27,7 @@ const style = {
 export default function BasicModal({ open, handleClose, elementData }) {
 
   const dispatch = useDispatch()
-  const pageObj = useSelector(state => state.pageDesign.page)
+  const pageObj = useSelector(state => state.page)
   const [updatedData, setUpdatedData] = useState(elementData)
   const [allProperties, setAllProperties] = useState([])
 

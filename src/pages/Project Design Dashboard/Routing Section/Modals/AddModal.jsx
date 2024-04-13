@@ -8,8 +8,9 @@ import SaveIcon from '@mui/icons-material/Save';
 import { CircularProgress, TextField } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
-import { createPageAPIHandler } from "../../../../../actions/pages";
+// import { createPageAPIHandler } from "../../../../../actions/pages";
 import { useDispatch } from "react-redux";
+import { createRoute } from "../../../../actions/route";
 
 
 
@@ -42,39 +43,10 @@ export default function AddModal({ open, handleClose }) {
   const [pageObj, setPageObj] = useState({})
   const createPageHandler = (e) => {
     e.preventDefault()
-    const defaultContent = [
-      {
-        id: "1",
-        name: "div",
-        children: [
-          {
-            id: "2",
-            name: "h1",
-            children: [],
-            properties: {
-              text: `${pageObj?.name} Page`
-            },
-            classes: "text-2xl font-bold"
-          },
-          {
-            id: "3",
-            name: "p",
-            children: [],
-            properties: {
-              text: "Please design your page"
-            },
-            classes: "text-lg"
-          }
-        ],
-        classes: "page-info"
-      }
-    ]
+ 
 
 
-    const formObj = { ...pageObj, project_id: param.projectId, content: defaultContent }
-    console.log(param)
-    console.log(formObj)
-    dispatch(createPageAPIHandler(formObj,setFormSubmissionProperties,handleClose))
+    dispatch(createRoute(formObj,handleClose))
 
   }
 

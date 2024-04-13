@@ -28,7 +28,7 @@ function App() {
         <Route path='/route/*' element={<Rout  />} />
         {/* <Route path='/dashboard/*' element={<Home toggleTheme={toggleTheme} theme={theme} />} /> */}
         <Route path='/home/*' element={<Home toggleTheme={toggleTheme} theme={theme} />} />
-        <Route path='/dashboard/*' element={<Dashboard toggleTheme={toggleTheme} theme={theme} />} />
+        <Route path='/dashboard/:projectId/*' element={<Dashboard toggleTheme={toggleTheme} theme={theme} />} />
         <Route path='/login/*' element={<Login  />} />
         <Route path='/register/*' element={<Signup />} />
       </Routes>
