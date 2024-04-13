@@ -93,8 +93,10 @@ const signInHandler = (e) =>{
                     to='/forgot-password'
                     className="font-semibold text-indigo-600 hover:text-indigo-500"
                   >
-                    Forgot password?
-                  </Link>
+
+                  Forgot password?
+                  </Link >
+
                 </div>
               </div>
               <div className="mt-2">

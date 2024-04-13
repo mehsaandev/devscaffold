@@ -31,6 +31,8 @@ function App() {
         <Route path='/dashboard/:projectId/*' element={<Dashboard toggleTheme={toggleTheme} theme={theme} />} />
         <Route path='/login/*' element={<Login  />} />
         <Route path='/register/*' element={<Signup />} />
+        <Route path='/forgot-password/*' element={<Forgotpassword />} />
+
       </Routes>
 
     </div>
