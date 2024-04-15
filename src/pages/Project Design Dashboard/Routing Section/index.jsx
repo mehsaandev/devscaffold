@@ -6,6 +6,15 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/DeleteOutlined';
 import SaveIcon from '@mui/icons-material/Save';
 import CancelIcon from '@mui/icons-material/Close';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+
+
 import {
   GridRowModes,
   DataGrid,
@@ -19,6 +28,7 @@ import {
   randomId,
   randomArrayItem,
 } from '@mui/x-data-grid-generator';
+import AddModal from './Modals/AddModal';
 
 
 const roles = ['Active', 'Inactive'];
@@ -44,7 +54,7 @@ const initialRows = [
     crteateDate: randomCreatedDate(),
     updateDate: randomCreatedDate(),
     status: randomRole(),
-  },{
+  }, {
     id: randomId(),
     name: 'Home',
     path: '/home',
@@ -52,7 +62,7 @@ const initialRows = [
     crteateDate: randomCreatedDate(),
     updateDate: randomCreatedDate(),
     status: randomRole(),
-  },{
+  }, {
     id: randomId(),
     name: 'Home',
     path: '/home',
@@ -60,7 +70,7 @@ const initialRows = [
     crteateDate: randomCreatedDate(),
     updateDate: randomCreatedDate(),
     status: randomRole(),
-  },{
+  }, {
     id: randomId(),
     name: 'Home',
     path: '/home',
@@ -68,7 +78,7 @@ const initialRows = [
     crteateDate: randomCreatedDate(),
     updateDate: randomCreatedDate(),
     status: randomRole(),
-  },{
+  }, {
     id: randomId(),
     name: 'Home',
     path: '/home',
@@ -84,7 +94,7 @@ function EditToolbar(props) {
 
   const handleClick = () => {
     const id = randomId();
-    setRows((oldRows) => [...oldRows, { id, name: '', path: '', page: '',isNew: true }]);
+    setRows((oldRows) => [...oldRows, { id, name: '', path: '', page: '', isNew: true }]);
     setRowModesModel((oldModel) => ({
       ...oldModel,
       [id]: { mode: GridRowModes.Edit, fieldToFocus: 'name' },
@@ -96,14 +106,14 @@ function EditToolbar(props) {
       <Button color="primary" startIcon={<AddIcon />} onClick={handleClick}>
         Add Route
       </Button>
-      
-      
+
+
     </GridToolbarContainer>
   );
 }
 
 export default function FullFeaturedCrudGrid() {
-  const [rows, setRows] = React.useState(initialRows);
+  // const [rows, setRows] = React.useState(initialRows);
   const [rowModesModel, setRowModesModel] = React.useState({});
 
   const handleRowEditStop = (params, event) => {
@@ -232,12 +242,29 @@ export default function FullFeaturedCrudGrid() {
         ];
       },
     },
-  ];
+  ]
+
+  function createData(name, calories, fat, carbs, protein) {
+    return { name, calories, fat, carbs, protein };
+  }
+
+  const rows = [
+    createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
+    createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
+    createData('Eclair', 262, 16.0, 24, 6.0),
+    createData('Cupcake', 305, 3.7, 67, 4.3),
+    createData('Gingerbread', 356, 16.0, 49, 3.9),
+  ];;
   return (
+    <>
+    <AddModal />
     <div class="bg-slate-200 w-screen h-screen">
-    <div class="bg-white rounded-lg h-screen mx-8 p-8">
-      <p class="font-sans font-bold text-2xl mb-4"> Project Routes</p>
-      <div class="flex justify-between flex-wrap mb-4 ">
+      <div class="bg-white rounded-lg h-screen m-5 p-8">
+        <div className='flex justify-between align-middle items-center mb-10'>
+        <p class="font-sans font-bold text-2xl "> Project Routes</p>
+        <Button variant="contained">Add New Route</Button>
+        </div>
+        {/* <div class="flex justify-between flex-wrap mb-4 ">
         <div >
         <div class="flex rounded-md shadow-sm ring-1  ring-gray-300 sm:max-w-md">
             <input type="text"  class="block flex-1 border-0 bg-transparent py-1.5 px-1.5 text-gray-900 placeholder:text-gray-400  sm:text-sm sm:leading-6" placeholder="Search"/>
@@ -246,8 +273,8 @@ export default function FullFeaturedCrudGrid() {
         <div >
         <a href="#" class="rounded-md bg-indigo-600 px-3.5 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">+  Add Routes</a>
         </div>
-      </div>
-      <Box
+      </div> */}
+        {/* <Box
       sx={{
         height: 500,
         width: '100%',
@@ -274,8 +301,42 @@ export default function FullFeaturedCrudGrid() {
           toolbar: { setRows, setRowModesModel },
         }}
       />
-    </Box>
+    </Box> */}
+
+        <TableContainer component={Paper}>
+          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+            <TableHead>
+              <TableRow className='font-bold'>
+                <TableCell>Route Name</TableCell>
+                <TableCell align="right">Route Path</TableCell>
+                <TableCell align="right">Target Page</TableCell>
+                <TableCell align="right">Date Created</TableCell>
+                <TableCell align="right">Date Updated</TableCell>
+                <TableCell align="right">Status</TableCell>
+                {/* <TableCell align="right">Protein&nbsp;(g)</TableCell> */}
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {rows.map((row) => (
+                <TableRow
+                  key={row.name}
+                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                >
+                  <TableCell component="th" scope="row">
+                    {row.name}
+                  </TableCell>
+                  <TableCell align="right">{row.calories}</TableCell>
+                  <TableCell align="right">{row.fat}</TableCell>
+                  <TableCell align="right">{row.carbs}</TableCell>
+                  <TableCell align="right">{row.protein}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+
+      </div>
     </div>
-    </div>
+    </>
   );
 }

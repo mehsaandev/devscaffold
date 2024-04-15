@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MdExpandCircleDown, MdHomeFilled } from 'react-icons/md'
 import { ImBooks } from 'react-icons/im'
 import { BiSolidComponent, BiSearchAlt } from 'react-icons/bi'
@@ -8,23 +8,29 @@ import { FaTrash } from 'react-icons/fa'
 import AddIcon from '@mui/icons-material/Add';
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Avatar, IconButton } from "@mui/material";
 import { Delete } from "@mui/icons-material";
 import PageItem from "./PageItem";
 import AddModal from "./Modals/AddModal";
 import EditModal from "./Modals/EditModal";
 import DeleteModal from "./Modals/DeleteModal ";
+import { getPagesOfProjectAPIHandler } from "../../../../actions/pages";
+import { useDispatch, useSelector } from "react-redux";
 
 const Sidebar = () => {
 
-    const [openAddModal, setOpenAddModal] = useState({ delete: true, add: false, edit: false, info: false })
+    const [openAddModal, setOpenAddModal] = useState({ delete: false, add: false, edit: false, info: false })
+    const [selectedPage, setSelectedPage] = useState(null)
 
     const handleAddModalClose = () => setOpenAddModal({ delete: false, add: false, edit: false, info: false })
     const handleAddModalOpen = () => setOpenAddModal({ delete: false, add: true, edit: false, info: false })
 
     const handleDeleteModalClose = () => setOpenAddModal({ delete: false, add: false, edit: false, info: false })
-    const handleDeleteModalOpen = () => setOpenAddModal({ delete: true, add: false, edit: false, info: false })
+    const handleDeleteModalOpen = (page) => {
+        setOpenAddModal({ delete: true, add: false, edit: false, info: false })
+        setSelectedPage(page)
+    }
 
     const handleEditModalClose = () => setOpenAddModal({ delete: false, add: false, edit: false, info: false })
     const handleEditModalOpen = () => setOpenAddModal({ delete: false, add: false, edit: true, info: false })
@@ -33,6 +39,17 @@ const Sidebar = () => {
     const handleInfoModalOpen = () => setOpenAddModal({ delete: false, add: false, edit: false, info: true })
 
 
+        const params = useParams()
+        const dispatch = useDispatch()
+
+        const pagesArr = useSelector(state=>state.page)
+        console.log(pagesArr)
+    useEffect(() => {   
+        console.log(params.projectId)
+        dispatch(getPagesOfProjectAPIHandler(params.projectId))
+    
+    }, [openAddModal])
+    
 
 
     return (
@@ -43,7 +60,7 @@ const Sidebar = () => {
 
             <AddModal open={openAddModal.add} handleClose={handleAddModalClose} />
             <EditModal open={openAddModal.edit} handleClose={handleAddModalClose} />
-            <DeleteModal open={openAddModal.delete} handleClose={handleAddModalClose} />
+            <DeleteModal open={openAddModal.delete} handleClose={handleAddModalClose} selectedPage={selectedPage} />
 
             {/* <MdExpandCircleDown
         size={30}
@@ -67,9 +84,9 @@ const Sidebar = () => {
                 </div>
                 {/* <div className="h-[1px] mt-1 mb-4 bg-gray-400" /> */}
                 <div className="border-x border-2 border-slate-100  dark:border-gray-700 p-1">
-                    {[0, 0, 0].map(() => (
+                    {pagesArr?.map((page) => (
                         <>
-                            <PageItem handleDeleteModalOpen={handleDeleteModalOpen} handleEditModalOpen={handleEditModalOpen} />
+                            <PageItem handleDeleteModalOpen={handleDeleteModalOpen} handleEditModalOpen={handleEditModalOpen} pageData={page}/>
                             <div className="h-[1px]  text-center items-center flex bg-gray-200 dark:bg-gray-700" />
                         </>
                     ))}

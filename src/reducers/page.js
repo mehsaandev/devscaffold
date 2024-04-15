@@ -93,14 +93,19 @@ const elementsTree =
   }]
 
 
-export default (state = {page:elementsTree}, action) =>{
+// export default (state = {page:elementsTree}, action) =>{
+export default (state = [], action) =>{
     switch (action.type){
         case "UPDATE_PAGE":
             console.log(action.payload)
-            return {...state, page:  action.payload}
-        case "FETCH_ONE_PAGE":
+            // return {...state, page:  action.payload}
+        // case "FETCH_ONE_PAGE":
+        //     console.log(action.payload)
+        //     return [...state,  action.payload]
+            
+        case "FETCH_ALL_PAGES":
             console.log(action.payload)
-            return {...state, page: action.payload}
+            return  action.payload 
             
         default: 
         return state

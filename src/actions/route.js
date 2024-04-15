@@ -23,14 +23,16 @@ export const getSingleRoute = (id,setRouteObj) => async (dispatch) => {
     }
 };
 
-export const createRoute = (formData,setOpenAddModal) => async (dispatch) => {
+export const createRoute = (formData,handleClose) => async (dispatch) => {
     // setLoading(true)
     try {
 
         const { data } = await api.createRouteAPI(formData);
             console.log(data)
-            setOpenAddModal(false)
+            handleClose()
     } catch (error) {
+        handleClose()
+
         console.log(error.message);
     }
 };

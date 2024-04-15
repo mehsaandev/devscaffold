@@ -1,37 +1,45 @@
 import React from 'react'
-import {RiSettings3Fill} from 'react-icons/ri'
-import {MdOutlineNightlight,MdOutlineLightMode} from 'react-icons/md'
+import { RiSettings3Fill } from 'react-icons/ri'
+import { MdOutlineNightlight, MdOutlineLightMode } from 'react-icons/md'
 
 
 import logo from '../../assets/logo.png'
-const Navbar = ({toggleTheme,theme}) => {
+import { useNavigate } from 'react-router-dom'
+const Navbar = ({ toggleTheme, theme }) => {
+  const nav = useNavigate()
+
+  const homeNavigate = () => {
+    nav('/home')
+  }
+
+
   return (
     <nav className='flex sticky top-0 z-20 flex-row justify-between p-3  bg-inherit dark:bg-transparent backdrop-blur dark:text-slate-200 shadow-lg'>
 
-     <div className='ml-2'>
-      <button className='hover:scale-110 duration-200 h-10' >
-      <img width={170} src={logo}/>
-       
-      </button>
-     </div>
-     <div className='flex flex-row gap-2 '>
-      {/* <button className='bg-gray-200 hover:bg-gray-300 dark:bg-slate-600 p-1 rounded-md w-14  '>Login</button> */}
-      <button className='text-slate-200 bg-orange-600 hover:bg-orange-700  rounded-lg p-2 text-sm '>Logout</button>
-      <button className='bg-gray-400 hover:bg-gray-300 dark:bg-slate-60 w-11 rounded-full'>ME</button>
-      <button className='bg-inherit  hover:bg-gray-200 dark:hover:bg-slate-600  w-8 text-center flex justify-center items-center rounded-md group'><RiSettings3Fill className='text-slate-900 dark:text-slate-200 group-hover:rotate-180 duration-200' size={25}/></button>
-      <button className='bg-inherit  hover:bg-gray-200 dark:hover:bg-slate-600  w-8 text-center flex justify-center items-center rounded-md group' onClick={toggleTheme}>
-        
-        {theme == "dark" ? (
+      <div className='ml-2'>
+        <button className='hover:scale-110 duration-200 h-10' onClick={homeNavigate} >
+          <img width={170} src={logo} />
 
-          <MdOutlineLightMode className='text-slate-900 dark:text-slate-200 ' size={25}/>
-        ) : (
-          <MdOutlineNightlight className='text-slate-900 dark:text-slate-200 ' size={25}/>
-
-        )}
-        
         </button>
-    
-     </div>
+      </div>
+      <div className='flex flex-row gap-2 '>
+        {/* <button className='bg-gray-200 hover:bg-gray-300 dark:bg-slate-600 p-1 rounded-md w-14  '>Login</button> */}
+        <button className='text-slate-200 bg-orange-600 hover:bg-orange-700  rounded-lg p-2 text-sm '>Logout</button>
+        <button className='bg-gray-400 hover:bg-gray-300 dark:bg-slate-60 w-11 rounded-full'>ME</button>
+        <button className='bg-inherit  hover:bg-gray-200 dark:hover:bg-slate-600  w-8 text-center flex justify-center items-center rounded-md group'><RiSettings3Fill className='text-slate-900 dark:text-slate-200 group-hover:rotate-180 duration-200' size={25} /></button>
+        <button className='bg-inherit  hover:bg-gray-200 dark:hover:bg-slate-600  w-8 text-center flex justify-center items-center rounded-md group' onClick={toggleTheme}>
+
+          {theme == "dark" ? (
+
+            <MdOutlineLightMode className='text-slate-900 dark:text-slate-200 ' size={25} />
+          ) : (
+            <MdOutlineNightlight className='text-slate-900 dark:text-slate-200 ' size={25} />
+
+          )}
+
+        </button>
+
+      </div>
     </nav>
   )
 }

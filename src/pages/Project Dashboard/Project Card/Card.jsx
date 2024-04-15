@@ -44,7 +44,7 @@ function Card({ project }) {
   const navigate = useNavigate()
 
   const openProjectViewHandler = () =>{
-    navigate(`/dashboard/project/${project?._id}`)
+    navigate(`/dashboard/${project?._id}`)
   }
   const openProjectSingleView = () =>{
     navigate(`project/${project?._id}`)
