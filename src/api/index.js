@@ -4,7 +4,6 @@ const API = axios.create({baseURL:'http://localhost:8080/'})
 
 
 
-
 // Authentication API's
 export const signInAPI = (formData) =>API.post('/user/login',formData)
 export const signUpAPI = (formData) =>API.post('/user/create',formData)

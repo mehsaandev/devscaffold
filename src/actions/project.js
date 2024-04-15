@@ -22,7 +22,6 @@ export const getAllProjects = async(dispatch) => {
             // setSnackbarSeverity("success");
             // setAlertText(data?.response);
             console.log(data)
-            dispatch({ type: "FETCH_ALL", payload: data });
     } catch (error) {
         console.log(error.message);
     }
@@ -98,7 +97,7 @@ export const exportComponents = (components) => async (dispatch) => {
 export const deleteProject = (projectId) => async (dispatch) => {
     // setLoading(true)
     try {
-
+        console.log("Deleting",projectId)
         await api.deleteProjectAPI(projectId);
         console.log("Deleted Permanently")
     } catch (error) {
