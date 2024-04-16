@@ -1,3 +1,4 @@
+const { mongoose } = require('mongoose')
 const Project = require('../models/projectModel.js')
 
 const getAllProjects = async (req, res) => {
@@ -144,7 +145,7 @@ const restoreFromTrash = async (req, res) => {
 const deleteProjectPermanently = async (req, res) => {
     try {
         const { id } = req.params
-
+        console.log('checking',id)
         if (!mongoose.Types.ObjectId.isValid(id)) return res.status(400).send({ message: 'Invalid Project ID' })
         const pageObj = await Project.findById(id)
         if (!pageObj) return res.status(404).json({ message: 'Project not found' })
@@ -155,7 +156,8 @@ const deleteProjectPermanently = async (req, res) => {
 
         res.status(201).json({ response: 'Project Deleted Successfully' })
     } catch (error) {
-        res.status(409).json({ message: error.message })
+        console.log(error)
+        res.json({ message: error.message })
     }
 }
 
