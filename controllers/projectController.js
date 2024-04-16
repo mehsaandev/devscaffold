@@ -38,7 +38,8 @@ const createProject = async (req, res) => {
         await newProject.save()
         res.status(201).json(newProject)
     } catch (error) {
-        res.status(409).json({ message: error.message })
+        console.log(error)
+        res.json({ message: error.message })
     }
 }
 
@@ -63,6 +64,7 @@ const updateProject = async (req, res) => {
         res.status(409).json({ message: error.message })
     }
 }
+
 const publishProject = async (req, res) => {
     try {
         const { id } = req.params // Project ID
@@ -84,6 +86,7 @@ const publishProject = async (req, res) => {
         res.status(409).json({ message: error.message })
     }
 }
+
 const unpublishProject = async (req, res) => {
     try {
         const { id } = req.params // Project ID
@@ -109,18 +112,18 @@ const unpublishProject = async (req, res) => {
 const moveToTrash = async (req, res) => {
     try {
         const { id } = req.params
-
         if (!mongoose.Types.ObjectId.isValid(id)) return res.status(400).send({ message: 'Invalid Project ID' })
-        const pageObj = await Project.findById(id)
-        if (!pageObj) return res.status(404).json({ message: 'Project not found' })
+        const projObj = await Project.findById(id)
+        if (!projObj) return res.status(404).json({ message: 'Project not found' })
 
 
-        await Page.findByIdAndUpdate(id, { isDeleted: true });
+        await Project.findByIdAndUpdate(id, { isDeleted: true });
 
 
         res.status(201).json({ response: 'Page Moved to Trash' })
     } catch (error) {
-        res.status(409).json({ message: error.message })
+        console.log(error)
+        res.json({ message: error.message })
     }
 }
 
@@ -129,17 +132,29 @@ const restoreFromTrash = async (req, res) => {
         const { id } = req.params
 
         if (!mongoose.Types.ObjectId.isValid(id)) return res.status(400).send({ message: 'Invalid Project ID' })
-        const pageObj = await Project.findById(id)
-        if (!pageObj) return res.status(404).json({ message: 'Project not found' })
+        const projObj = await Project.findById(id)
+        if (!projObj) return res.status(404).json({ message: 'Project not found' })
 
 
-        await Page.findByIdAndUpdate(id, { isDeleted: false });
+        await Project.findByIdAndUpdate(id, { isDeleted: false });
 
 
         res.status(201).json({ response: 'Page Moved to Trash' })
     } catch (error) {
-        res.status(409).json({ message: error.message })
+        console.log(error)
+        res.json({ message: error.message })
     }
+}
+
+const getTrashProjects = async (req, res) => {
+    try {
+        const projects = await Project.find({ isDeleted: true })
+        res.status(200).json(projects)
+    } catch (error) {
+        console.log(error)
+        res.json({ message: error.message })
+    }
+
 }
 
 const deleteProjectPermanently = async (req, res) => {
@@ -161,4 +176,4 @@ const deleteProjectPermanently = async (req, res) => {
     }
 }
 
-module.exports = { createProject, getAllProjects, getProject, updateProject,publishProject,unpublishProject, moveToTrash,restoreFromTrash, deleteProjectPermanently, getAllPublishedProjects }
+module.exports = { createProject, getAllProjects, getProject, updateProject,publishProject,unpublishProject, moveToTrash,restoreFromTrash, deleteProjectPermanently, getAllPublishedProjects, getTrashProjects }

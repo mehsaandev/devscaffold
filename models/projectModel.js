@@ -3,11 +3,11 @@ const mongoose  =  require("mongoose")
 const projectSchema = mongoose.Schema({
   userId: {
     type: String,
-    required: true,
+    // required: true,
   },
   name: {
     type: String,
-    required: true,
+    // required: true,
   },
   description: {
     type: String,
