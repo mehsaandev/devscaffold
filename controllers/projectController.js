@@ -68,7 +68,6 @@ const updateProject = async (req, res) => {
 const publishProject = async (req, res) => {
     try {
         const { id } = req.params // Project ID
-        const project = req.body
 
         if (!mongoose.Types.ObjectId.isValid(id)) return res.status(400).send({ message: 'Invalid Project ID' })
         const existingProjectObj = await Project.findById(id)
