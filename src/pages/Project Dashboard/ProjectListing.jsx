@@ -24,7 +24,7 @@ const ProjectListing = ({ type }) => {
         // dispatch(getAllProjects())
         getAllProjects(dispatch)
 
-    }, [openAddModal,projectsList])
+    }, [openAddModal])
 
 
     return (

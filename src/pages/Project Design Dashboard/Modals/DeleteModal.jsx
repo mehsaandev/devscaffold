@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import { deleteProject } from "../../../actions/project";
+import { deleteProject, trashProject } from "../../../actions/project";
 
 
 
@@ -20,10 +20,11 @@ const style = {
 };
 
 export default function DeleteModal({ projectId,openDel, handleCloseDel }) {
-  const deleteProjectHandler = (projectId) => {
-    deleteProject(projectId);
+  // const deleteProjectHandler = (projectId) => {
+  //   console.log("Deleting",projectId)
+  //   deleteProject(projectId);
 
-  };
+  // };
   return (
     <div>
       <Modal
@@ -41,8 +42,8 @@ export default function DeleteModal({ projectId,openDel, handleCloseDel }) {
           </Typography>
           <Typography sx={{ mt: 2 }}>
             <Button color="primary" onClick={handleCloseDel}>Cancel</Button>
-            <Button variant="contained" color="warning" onClick={deleteProjectHandler}>
-              Delete
+            <Button variant="contained" color="warning" onClick={trashProject(projectId)}>
+              Move to Trash
             </Button>
           </Typography>
         </Box>

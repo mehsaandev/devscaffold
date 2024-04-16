@@ -55,7 +55,7 @@ export default function BasicMenu(project) {
       >
         <MenuItem onClick={handleClose}>Preview</MenuItem>
         <MenuItem onClick={handleEditClose}>Edit</MenuItem>
-        <MenuItem onClick={handleOpenDel} >Delete</MenuItem>
+        <MenuItem onClick={handleOpenDel} >Move to Trash</MenuItem>
       </Menu>
       {openDel && <DeleteModal projectId={project.project._id} openDel={openDel} handleCloseDel={handleCloseDel} />}
     </div>
