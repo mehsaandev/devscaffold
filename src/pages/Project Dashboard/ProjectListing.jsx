@@ -39,8 +39,11 @@ const ProjectListing = ({ type }) => {
             {projectsList ? (
 
                 <div className='bg-inherit dark:inherit dark:bg-gray-700 p-4 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-3  '>
-                    {projectsList.map(project => (
+                    {/* {projectsList.map(project => (
                         <Card project={project} />
+                    ))} */}
+                    {projectsList.filter(project => !project.isDeleted).map(project => (
+                        <Card key={project.id} project={project} />
                     ))}
                 </div>
             ) : (

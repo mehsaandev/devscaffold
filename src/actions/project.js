@@ -111,6 +111,7 @@ export const trashProject = (projectId) => async (dispatch) => {
     try {
         console.log("Trashing",projectId)
         await api.trashProjectAPI(projectId);
+        dispatch({ type: 'PROJECT_TRASHED', payload: projectId });
         console.log("Trashed Successfully")
     } catch (error) {
         console.log(error.message);

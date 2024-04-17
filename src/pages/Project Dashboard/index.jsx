@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Header from '../common/Header/ProjectDashboardHeader'
 import ProjectListing from './ProjectListing'
+import TrashedProjectListing from './TrashedProjectListing'
 import AddModal from '../common/Modals/AddModal'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import SingleProject from './SingleProject'
@@ -42,6 +43,7 @@ const ProjectDashboard = () => {
           <Route path='/' element={<ProjectListing openAddModal={openAddModal} setOpenAddModal={setOpenAddModal} type={"Recent"} />} />
           <Route path='/projects' element={<ProjectListing openAddModal={openAddModal} setOpenAddModal={setOpenAddModal} type={"My Projects"} />} />
           <Route path='/components' element={<ProjectListing openAddModal={openAddModal} setOpenAddModal={setOpenAddModal} type={"My Components"} />} />
+          <Route path='/trash' element={<TrashedProjectListing type={"Trash"} />} />
           <Route exact path='/project/:id' element={<div className='transition-height duration-500 ease-in-out'><SingleProject /></div>} />
         </Routes>
 
