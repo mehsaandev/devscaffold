@@ -14,7 +14,7 @@ const SingleProject = () => {
 
   useEffect(() => {
     console.log(params.id)
-    dispatch(getSingleProject(params.id, setProjectObj))
+    // dispatch(getSingleProject(params.id, setProjectObj))
 
   }, [])
 

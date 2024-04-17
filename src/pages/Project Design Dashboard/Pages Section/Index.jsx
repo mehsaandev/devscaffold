@@ -99,7 +99,7 @@ function App({ activeClassHandler }) {
     useEffect(() => {
         console.log(params['*'])
         const pageId = params['*']
-        dispatch(getPage(pageId, setLoading))
+        getPage(dispatch, pageId, setLoading)
 
     }, [document.location.pathname])
 

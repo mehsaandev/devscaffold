@@ -24,7 +24,7 @@ const GrapesLayout = (loading) => {
             container: '#gjs',
             // Get the content for the canvas directly from the element
             // As an alternative we could use: `components: '<h1>Hello World Component!</h1>'`,
-            components: `${compileTree(pageObj)}`,
+            components: `${compileTree(pageObj?.content)}`,
             // components: `<h1>Hello World sdfsdfsd!</h1>`,
             fromElement: false,
             // Size of the editor
@@ -87,6 +87,7 @@ const GrapesLayout = (loading) => {
                         label: 'Button',
                         // Select the component once it's dropped
                         select: true,
+                        rendered: true,
                         // You can pass components as a JSON instead of a simple HTML string,
                         // in this case we also use a defined component type `image`
                         content: { type: 'button' },

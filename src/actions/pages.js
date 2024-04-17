@@ -53,14 +53,14 @@ export const deletePage = (pageId,handleClose) => async (dispatch) => {
     }
 };
 
-export const getPage = (pageId,setLoading) => async (dispatch) => {
+export const getPage = async (dispatch,pageId,setLoading) => {
     setLoading(true)
     try {
 
         const { data } = await api.getPageAPI(pageId);
         console.log(data)
         setLoading(false)
-        dispatch({ type: "FETCH_ONE_PAGE", payload: data?.content })
+        dispatch({ type: "FETCH_ONE_PAGE", payload: data })
     } catch (error) {
         setLoading(false)
         console.log(error.message);
