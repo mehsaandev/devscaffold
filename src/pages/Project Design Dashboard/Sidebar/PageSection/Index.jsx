@@ -47,7 +47,7 @@ const Sidebar = () => {
     useEffect(() => {   
         console.log(params.projectId)
         dispatch(getPagesOfProjectAPIHandler(params.projectId))
-    
+        
     }, [openAddModal])
     
 

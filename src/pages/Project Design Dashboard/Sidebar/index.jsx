@@ -13,7 +13,7 @@ const Menus = [
   { title: "Routing", src: <ImBooks size={20} />, path: 'routes' },
   { title: "Deploy", src: <BiSolidComponent size={20} />, path: 'components' },
   { title: "Publish", src: <BiSolidComponent size={20} />, path: 'components' },
-  { title: "Export", src: <BiSolidComponent size={20} />, path: 'components' },
+  { title: "Export", src: <BiSolidComponent size={20} />, path: 'export' },
   // { title: "Export", src: 'Explore Projects', gap: true, type: "explore", path: 'explore' }
 ];
 const Sidebar = () => {

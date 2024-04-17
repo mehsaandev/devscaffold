@@ -17,8 +17,13 @@ const ToolboxSection = ({ activeElement }) => {
   const dispatch = useDispatch()
 
   const pageObj = useSelector(state => state.pageDesign.page)
+  // const pagesObj = useSelector(state => state.page)
   // console.log(activeElement)
   // console.log(elementClass)
+
+  // console.log(pagesObj)
+
+
 
   useEffect(() => {
 
@@ -49,17 +54,22 @@ const ToolboxSection = ({ activeElement }) => {
 
   function createZipFile() {
     // Create or obtain the file's content
-    var temp1 = compileTree(pageObj);
-    var temp2 = compileTree(pageObj);
 
+    // for (let index = 0; index < pagesObj.length; index++) {
+    //   console.log(pagesObj[index])
+    // }
+
+    var temp1 = compileTree(pageObj?.content);
+
+    console.log(pageObj)
     console.log(temp1)
 
     // Create the JSZip instance
     var zip = new JSZip();
 
     // Create and add the content of the first file to the zip archive
-    var content1 = createComponent("Componnt1", temp1);
-    zip.file("Componnt1.jsx", content1);
+    var content1 = createComponent(`${pageObj?.name}`, temp1);
+    zip.file(`${pageObj?.name}.jsx`, content1);
 
     // Create and add the content of the second file to the zip archive
     // var content2 = createComponent("Button2", temp2);
@@ -112,6 +122,8 @@ const ToolboxSection = ({ activeElement }) => {
   const handleChange = (newValue) => {
     setValue(newValue);
   };
+
+  document.getElementById('blocks').innerHTML
 
 
 

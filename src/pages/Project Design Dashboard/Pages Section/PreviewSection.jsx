@@ -58,6 +58,7 @@ const elementsTree = [
 function App({ activeClassHandler }) {
   // const [columns, setColumns] = useState(columnsFromBackend);
   const pageObj = useSelector(state => state.pageDesign.page)
+  const testObj  = useSelector(state => state)
 
   const dispatch = useDispatch()
   const [componentsArray, setComponentsArray] = useState([])
@@ -81,6 +82,7 @@ function App({ activeClassHandler }) {
   }
 
   console.log((pageObj))
+  console.log(testObj)
 
 
 
@@ -94,9 +96,12 @@ function App({ activeClassHandler }) {
       //   <p className="text-2xl  text-gray-500">+</p>
       // </button>
       <>
-        <div className="canvasSection" dangerouslySetInnerHTML={{ __html: compileTree(pageObj) }}>
+      {pageObj?.content && (
+
+        <div className="canvasSection" dangerouslySetInnerHTML={{ __html: compileTree(pageObj?.content) }}>
 
         </div>
+      )}
         {/* <button className={`${color} h-16 border border-dashed flex justify-center items-center  border-black  dark:border-white w-full rounded-lg `}
         // onClick={() => setModel(true)}
         // onClick={()=>dispatch(changeColor())}

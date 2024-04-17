@@ -1,6 +1,6 @@
 import * as api from "../api";
 
-export const getAllProjects = async(dispatch) => {
+export const getAllProjects = async (dispatch) => {
     // setLoading(true)
     try {
 
@@ -16,45 +16,47 @@ export const getAllProjects = async(dispatch) => {
         // setSnackbarSeverity("success");
         // setAlertText(data?.response);
         // console.log(data)
-        dispatch({ type: "FETCH_ALL", payload: data });
-            // setSnackbar(true);
-            // setLoading(false)
-            // setSnackbarSeverity("success");
-            // setAlertText(data?.response);
-            console.log(data)
-            dispatch({ type: "FETCH_ALL", payload: data });
+        // dispatch({ type: "FETCH_ALL", payload: data });
+        // setSnackbar(true);
+        // setLoading(false)
+        // setSnackbarSeverity("success");
+        // setAlertText(data?.response);
+        console.log(data)
+        dispatch({ type: "FETCH_ALL_PROJECTS", payload: data });
     } catch (error) {
         console.log(error.message);
     }
 };
 
-export const getAllPublishedProjects = async() => {
+export const getAllPublishedProjects = async () => {
     // setLoading(true)
     try {
 
-        const  {data}  = await api.getPublishedProjectsAPI();
+        const { data } = await api.getPublishedProjectsAPI();
         // if (data?.message) {
-            // setSnackbar(true);
-            // setLoading(false)
-            // setSnackbarSeverity("error");
-            // setAlertText(data?.message);
+        // setSnackbar(true);
+        // setLoading(false)
+        // setSnackbarSeverity("error");
+        // setAlertText(data?.message);
         // } else {
-            // setSnackbar(true);
-            // setLoading(false)
-            // setSnackbarSeverity("success");
-            // setAlertText(data?.response);
-            // console.log(data)
-            // dispatch({ type: "FETCH_ALL", payload: data });
+        // setSnackbar(true);
+        // setLoading(false)
+        // setSnackbarSeverity("success");
+        // setAlertText(data?.response);
+        // console.log(data)
+        // dispatch({ type: "FETCH_ALL", payload: data });
     } catch (error) {
         console.log(error.message);
     }
 };
 
-export const getSingleProject = (id,setProjectObj) => async (dispatch) => {
+export const getSingleProject = (id) => async (dispatch) => {
     // setLoading(true)
     try {
         const { data } = await api.getSingleProjectsAPI(id);
-        setProjectObj(data)
+        console.log(data)
+        dispatch({ type: "FETCH_ONE_PROJECT", payload: data })
+        // setProjectObj(data)
     } catch (error) {
         console.log(error.message);
     }

@@ -139,7 +139,7 @@ function DesignSection() {
           defaultExpanded={['root']}
           defaultExpandIcon={<ChevronRightIcon />}
         >
-          {renderTree(pageObj[0])}
+          {renderTree(pageObj?.content[0])}
         </TreeView>
       </Box>
     </div>

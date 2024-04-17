@@ -3,9 +3,9 @@ export default (state = [], action) =>{
         case "ADD_PROJECT":
             console.log(action.payload)
             return {...state, projects: [...state.projects,  action.payload ]}
-        case "FETCH_ALL":
+        case "FETCH_ALL_PROJECTS":
             return {...state, projects:  action.payload} 
-        case "FETCH_ONE":
+        case "FETCH_ONE_PROJECT":
             console.log(action.payload)
             return {...state, project: action.payload} 
         default: 
