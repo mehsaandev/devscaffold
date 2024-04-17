@@ -4,12 +4,10 @@ import LandingPage from './pages/Landing Page'
 import Home from './pages/Home'
 import Dashboard from './pages/Project Design Dashboard/index'
 import Rout from './pages/Project Design Dashboard/Routing Section/index'
-
-
-
 import './App.css'
 import Signup from './pages/Authentication/Signup'
 import Login from './pages/Authentication/Login'
+import Forgotpassword from './pages/Authentication/Forgotpassword'
 
 
 

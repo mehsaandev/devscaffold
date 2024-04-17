@@ -10,21 +10,13 @@ const ProjectListing = ({ type }) => {
 
     const [openAddModal, setOpenAddModal] = useState(false)
     const [addProjectForm, setAddProjectForm] = useState({})
-
-
     const dispatch = useDispatch()
     const projectsList = useSelector(data => data.projects?.projects)
-
-
-
-
-
 
     const createProjectHandler = (e) => {
         e.preventDefault()
         dispatch(createProject(addProjectForm, setOpenAddModal))
     }
-
 
 
     useEffect(() => {
@@ -33,7 +25,6 @@ const ProjectListing = ({ type }) => {
         getAllProjects(dispatch)
 
     }, [openAddModal])
-
 
 
     return (
