@@ -4,10 +4,7 @@ const bodyParser =  require('body-parser')
 const cors =  require('cors')
 const path = require('path')
 const projectRoutes =  require('./routes/projects.js')
-<<<<<<< HEAD
 // const navbarRoutes =  require('./routes/navbar.js')
-=======
->>>>>>> d64a64ca459828f3b18bdf1df745075e83eaeb9b
 const userRoutes =  require('./routes/user.js')
 const componentRoutes =  require('./routes/component.js')
 const pageRoutes =  require('./routes/page.js')

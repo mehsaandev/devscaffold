@@ -1,6 +1,7 @@
 const { mongoose } = require('mongoose')
 const Project = require('../models/projectModel.js')
 
+
 const getAllProjects = async (req, res) => {
     try {
         const projects = await Project.find()
@@ -45,23 +46,23 @@ const createProject = async (req, res) => {
 
 const updateProject = async (req, res) => {
     try {
-        const { id } = req.params // Project ID
+        const { id } = req.params 
         const project = req.body
+        console.log(project)
+        console.log(id)
+
 
         if (!mongoose.Types.ObjectId.isValid(id)) return res.status(400).send({ message: 'Invalid Project ID' })
         const existingProjectObj = await Project.findById(id)
         if (!existingProjectObj) return res.status(404).json({ message: 'Project not found' })
-
-
-        const updatedProject = await Project.findByIdAndUpdate(id, project, {
+        const updatedProject = await Project.findByIdAndUpdate(id, {title: project.title}, {
             new: true,
         });
 
-        console.log(updatedProject)
-
-        res.status(201).json({ response: 'Project Updated Successfully' })
+        res.status(201).json({ response: 'Project Updated Successfully', updatedProject})
     } catch (error) {
-        res.status(409).json({ message: error.message })
+        console.log(error)
+        res.json({ message: error.message })
     }
 }
 
@@ -129,16 +130,11 @@ const moveToTrash = async (req, res) => {
 const restoreFromTrash = async (req, res) => {
     try {
         const { id } = req.params
-
         if (!mongoose.Types.ObjectId.isValid(id)) return res.status(400).send({ message: 'Invalid Project ID' })
         const projObj = await Project.findById(id)
         if (!projObj) return res.status(404).json({ message: 'Project not found' })
-
-
         await Project.findByIdAndUpdate(id, { isDeleted: false });
-
-
-        res.status(201).json({ response: 'Page Moved to Trash' })
+        res.status(201).json({ response: 'Project Restored! ' })
     } catch (error) {
         console.log(error)
         res.json({ message: error.message })
