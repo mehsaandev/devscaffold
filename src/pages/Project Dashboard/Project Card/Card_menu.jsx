@@ -66,7 +66,7 @@ export default function BasicMenu(project) {
         <MenuItem onClick={handleOpenDel} >Move to Trash</MenuItem>
       </Menu>
       {openDel && <DeleteModal projectId={project.project._id} openDel={openDel} handleCloseDel={handleCloseDel} />}
-      {openEdit && <EditProjectModal projectId={project.project._id} openEdit={openEdit} handleCloseEdit={handleCloseEdit} />}
+      {openEdit && <EditProjectModal project={project} openEdit={openEdit} handleCloseEdit={handleCloseEdit} />}
     </div>
   );
 }

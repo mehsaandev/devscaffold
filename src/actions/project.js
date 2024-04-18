@@ -74,10 +74,12 @@ export const createProject = (formData, setOpenAddModal) => async (dispatch) => 
     }
 };
 
+
+
+
 export const updateProject = (formData, projectId) => async (dispatch) => {
     // setLoading(true)
     try {
-
         const { data } = await api.updateProjectAPI(projectId, formData);
         console.log(data)
     } catch (error) {
@@ -113,7 +115,7 @@ export const trashProject = (projectId) => async (dispatch) => {
     try {
         console.log("Trashing",projectId)
         await api.trashProjectAPI(projectId);
-        dispatch({ type: 'PROJECT_TRASHED', payload: projectId });
+        // dispatch({ type: 'PROJECT_TRASHED', payload: projectId });
         console.log("Trashed Successfully")
     } catch (error) {
         console.log(error.message);

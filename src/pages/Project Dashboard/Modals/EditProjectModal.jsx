@@ -3,13 +3,13 @@ import Backdrop from '@mui/material/Backdrop';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
-// import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { FormControl } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { updateProject } from '../../../actions/project';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 const style = {
     position: 'absolute',
@@ -18,24 +18,28 @@ const style = {
     transform: 'translate(-50%, -50%)',
     width: 400,
     bgcolor: 'background.paper',
-    border: '2px solid #000',
     boxShadow: 24,
     p: 4,
 };
 
-export default function EditProjectModal({ projectId, openEdit, handleCloseEdit }) {
+export default function EditProjectModal({ project, openEdit, handleCloseEdit }) {
     const [open, setOpen] = useState(false);
     const [projectName, setProjectName] = React.useState('');
     const handleOpen = () => setOpen(true);
+    const dispatch = useDispatch();
 
-    const handleSubmit = async () => {
+    const handleSubmit = () => {
         try {
-            const updatedProject = { projectName }; // Prepare project object with updated project name
-            await updateProject(projectId, {updatedProject}); // Call the backend API to update the project
-            handleCloseEdit(); // Close the modal after submitting
+            const updatedProject = {
+                ...project,
+                title: projectName, 
+            };
+            console.log(projectName);
+            dispatch(updateProject(project.project._id, updatedProject))
+            // console.log("hello");
+            handleCloseEdit(); 
         } catch (error) {
             console.error('Error updating project:', error);
-            // Handle error (e.g., show error message to the user)
         }
     };
 

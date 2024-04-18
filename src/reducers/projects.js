@@ -11,7 +11,8 @@ export default (state = [], action) => {
             return state.map(project =>
                 project.id === action.payload ? { ...project, isDeleted: true } : project
             );
-            return state;
+        case "PROJECT_UPDATED":
+            return state.map((project) => project.id === action.payload.id ? action.payload : project);
         default:
             return state
 
