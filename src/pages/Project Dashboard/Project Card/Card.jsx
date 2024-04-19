@@ -39,7 +39,7 @@ const projects = [
 ]
 
 
-function Card({ project }) {
+function Card({ setOpenDel,openDel,project }) {
 
   const navigate = useNavigate()
 
@@ -80,7 +80,7 @@ function Card({ project }) {
         <div className='flex justify-between gap-2'>
           <button className='dark:text-slate-200 border-blue-800 border-2 bg-transparent hover:border-blue-900  rounded-lg p-2 text-sm ' onClick={openProjectViewHandler} >Continue</button>
           {/* <button className='rounded-full bg-slate-300 dark:bg-gray-800 dark:hover:bg-gray-700 hover:bg-slate-400'><CiMenuKebab /></button> */}
-          <BasicMenu project={project} />
+          <BasicMenu openDel={openDel} setOpenDel={setOpenDel} project={project} />
         </div>
       </div>
     </div>

@@ -63,7 +63,9 @@ const Sidebar = () => {
                 sideBarItemsList?.activeIndex === index && Menu.type != "explore"  && "bg-slate-200 dark:bg-light-white "
               } ${Menu.type === "explore" && " flex justify-center font-bold text-slate-200 bg-blue-800 "}`}
 
-              onClick={() =>changeTabHandler(index,Menu?.path)}
+              onClick={() =>{
+                changeTabHandler(index,Menu?.path)}
+              }
             >
                 {Menu.type =="explore" ? !open ?  <BiSearchAlt size={18}/> : Menu.src : Menu.src  }
                 {Menu.type != 'explore' && (

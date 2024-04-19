@@ -110,12 +110,13 @@ export const deleteProject = (projectId) => async (dispatch) => {
     }
 };
 
-export const trashProject = (projectId) => async (dispatch) => {
+export const trashProject = (projectId,handleCloseDel) => async (dispatch) => {
     // setLoading(true)
     try {
         console.log("Trashing",projectId)
         await api.trashProjectAPI(projectId);
         // dispatch({ type: 'PROJECT_TRASHED', payload: projectId });
+        handleCloseDel()
         console.log("Trashed Successfully")
     } catch (error) {
         console.log(error.message);
