@@ -9,6 +9,7 @@ import Header from '../common/Header/ProjectDashboardHeader'
 const ProjectListing = ({ type }) => {
 
     const [openAddModal, setOpenAddModal] = useState(false)
+    const [openDel, setOpenDel] = useState(false);
     const [addProjectForm, setAddProjectForm] = useState({})
     const dispatch = useDispatch()
     const projectsList = useSelector(data => data.projects?.projects)
@@ -26,7 +27,7 @@ const ProjectListing = ({ type }) => {
         // dispatch(getAllProjects())
         getAllProjects(dispatch)
 
-    }, [openAddModal])
+    }, [openAddModal, openDel])
 
 
     return (
@@ -45,7 +46,7 @@ const ProjectListing = ({ type }) => {
                         <Card project={project} />
                     ))} */}
                     {projectsList.filter(project => !project.isDeleted).map(project => (
-                        <Card key={project.id} project={project} />
+                        <Card key={project.id} project={project} openDel={openDel} setOpenDel={setOpenDel}/>
                     ))}
                 </div>
             ) : (

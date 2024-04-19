@@ -6,8 +6,11 @@ import {ImBooks} from 'react-icons/im'
 import {BsWindowFullscreen} from 'react-icons/bs' 
 import {TbComponents} from 'react-icons/tb' 
 import Footer from '../Landing Page/footer.jsx'
+import { useNavigate } from 'react-router-dom'
 
 const LandingPage = () => {
+
+  const navigate = useNavigate()
   return (
     <div className=' dark:bg-slate-700 dark:text-slate-200  '>
     <Navbar/>
@@ -19,8 +22,8 @@ const LandingPage = () => {
     {'< The No-Code System for developing react application with drag and drop selection / >'}
     </div>
     <div className='flex flex-row p-10 justify-center	'>
-    <button className='bg-sky-500 outline outline-sky-500 rounded-l-xl m-3 hover:text-sky-500 hover:bg-white hover:scale-110 text-white p-3 font-poppins  w-44'>Get Started</button>
-    <button className='bg-white outline outline-sky-500 outline-offset-0 rounded-r-xl hover:bg-sky-500 hover:text-white hover:scale-110 font-poppins m-3 text-sky-500 p-3 w-44'>Explore</button>
+    <button className='bg-sky-500 outline outline-sky-500 rounded-xl m-3 hover:text-sky-500 hover:bg-white hover:scale-110 text-white p-3 font-poppins  w-44' onClick={()=>navigate('/login')}>Get Started</button>
+    {/* <button className='bg-white outline outline-sky-500 outline-offset-0 rounded-r-xl hover:bg-sky-500 hover:text-white hover:scale-110 font-poppins m-3 text-sky-500 p-3 w-44' onClick={()}>Explore</button> */}
     </div>
     <div className='w-auto p-10'>
     <img  src={land}/>

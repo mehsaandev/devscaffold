@@ -35,7 +35,7 @@ export default function EditProjectModal({ project, openEdit, handleCloseEdit })
                 title: projectName, 
             };
             console.log(projectName);
-            dispatch(updateProject(project.project._id, updatedProject))
+            dispatch(updateProject(project?._id, updatedProject))
             // console.log("hello");
             handleCloseEdit(); 
         } catch (error) {

@@ -8,9 +8,9 @@ import DeleteModal from '../../Project Design Dashboard/Modals/DeleteModal';
 import EditProjectModal from '../Modals/EditProjectModal';
 
 
-export default function BasicMenu(project) {
+export default function BasicMenu({setOpenDel,openDel,project}) {
   const navigate = useNavigate()
-  const [openDel, setOpenDel] = useState(false);
+  // const [openDel, setOpenDel] = useState(false);
   const [openEdit, setOpenEdit] = useState(false);
   const handleOpenDel = () => {
     setOpenDel(true)
@@ -41,6 +41,8 @@ export default function BasicMenu(project) {
     setAnchorEl(null);
   };
 
+
+  console.log(project)
   return (
     <div>
       <button
@@ -65,7 +67,7 @@ export default function BasicMenu(project) {
         <MenuItem onClick={handleOpenEdit}>Edit</MenuItem>
         <MenuItem onClick={handleOpenDel} >Move to Trash</MenuItem>
       </Menu>
-      {openDel && <DeleteModal projectId={project.project._id} openDel={openDel} handleCloseDel={handleCloseDel} />}
+      {openDel && <DeleteModal projectId={project?._id} openDel={openDel} handleCloseDel={handleCloseDel} />}
       {openEdit && <EditProjectModal project={project} openEdit={openEdit} handleCloseEdit={handleCloseEdit} />}
     </div>
   );

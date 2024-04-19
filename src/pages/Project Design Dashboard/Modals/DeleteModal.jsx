@@ -19,11 +19,6 @@ const style = {
 };
 
 export default function DeleteModal({ projectId,openDel, handleCloseDel }) {
-  // const deleteProjectHandler = (projectId) => {
-  //   console.log("Deleting",projectId)
-  //   deleteProject(projectId);
-
-  // };
   return (
     <div>
       <Modal
@@ -34,14 +29,14 @@ export default function DeleteModal({ projectId,openDel, handleCloseDel }) {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
+            Delete this project?
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+            This project will be moved to trash.
           </Typography>
           <Typography sx={{ mt: 2 }}>
             <Button color="primary" onClick={handleCloseDel}>Cancel</Button>
-            <Button variant="contained" color="warning" onClick={trashProject(projectId)}>
+            <Button variant="contained" color="warning" onClick={trashProject(projectId,handleCloseDel)}>
               Move to Trash
             </Button>
           </Typography>
