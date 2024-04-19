@@ -11,6 +11,7 @@ const TrashedProjectListing = ({ type }) => {
     // const [addProjectForm, setAddProjectForm] = useState({})
     const dispatch = useDispatch()
     const projectsList = useSelector(data => data.projects?.projects)
+    const [loading, setLoading] = useState(false)
 
     // const createProjectHandler = (e) => {
     //     e.preventDefault()
@@ -19,10 +20,10 @@ const TrashedProjectListing = ({ type }) => {
 
     useEffect(() => {
 
-        // dispatch(getAllProjects())
-        getTrashProjects(dispatch)
+        getAllProjects(dispatch)
+        // getTrashProjects(dispatch,setLoading)
 
-    })
+    },[])
 
 
     return (

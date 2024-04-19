@@ -15,7 +15,9 @@ const ProjectListing = ({ type }) => {
 
     const createProjectHandler = (e) => {
         e.preventDefault()
-        dispatch(createProject(addProjectForm, setOpenAddModal))
+        const profile = JSON.parse(localStorage.getItem('devscaffold_profile'))
+        // console.log(profile)
+        dispatch(createProject({...addProjectForm,userId: profile?.email}, setOpenAddModal))
     }
 
 

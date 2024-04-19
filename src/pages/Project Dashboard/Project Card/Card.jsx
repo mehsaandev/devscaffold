@@ -47,7 +47,7 @@ function Card({ project }) {
     navigate(`/dashboard/${project?._id}`)
   }
   const openProjectSingleView = () =>{
-    navigate(`project/${project?._id}`)
+    navigate(`/dashboard/${project?._id}`)
   }
   return (
 
@@ -72,13 +72,13 @@ function Card({ project }) {
           {project?.description}
         </p>
       </div>
-      <div class="px-6 pt-4 pb-4 flex justify-between">
+      <div class="px-6 pt-4 pb-4 flex items-center justify-between">
         {/* <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
           <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span> */}
-        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">2 miniutes ago</span>
+        {/* <span class="inline-block  rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"></span> */}
 
-        <div className='flex justify-between gap-2'>
           <button className='dark:text-slate-200 border-blue-800 border-2 bg-transparent hover:border-blue-900  rounded-lg p-2 text-sm ' onClick={openProjectViewHandler} >Continue</button>
+        <div className='flex justify-between gap-2'>
           {/* <button className='rounded-full bg-slate-300 dark:bg-gray-800 dark:hover:bg-gray-700 hover:bg-slate-400'><CiMenuKebab /></button> */}
           <BasicMenu project={project} />
         </div>

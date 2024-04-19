@@ -6,7 +6,7 @@ const API = axios.create({baseURL:'http://localhost:8080/'})
 
 // Authentication API's
 export const signInAPI = (formData) =>API.post('/user/login',formData)
-export const signUpAPI = (formData) =>API.post('/user/create',formData)
+export const signUpAPI = (formData) =>API.post('/user/register',formData)
 
 
 
@@ -45,6 +45,7 @@ export const restoreComponentAPI = (compId) =>API.put(`/component/restore/${comp
 
 // route API's
 export const getAllRoutesAPI = () =>API.get('/routes/all')
+export const getRoutesOfProjectAPI = (projectId) =>API.get(`/routes/getRoutesOfProject/${projectId}`)
 export const getSingleRouteAPI = (routeId) =>API.get(`/routes/${routeId}`)
 export const createRouteAPI = (formData) =>API.post('/routes/create',formData)
 export const updateRouteAPI = (updatedRouteData,routeId) =>API.put(`/routes/update/${routeId}`,updatedRouteData)

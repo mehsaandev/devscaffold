@@ -102,7 +102,7 @@ const ToolboxSection = ({ activeElement }) => {
     // console.log(html)
     // document.getElementById("gjs").innerHTML = html
     // dispatch(updatePage(updatedJson))
-    const jsonOb   = compileJSON(html)
+    const jsonOb = compileJSON(html)
     const newHtml = generateHTML(jsonOb)
     console.log(newHtml)
 
@@ -123,23 +123,39 @@ const ToolboxSection = ({ activeElement }) => {
     setValue(newValue);
   };
 
-  document.getElementById('blocks').innerHTML
+  // document.getElementById('blocks').innerHTML
+
+  useEffect(() => {
+    const blocks = document?.getElementById('blocks')
+    const stylesContainer = document?.getElementById('styles-container')
+    console.log(blocks)
+    const blockChild = blocks?.getElementsByTagName('div')
+    const stylesContainerChild = stylesContainer?.getElementsByTagName('div')
+    if (blockChild.length > 0)
+      blockChild[0].style.display = 'none'
+    if (stylesContainerChild.length > 0)
+      stylesContainerChild[0].style.display = 'none'
+
+
+
+
+  }, [])
 
 
 
   return (
     <div className='m-2 p-5 bg-white flex flex-col gap-5 h-full '>
-      <ButtonGroup variant="contained" aria-label="Basic button group" color='inherit' style={{ boxShadow: 'none' }} 
-      className='flex w-full justify-around'
+      <ButtonGroup variant="contained" aria-label="Basic button group" color='inherit' style={{ boxShadow: 'none' }}
+        className='flex w-full justify-around'
       >
-        <IconButton aria-label="Blocks"   onClick={() => handleChange(1)} >
-          <LayersIcon style={{fontSize: '30px'}}  />
+        <IconButton aria-label="Blocks" onClick={() => handleChange(1)} >
+          <LayersIcon style={{ fontSize: '30px' }} />
         </IconButton>
         <IconButton aria-label="Style" onClick={() => handleChange(2)} >
-          <BrushIcon  style={{fontSize: '30px'}}  />
+          <BrushIcon style={{ fontSize: '30px' }} />
         </IconButton>
         <IconButton aria-label="Style" onClick={() => handleChange(3)} >
-          <SystemUpdateAltIcon style={{fontSize: '30px'}} />
+          <SystemUpdateAltIcon style={{ fontSize: '30px' }} />
         </IconButton>
       </ButtonGroup>
       {/* <Box sx={{ bgcolor: 'ButtonShadow' }}>
@@ -149,15 +165,15 @@ const ToolboxSection = ({ activeElement }) => {
         <Tab icon={<DashboardIcon />} aria-label="phone" value={2} />
       </Tabs>
       </Box> */}
-      
-      
+
+
       <div id="blocks" className={`${value != 1 && 'hidden'}`}></div>
       <div id="styles-container" className={`${value != 2 && 'hidden'}`}></div>
       {value === 3 && (
-      <>
-      {/* <Button variant="contained" onClick={updateClassHandler}>Save Project</Button> */}
-      <Button variant="contained" onClick={createZipFile}>Export Component</Button>
-      </>
+        <>
+          {/* <Button variant="contained" onClick={updateClassHandler}>Save Project</Button> */}
+          <Button variant="contained" onClick={createZipFile}>Export Component</Button>
+        </>
       )}
 
 

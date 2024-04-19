@@ -9,7 +9,7 @@ import AddIcon from '@mui/icons-material/Add';
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 
 import { useNavigate, useParams } from "react-router-dom";
-import { Avatar, IconButton } from "@mui/material";
+import { Avatar, IconButton, Skeleton } from "@mui/material";
 import { Delete } from "@mui/icons-material";
 import PageItem from "./PageItem";
 import AddModal from "./Modals/AddModal";
@@ -22,6 +22,7 @@ const Sidebar = () => {
 
     const [openAddModal, setOpenAddModal] = useState({ delete: false, add: false, edit: false, info: false })
     const [selectedPage, setSelectedPage] = useState(null)
+    const [loading, setLoading] = useState(false)
 
     const handleAddModalClose = () => setOpenAddModal({ delete: false, add: false, edit: false, info: false })
     const handleAddModalOpen = () => setOpenAddModal({ delete: false, add: true, edit: false, info: false })
@@ -46,7 +47,7 @@ const Sidebar = () => {
         console.log(pagesArr)
     useEffect(() => {   
         console.log(params.projectId)
-        dispatch(getPagesOfProjectAPIHandler(params.projectId))
+        dispatch(getPagesOfProjectAPIHandler(params.projectId,setLoading))
         
     }, [openAddModal])
     
@@ -84,12 +85,15 @@ const Sidebar = () => {
                 </div>
                 {/* <div className="h-[1px] mt-1 mb-4 bg-gray-400" /> */}
                 <div className="border-x border-2 border-slate-100  dark:border-gray-700 p-1">
-                    {pagesArr?.map((page) => (
+                    { loading  == false ?  pagesArr?.map((page) => (
                         <>
                             <PageItem handleDeleteModalOpen={handleDeleteModalOpen} handleEditModalOpen={handleEditModalOpen} pageData={page}/>
                             <div className="h-[1px]  text-center items-center flex bg-gray-200 dark:bg-gray-700" />
                         </>
-                    ))}
+                    )) : (
+                        <Skeleton variant="rectangular" className="rounded-sm" animation="pulse"  height={20} />
+
+                    )}
                 </div>
 
             </div>

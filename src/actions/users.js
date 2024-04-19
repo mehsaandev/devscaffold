@@ -2,8 +2,8 @@ import * as api from "../api";
 
 
 
-export const signIn = (formData) => async (dispatch) => {
-    // setLoading(true)
+export const signIn = (formData,navigate,setLoading) => async (dispatch) => {
+    setLoading(true)
     try {
 
         const { data } = await api.signInAPI(formData);
@@ -14,11 +14,12 @@ export const signIn = (formData) => async (dispatch) => {
             // setAlertText(data?.message);
         // } else {
             // setSnackbar(true);
-            // setLoading(false)
             // setSnackbarSeverity("success");
             // setAlertText(data?.response);
+            setLoading(false)
             console.log(data)
-            // dispatch({ type: "AUTH", data });
+            dispatch({ type: "AUTH", payload: data });
+            navigate("/home")
             // setTimeout(function () {
             //   history("/home");
             // }, 500);
@@ -26,7 +27,7 @@ export const signIn = (formData) => async (dispatch) => {
         // }
     } catch (error) {
         //   setSnackbar(true);
-        //   setLoading(false)
+          setLoading(false)
         //   setSnackbarSeverity("error");
         //   setAlertText("Something went wrong");
         console.log(error.message);
@@ -48,7 +49,7 @@ export const signUp = (formData) => async (dispatch) => {
             // setSnackbarSeverity("success");
             // setAlertText(data?.response);
             console.log(data)
-            // dispatch({ type: "AUTH", data });
+            dispatch({ type: "AUTH", payload:data });
             // setTimeout(function () {
             //   history("/home");
             // }, 500);

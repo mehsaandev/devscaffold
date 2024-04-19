@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Routes,Route } from 'react-router-dom'
+import { Routes,Route, Navigate } from 'react-router-dom'
 import LandingPage from './pages/Landing Page'
 import Home from './pages/Home'
 import Dashboard from './pages/Project Design Dashboard/index'
@@ -19,14 +19,31 @@ function App() {
       setTheme(theme == "dark" ? "" : "dark")
     }
 
+    
+
+    const AuthWrapper = (props) => {
+      const token = localStorage.getItem("devscaffold_token");
+      return <>{token != null ? props.children : <Navigate to={"/login"} />}</>;
+    };
+
   return (
     <div className= {`${theme}`}>
       <Routes>
         <Route path='/' element={<LandingPage  />} />
-        <Route path='/route/*' element={<Rout  />} />
+        {/* <Route path='/route/*' element={<Rout  />} /> */}
         {/* <Route path='/dashboard/*' element={<Home toggleTheme={toggleTheme} theme={theme} />} /> */}
-        <Route path='/home/*' element={<Home toggleTheme={toggleTheme} theme={theme} />} />
-        <Route path='/dashboard/:projectId/*' element={<Dashboard toggleTheme={toggleTheme} theme={theme} />} />
+        <Route path='/home/*' element={
+        <AuthWrapper>
+          <Home toggleTheme={toggleTheme} theme={theme} />
+        </AuthWrapper>
+        
+        } />
+        
+        <Route path='/dashboard/:projectId/*' element={
+          <AuthWrapper>
+            <Dashboard toggleTheme={toggleTheme} theme={theme} />
+          </AuthWrapper>
+        } />
         <Route path='/login/*' element={<Login  />} />
         <Route path='/register/*' element={<Signup />} />
         {/* <Route path='/forgot-password/*' element={<Forgotpassword />} /> */}

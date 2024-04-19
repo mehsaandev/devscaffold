@@ -13,7 +13,7 @@ export const updatePage = (formData, pageId) => async (dispatch) => {
     }
 };
 
-export const createPageAPIHandler = (formData, setFormSubmissionProperties,handleClose) => async (dispatch) => {
+export const createPageAPIHandler = (formData, setFormSubmissionProperties, handleClose) => async (dispatch) => {
     // setLoading(true)
     setFormSubmissionProperties({ loading: true, error: null, success: null })
     try {
@@ -40,7 +40,7 @@ export const renamePage = (formData, pageId) => async (dispatch) => {
     }
 };
 
-export const deletePage = (pageId,handleClose) => async (dispatch) => {
+export const deletePage = (pageId, handleClose) => async (dispatch) => {
     // setLoading(true)
     try {
 
@@ -53,7 +53,7 @@ export const deletePage = (pageId,handleClose) => async (dispatch) => {
     }
 };
 
-export const getPage = async (dispatch,pageId,setLoading) => {
+export const getPage = async (dispatch, pageId, setLoading) => {
     setLoading(true)
     try {
 
@@ -67,14 +67,27 @@ export const getPage = async (dispatch,pageId,setLoading) => {
     }
 };
 
-export const getPagesOfProjectAPIHandler = (projectId) => async (dispatch) => {
-    // setLoading(true)
+export const getPageNameById = async (pageId) => {
+    try {
+
+        const { data } = await api.getPageAPI(pageId);
+        console.log(data)
+        return data?.name
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
+export const getPagesOfProjectAPIHandler = (projectId, setLoading) => async (dispatch) => {
+    setLoading(true)
     try {
 
         const { data } = await api.getPagesOfProjectAPI(projectId);
         dispatch({ type: "FETCH_ALL_PAGES", payload: data })
+        setLoading(false)
         console.log(data)
     } catch (error) {
+        setLoading(false)
         console.log(error.message);
     }
 };

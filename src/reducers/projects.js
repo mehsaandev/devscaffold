@@ -6,7 +6,7 @@ export default (state = [], action) => {
         case "FETCH_ALL_PROJECTS":
             return {...state, projects:  action.payload} 
         case "FETCH_ONE_PROJECT":
-            return { ...state, projects: [...state.projects, action.payload] }
+            return { project:  action.payload }
         case 'PROJECT_TRASHED':
             return state.map(project =>
                 project.id === action.payload ? { ...project, isDeleted: true } : project

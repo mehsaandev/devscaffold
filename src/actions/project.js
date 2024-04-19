@@ -104,6 +104,7 @@ export const deleteProject = (projectId) => async (dispatch) => {
     try {
         console.log("Deleting",projectId)
         await api.deleteProjectAPI(projectId);
+        // getAllProjects(dispatch)
         console.log("Deleted Permanently")
     } catch (error) {
         console.log(error.message);
@@ -138,6 +139,7 @@ export const getTrashProjects = async() => {
     try {
 
         const  {data}  = await api.getTrashProjectsAPI();
+        console.log(data)
         // if (data?.message) {
             // setSnackbar(true);
             // setLoading(false)
@@ -155,24 +157,28 @@ export const getTrashProjects = async() => {
     }
 };
 
-export const publishProject = (projectId) => async (dispatch) => {
-    // setLoading(true)
+export const publishProject = (projectId,setLoading) => async (dispatch) => {
+    setLoading(true)
     try {
 
         await api.publishProjectAPI(projectId);
+        setLoading(false)
         console.log("Published Successfully")
     } catch (error) {
+        setLoading(false)
         console.log(error.message);
     }
 };
 
-export const unpublishProject = (projectId) => async (dispatch) => {
-    // setLoading(true)
+export const unpublishProject = (projectId,setLoading) => async (dispatch) => {
+    setLoading(true)
     try {
 
         await api.unPublishProjectAPI(projectId);
+        setLoading(false)
         console.log("Unpublished Successfully")
     } catch (error) {
+        setLoading(false)
         console.log(error.message);
     }
 };

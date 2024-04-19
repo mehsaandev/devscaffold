@@ -6,6 +6,7 @@ import Navbar from "../Navbar";
 import ToolboxSection from "./Pages Section/Toolbox Section/ToolboxSection";
 import PagesSection from "./Sidebar/PageSection/Index";
 import RoutingSection from './Routing Section/index'
+import PublishProject from './Publish Section/index'
 import ExportSection from './Export Section/Index'
 import AddModal from "./Modals/AddModal";
 import { Navigate, Route, Routes } from "react-router-dom";
@@ -39,10 +40,8 @@ const ProjectDesignDashboard = ({ toggleTheme, theme }) => {
                     {/* <PagesSection activeClassHandler={activeClassHandler} /> */}
                     <Navigate to={'page'} />
                   </>
-
                 }
               />
-
               {/* <Route path="/page" element={
 
             } /> */}
@@ -66,6 +65,9 @@ const ProjectDesignDashboard = ({ toggleTheme, theme }) => {
               } />
               <Route path="/export" element={
                 <ExportSection />
+              } />
+              <Route path="/publish" element={
+                <PublishProject />
               } />
             </Routes>
 

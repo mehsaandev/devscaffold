@@ -59,8 +59,9 @@ function TrashedCard({ project }) {
         <p class="font-bold text-xl mb-2 " style={{width:'max-content'}} >{project?.title}</p>
         </div>
         <div className='px-5 py-2 flex justify-between gap-32'>
-          <button className='dark:text-slate-200 border-blue-800 border-2 bg-transparent hover:border-blue-900  rounded-lg p-2 text-sm ' onClick={restoreProject(project._id)} >Restore</button>
-          <Button variant="contained" color="info" onClick={deleteProject(project._id)}>Delete</Button>
+          {/* <button className='dark:text-slate-200 border-blue-800 border-2 bg-transparent hover:border-blue-900  rounded-lg p-2 text-sm ' onClick={restoreProject(project._id)} >Restore</button> */}
+          <Button variant='outlined' color="info" className='dark:text-slate-200 border-blue-800 border-2 bg-transparent hover:border-blue-900  rounded-lg p-2 text-sm ' onClick={restoreProject(project._id)} >Restore</Button>
+          <Button variant="contained" color="error" onClick={deleteProject(project._id)}>Delete</Button>
           {/* <button className='dark:text-slate-200 border-blue-800 border-2 bg-transparent hover:border-blue-900  rounded-lg p-2 text-sm ' onClick={deleteProjectHandler} >Delete</button> */}
         </div>
        </div>

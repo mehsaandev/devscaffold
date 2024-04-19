@@ -61,7 +61,7 @@ export default function BasicMenu(project) {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem onClick={handleClose}>Preview</MenuItem>
+        {/* <MenuItem onClick={handleClose}>Preview</MenuItem> */}
         <MenuItem onClick={handleOpenEdit}>Edit</MenuItem>
         <MenuItem onClick={handleOpenDel} >Move to Trash</MenuItem>
       </Menu>

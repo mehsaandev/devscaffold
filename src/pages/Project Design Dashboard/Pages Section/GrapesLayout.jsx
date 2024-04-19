@@ -11,11 +11,16 @@ const GrapesLayout = (loading) => {
     const pageObj = useSelector(state => state.pageDesign.page)
 
     useEffect(() => {
-        getPage()
+        // getPage()
     }, [])
 
 
     console.log(pageObj)
+
+    // console.log(document.getElementsByClassName('gjs-frame-wrapper'))
+    // console.log(document.getElementsByTagName('iframe')[0])
+    // console.log(document.getElementById('gjs').getElementsByTagName('div')[0])
+    // console.log(document.getElementsByClassName('gjs-frames')[0])
 
 
     useEffect(() => {

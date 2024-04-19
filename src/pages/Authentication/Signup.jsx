@@ -8,7 +8,7 @@ import { signUp } from "../../actions/users";
 
 export default function Signup() {
 
-  const [formData, setFormData] = useState({fname:'',lname:'',email:'',password:'',confirmPassword:''})
+  const [formData, setFormData] = useState({firstName:'',lastName:'',email:'',password:'',confirmPassword:''})
   const dispatch = useDispatch();
 
   const registerHandler = (e) =>{
@@ -50,7 +50,7 @@ export default function Signup() {
                     // {...register("fname", {
                     //   required: "first name is required",
                     // })}
-                    onChange={(e)=>setFormData({...formData,fname:e.target.value})}
+                    onChange={(e)=>setFormData({...formData,firstName:e.target.value})}
                     type="fname"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
@@ -70,7 +70,7 @@ export default function Signup() {
                     //   required: "last name is required",
                     // })}
                     type="lname"
-                    onChange={(e)=>setFormData({...formData,lname:e.target.value})}
+                    onChange={(e)=>setFormData({...formData,lastName:e.target.value})}
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>

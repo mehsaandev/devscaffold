@@ -11,8 +11,8 @@ import { useNavigate } from "react-router-dom";
 const Menus = [
   { title: "Pages", src: <PagesIcon size={20} />, path: 'page' },
   { title: "Routing", src: <ImBooks size={20} />, path: 'routes' },
-  { title: "Deploy", src: <BiSolidComponent size={20} />, path: 'components' },
-  { title: "Publish", src: <BiSolidComponent size={20} />, path: 'components' },
+  { title: "Deploy", src: <BiSolidComponent size={20} />, path: 'deploy' },
+  { title: "Publish", src: <BiSolidComponent size={20} />, path: 'publish' },
   { title: "Export", src: <BiSolidComponent size={20} />, path: 'export' },
   // { title: "Export", src: 'Explore Projects', gap: true, type: "explore", path: 'explore' }
 ];

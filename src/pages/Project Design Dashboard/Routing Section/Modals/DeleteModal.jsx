@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { TextField } from "@mui/material";
 import { useState } from "react";
-import { deletePage } from "../../../../../actions/pages";
+import { deleteRouteAPIHandler } from "../../../../actions/route";
 import { useDispatch } from "react-redux";
 
 const style = {
@@ -25,13 +25,14 @@ const style = {
     pb: 2,
 };
 
-export default function DeleteModal({ open, handleClose,selectedPage }) {
+export default function DeleteModal({ open, handleClose,selectedRoute }) {
     const [name, setName] = useState("")
     const dispatch = useDispatch()
 
 
-    const deletePageHandler = () => {
-        dispatch(deletePage(selectedPage?._id,handleClose))
+    const deleteRouteHandler = () => {
+        console.log(selectedRoute)
+        dispatch(deleteRouteAPIHandler(selectedRoute?.id,handleClose))
     }
 
 
@@ -49,27 +50,26 @@ export default function DeleteModal({ open, handleClose,selectedPage }) {
 
                         <div>
                             <Typography id="modal-modal-title" variant="h6" component="h2">
-                                Delete Page
+                                Delete Route
                             </Typography>
                         </div>
                         <div>
 
                             <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                                 <div>
-                                    <p className='font-extralight'>Are you sure you want to <span className="text-red-600">Permenantly Delete</span> this page?</p>
+                                    <p className='font-extralight'>Are you sure you want to <span className="text-red-600">Permenantly Delete</span> this route?</p>
                                     <ol className="my-5 list-disc">
-                                        <li>Your Page  will be removed from the projects</li>
-                                        <li>All the corresponding routes of this page will be removed.</li>
+                                        <li>Your route will be removed from the projects</li>
                                     </ol>
 
-                                    <p>Kindly Enter the name of the Page:</p>
+                                    <p>Kindly Enter the name of the Route:</p>
                                     <TextField  fullWidth type='text' onChange={(e)=>setName(e.target.value)} />
                                 </div>
                             </Typography>
                         </div>
                         <div className="mt-4 mb-0 justify-end gap-3 flex">
                             <Button variant="contained" color='inherit' >Cancel</Button>
-                            <Button variant="contained" color='error'  disabled={name === selectedPage?.name ? false :true} onClick={deletePageHandler}>Delete Page</Button>
+                            <Button variant="contained" color='error'  disabled={name === selectedRoute?.name ? false :true} onClick={deleteRouteHandler}>Delete Page</Button>
 
                         </div>
                     </div>
