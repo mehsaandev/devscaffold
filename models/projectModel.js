@@ -3,9 +3,9 @@ const mongoose  =  require("mongoose")
 const projectSchema = mongoose.Schema({
   userId: {
     type: String,
-    required: true,
+    // required: true,
   },
-  name: {
+  title: {
     type: String,
     required: true,
   },
