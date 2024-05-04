@@ -63,7 +63,7 @@ const login = async (req, res) => {
       );
         res
           .status(200)
-          .json({ result: existingUser, token, response: "Login Successfull" });
+          .json({ result: {firstName: existingUser?.firstName, lastName: existingUser?.lastName, email: existingUser?.email,token }, response: "Login Successfull" });
       }
     }
    catch (error) {

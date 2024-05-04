@@ -1,4 +1,5 @@
 const Route = require('../models/routeModel.js')
+const Page = require('../models/pageModel.js')
 const { default: mongoose } = require('mongoose')
 
 const getAllRoutes = async (req, res) => {
@@ -8,6 +9,36 @@ const getAllRoutes = async (req, res) => {
     } catch (error) {
         res.status(404).json({ message: error.message })
     }
+}
+
+const getAllRoutesOfProject = async (req, res) => {
+    const { id } = req.params // Project ID
+
+    try {
+        const routes = await Route.find({ projectId: id })
+        console.log(routes)
+        let routesWithPages = []
+        for (let index = 0; index < routes.length; index++) {
+
+            const page = await Page.findById({ _id: routes[index].targetedPageId })
+            console.log("Pagee is -----------------------------------------")
+            console.log(page)
+            console.log(routes[index])
+            // routesWithPages.push({ ...routes[index],pageName:page?.name })
+            routesWithPages.push({
+                id: routes[index]._id,
+                name: routes[index].name,
+                path: routes[index].path,
+                lastUpdated: routes[index].lastUpdated,
+                status: routes[index].status,
+                pageName: page?.name
+            })
+    }
+    console.log(routesWithPages)
+        res.status(200).json(routesWithPages)
+} catch (error) {
+    res.status(404).json({ message: error.message })
+}
 }
 
 const getRoute = async (req, res) => {
@@ -35,7 +66,7 @@ const createRoute = async (req, res) => {
 
 const updateRoute = async (req, res) => {
     try {
-        const { id } = req.params 
+        const { id } = req.params
         const route = req.body
 
         if (!mongoose.Types.ObjectId.isValid(id)) return res.status(400).send({ message: 'Invalid Route ID' })
@@ -73,4 +104,4 @@ const deleteRoute = async (req, res) => {
     }
 }
 
-module.exports = {getAllRoutes, getRoute, createRoute, updateRoute, deleteRoute }
+module.exports = { getAllRoutes, getAllRoutesOfProject, getRoute, createRoute, updateRoute, deleteRoute }

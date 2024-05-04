@@ -1,4 +1,5 @@
 const Project = require('../models/projectModel.js')
+const mongoose = require('mongoose')
 
 const getAllProjects = async (req, res) => {
     try {
@@ -105,18 +106,21 @@ const unpublishProject = async (req, res) => {
 }
 
 const moveToTrash = async (req, res) => {
+
+    console.log("Trashing")
     try {
         const { id } = req.params
+        console.log(id)
 
         if (!mongoose.Types.ObjectId.isValid(id)) return res.status(400).send({ message: 'Invalid Project ID' })
         const pageObj = await Project.findById(id)
         if (!pageObj) return res.status(404).json({ message: 'Project not found' })
 
 
-        await Page.findByIdAndUpdate(id, { isDeleted: true });
+        await Project.findByIdAndUpdate(id, { isDeleted: true });
 
 
-        res.status(201).json({ response: 'Page Moved to Trash' })
+        res.status(201).json({ response: 'Project Moved to Trash' })
     } catch (error) {
         res.status(409).json({ message: error.message })
     }
